@@ -23,12 +23,35 @@ const accountsApi = createApi({
         method: "GET",
       }),
     }),
+    getCases: builder.query({
+      query: () => ({
+        url: `/admin/cases/all/`,
+        method: "GET",
+      }),
+    }),
+    unblockUser: builder.mutation({
+      query: (body) => ({
+        url: `/admin/accounts/unblock/`,
+        method: "PUT",
+        body:body
+      }),
+    }),
+    blockUser: builder.mutation({
+      query: (body) => ({
+        url: `/admin/accounts/block/`,
+        method: "PUT",
+        body:body
+      }),
+    })
  
   }),
 });
 
 export const {
   useGetAccountsQuery,
+  useGetCasesQuery,
+  useUnblockUserMutation,
+  useBlockUserMutation,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,
   reducer: adminApiReducer,
