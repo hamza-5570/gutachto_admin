@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForgetPasswordMutation } from "../../../services/auth-api";
 import { toast } from "react-toastify";
+import Loader from "@/common/loader";
 
 export default function ForgotPassword() {
-  const router = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [ForgotPassword, { isLoading }] = useForgetPasswordMutation();
 
@@ -13,9 +14,8 @@ export default function ForgotPassword() {
       email: email,
     })
       .unwrap()
-      .then((res) => {
-        toast.success(res?.message);
-        router("/auth/email-sent");
+      .then(() => {
+        navigate("/auth/email-sent");
       })
       .catch((err) => {
         toast.error(err?.data?.message);

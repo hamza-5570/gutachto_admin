@@ -31,9 +31,10 @@ export default function Login() {
     })
       .unwrap()
       .then((res) => {
-        router("/dashboard");
+        router("/dashboard/accounts");
 
         localStorage.setItem("token", res?.access_token);
+        localStorage.setItem("isLoggedIn", true);
 })
       .catch((err) => {
         toast({
@@ -91,12 +92,12 @@ export default function Login() {
           {isLoading ? <Loader /> : "Log in"}
         </button>
         </form>
-        <Link to={"/auth/sign-up"}>
+        {/* <Link to={"/auth/sign-up"}>
           <p className="text-base font-semibold text-[#696F79] text-center pt-7">
             Don’t you have an account?{" "}
             <span className="text-black font-bold cursor-pointer">Signup</span>
           </p>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

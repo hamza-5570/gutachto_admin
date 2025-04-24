@@ -9,7 +9,7 @@ const menuItems = [
   {
     title: "Accounts",
     icon: <MdAccountCircle  size={22} />,
-    link: "/dashboard",
+    link: "/dashboard/accounts",
   },
   {
     title: "Cases",

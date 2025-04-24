@@ -1,11 +1,8 @@
-import React from "react";
-// import { useGetAccountsQuery } from "@/services/admin-api";
-import AccountTable from "./account-table";
+import AccountTable from "@/components/dash-board/account-table";
 import { accounts } from "@/data";
+import React from "react";
 
-export default function Dashboard() {
-  // const { data: Accounts, } = useGetAccountsQuery();
-
+export default function Accounts() {
   return (
     <div className="font-sans">
       <div>

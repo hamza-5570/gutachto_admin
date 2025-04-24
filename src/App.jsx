@@ -7,8 +7,12 @@ import ForgetPssword from "./components/auth/forgot-password";
 import Signup from "./components/auth/signup";
 import SentEmail from "./components/auth/sent-email";
 import DashboardLayout from "./layouts/dashboard-layout";
-import Dashboard from "./pages/dashboard/index"
 import AllCase from "./pages/dashboard/all-case";
+import Accounts from "./pages/dashboard/accounts";
+import {
+  ProtectedRouteMiddleware,
+  PublicRouteMiddleware,
+} from "./components/auth-gaurd";
 export default function App() {
   return (
     <Router>
@@ -23,16 +27,20 @@ export default function App() {
         }
       >
         <Routes>
-          <Route element={<AuthLayout />}>
-            <Route path="/" element={<Login />} />
-            <Route path="/auth/forgot-password" element={<ForgetPssword />} />
-            <Route path="/auth/sign-up" element={<Signup />} />
-            <Route path="/auth/email-sent" element={<SentEmail />} />
+          <Route element={<PublicRouteMiddleware />}>
+            <Route element={<AuthLayout />}>
+              <Route path="/" element={<Login />} />
+              <Route path="/auth/forgot-password" element={<ForgetPssword />} />
+              <Route path="/auth/sign-up" element={<Signup />} />
+              <Route path="/auth/email-sent" element={<SentEmail />} />
+            </Route>
           </Route>
-          <Route element={<DashboardLayout />}>
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/dashboard/all-case" element={<AllCase/>} />
-
+          <Route element={<ProtectedRouteMiddleware />}>
+            <Route element={<DashboardLayout />}>
+              <Route path="/dashboard/accounts" element={<Accounts />} />
+              <Route path="/dashboard/all-case" element={<AllCase />} />
+              <Route path="*" element={<h2>404</h2>} />
+            </Route>
           </Route>
         </Routes>
       </Suspense>
