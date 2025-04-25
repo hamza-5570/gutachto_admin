@@ -14,10 +14,13 @@ export default function TableHeader() {
       <div className="w-[189px] text-sm text-[#121417] font-medium">
         Police File
       </div>
-      <div className="w-[170px] text-sm text-[#121417] font-medium">Status</div>
+      <div className="w-[100px] text-sm text-[#121417] font-medium">Status</div>
 
-      <div className="w-[185px] text-sm text-[#121417] font-medium">
+      <div className="w-[170px] text-sm text-[#121417] font-medium">
         Internal Inspector
+      </div>
+      <div className="w-[100px] text-sm text-[#121417] font-medium">
+       Action
       </div>
     </div>
   );

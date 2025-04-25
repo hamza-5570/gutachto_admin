@@ -29,6 +29,24 @@ const accountsApi = createApi({
         method: "GET",
       }),
     }),
+    getCaseById: builder.query({
+      query: (id) => ({
+        url: `/case/view/${id}`,
+        method: "GET",
+      }),
+    }),
+    deleteCase: builder.mutation({
+      query: (id) => ({
+        url: `/cases/delete/${id}`,
+        method: "DELETE",
+      }),
+    }),
+    updateCase: builder.mutation({
+      query: ({case_id,new_status}) => ({
+        url: `/case/update-status/${case_id}/${new_status}`,
+        method: "PUT",
+      }),
+    }),
     unblockUser: builder.mutation({
       query: (body) => ({
         url: `/admin/accounts/unblock/`,
@@ -52,6 +70,9 @@ export const {
   useGetCasesQuery,
   useUnblockUserMutation,
   useBlockUserMutation,
+  useDeleteCaseMutation,
+  useGetCaseByIdQuery,
+  useUpdateCaseMutation,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,
   reducer: adminApiReducer,

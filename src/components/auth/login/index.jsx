@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserLoginMutation } from "../../../services/auth-api";
+import { useGetUserProfileQuery, useLazyGetUserProfileQuery, useUserLoginMutation } from "../../../services/auth-api";
 import Loader from "@/common/loader";
 import { useToast } from "@/hooks/use-toast";
 
@@ -22,6 +22,7 @@ export default function Login() {
   };
 
   const [login, { isLoading }] = useUserLoginMutation();
+  const [GetUserProfile,]=useLazyGetUserProfileQuery()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -30,11 +31,14 @@ export default function Login() {
       password: formData.password,
     })
       .unwrap()
-      .then((res) => {
+      .then(async(res) => {
         router("/dashboard/accounts");
-
         localStorage.setItem("token", res?.access_token);
         localStorage.setItem("isLoggedIn", true);
+        if(res){
+          const profile=await GetUserProfile().unwrap()
+          localStorage.setItem("user", JSON.stringify(profile));
+        }
 })
       .catch((err) => {
         toast({

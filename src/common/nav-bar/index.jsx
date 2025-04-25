@@ -1,17 +1,19 @@
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useGetUserProfileQuery } from "@/services/auth-api";
 import React, { useEffect, useState } from "react";
 import { BiBell } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
+
+// eslint-disable-next-line no-unused-vars
 export default function Navbar({ handleDrawer, open, data }) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useNavigate();
   const pathname=useLocation().pathname
   const [routeName, setRouteName] = useState("");
-
+  const {data:user}= useGetUserProfileQuery()
 
   useEffect(() => {
     if (router) {
@@ -104,15 +106,12 @@ export default function Navbar({ handleDrawer, open, data }) {
           <div className="h-12 flex items-center justify-between rounded-full border border-[#EEEEEE] pl-2 pr-3">
             <div className="flex gap-2">
               <div className="w-[38px] h-[38px] flex items-center justify-center rounded-full bg-[#D9D9D9] text-black text-sm">
-                {data?.data?.name
-                  .split(" ")
-                  ?.map((word) => word.charAt(0))
-                  .join("")}
+                {user?.first_name.charAt(0).toUpperCase()}
               </div>
               <div>
-                <p className="text-xs text-black">{data?.data?.name}</p>
+                <p className="text-xs text-black">{user?.first_name + " " + user?.last_name}</p>
                 <p className="text-xs text-[#7A7E83]">
-                  {data?.data?.role === "user" ? "User" : "Admin"}
+                  {user?.is_admin ? "Admin" : "User" }
                 </p>
               </div>
             </div>
@@ -122,7 +121,7 @@ export default function Navbar({ handleDrawer, open, data }) {
           {isOpen && (
             <div className="absolute right-0 mt-2 w-full bg-white border border-[#EEEEEE] rounded-lg shadow-lg z-10">
               <ul className="text-sm text-black">
-                <li className="p-2 hover:bg-gray-100 cursor-pointer border-b border-[#EEEEEE]">
+                <li onClick={()=>router("/dashboard/profile")} className="p-2 hover:bg-gray-100 cursor-pointer border-b border-[#EEEEEE]">
                   Settings
                 </li>
                 <li

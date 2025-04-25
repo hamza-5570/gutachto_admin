@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useGetuserByIdQuery } from "../services/auth-api";
-import { getUser } from "../utils/helper";
 import SideBar from "../common/side-bar";
 import Navbar from "../common/nav-bar";
 import { Outlet } from "react-router-dom";
@@ -8,7 +6,6 @@ import { Outlet } from "react-router-dom";
 
 function DashboardLayout() {
   const [open, setOpen] = useState(false);
- const user=''
   const handleDrawer = () => {
     setOpen(!open);
   };
@@ -28,13 +25,14 @@ function DashboardLayout() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const { data } = useGetuserByIdQuery(user?._id);
+  const user=localStorage.getItem('user')
+
 
   return (
     <div className="flex">
       <SideBar open={open} handleDrawer={handleDrawer} setOpen={setOpen} />
       <div className="flex-1">
-        <Navbar data={data} handleDrawer={handleDrawer} open={open} />
+        <Navbar data={user} handleDrawer={handleDrawer} open={open} />
 
         <div className="xl:h-[calc(100vh-82px)] overflow-y-auto pr-5 pl-5 py-5 lg:pr-10 lg:py-8 lg:pl-[100px] xl:pl-10">
           {<Outlet/>}

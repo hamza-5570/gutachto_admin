@@ -13,6 +13,7 @@ import {
   ProtectedRouteMiddleware,
   PublicRouteMiddleware,
 } from "./components/auth-gaurd";
+import Profile from "./pages/dashboard/profile";
 export default function App() {
   return (
     <Router>
@@ -39,7 +40,8 @@ export default function App() {
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard/accounts" element={<Accounts />} />
               <Route path="/dashboard/all-case" element={<AllCase />} />
-              <Route path="*" element={<h2>404</h2>} />
+              <Route path="/dashboard/profile" element={<Profile />} />
+              {/* <Route path="*" element={<h2>404</h2>} /> */}
             </Route>
           </Route>
         </Routes>

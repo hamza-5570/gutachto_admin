@@ -1,15 +1,14 @@
 import CasesTable from "@/components/dash-board/cases-table";
-import { cases } from "@/data";
+import { useGetCasesQuery } from "@/services/admin-api";
 import React from "react";
 
 export default function AllCase() {
-  // const { data: Accounts, } = useGetAccountsQuery();
+  const {data:cases,isLoading,refetch}=useGetCasesQuery()
 
   return (
     <div className="font-sans">
       <div>
-        <p className="text-[22px] font-bold text-[#121417]">All Cases</p>
-        <CasesTable accounts={cases} />
+        <CasesTable accounts={cases} refetch={refetch} onIsLoading={isLoading} />
       </div>
     </div>
   );

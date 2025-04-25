@@ -8,8 +8,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import Loader from "../components/loader";
 import { Slide, toast } from "react-toastify";
+import Loader from "@/common/loader";
 
 /**
  * GenericDeleteDialog component
@@ -29,7 +29,7 @@ export default function GenericDeleteDialog({
   refetch,
   entityName = "item",
 }) {
-  const [deleteItem, { isLoading }] = deleteAction;
+  const [deleteItem, { isLoading }] = deleteAction || [];
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>

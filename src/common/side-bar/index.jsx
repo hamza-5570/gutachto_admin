@@ -3,18 +3,23 @@ import { PiQuestionBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "@/components/logo";
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle, MdSettings } from "react-icons/md";
 
 const menuItems = [
   {
-    title: "Accounts",
+    title: "All Accounts",
     icon: <MdAccountCircle  size={22} />,
     link: "/dashboard/accounts",
   },
   {
-    title: "Cases",
+    title: "All Cases",
     icon: <PiQuestionBold size={22} />,
     link: "/dashboard/all-case",
+  },
+  {
+    title: "My Profile",
+    icon: <MdSettings size={22} />,
+    link: "/dashboard/profile",
   },
  
 

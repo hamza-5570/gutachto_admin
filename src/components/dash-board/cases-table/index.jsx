@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import TableHeader from "./table-header";
 import TableRow from "./table-row";
 import Mypaginations from "@/components/my-paginations";
+import Loader from "@/common/loader";
 
-export default function CasesTable({ accounts }) {
+export default function CasesTable({ accounts,onIsLoading,refetch }) {
   const [currentPage, setCurrentPage] = useState(1);
   const {totalPages}=accounts?.pagination || {}
   // const location=useLocation()
@@ -19,8 +20,8 @@ export default function CasesTable({ accounts }) {
     <div className="overflow-x-auto border border-[#DBE0E5] rounded-xl mt-5">
       <div className="max-w-[300px] xl:max-w-full">
         <TableHeader />
-        {accounts.length>0 ? accounts?.map((item, index) => {
-          return ( <TableRow key={index} item={item} /> )
+        {onIsLoading ? <Loader />:accounts?.length>0 ? accounts?.map((item, index) => {
+          return ( <TableRow key={index} item={item} refetch={refetch} /> )
          }):<div className="flex flex-col items-center py-4">
            <p className="text-md text-[#121417] font-medium">
               No Accounts

@@ -42,7 +42,14 @@ const authApi = createApi({
         method: "GET",
       }),
     }),
-
+    GetUserProfile: builder.query({
+      query: () => ({ url: `/auth/profile` }),
+      transformResponse: (response) => response
+    }),
+    UpdateUser: builder.mutation({
+      query: (body) => ({ url: `/auth/update-profile/`, method: 'PUT', body: body }),
+      transformResponse: (response) => response
+    }),
     forgetPassword: builder.mutation({
       query: (data) => ({
         url: `/auth/request-password-reset/`,
@@ -50,12 +57,25 @@ const authApi = createApi({
         body: data,
       }),
     }),
-
+    updatePassword: builder.mutation({
+      query: (data) => ({
+        url: `/auth/update-password/`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
     resetPassword: builder.mutation({
       query: ({ data, token }) => ({
         url: `/user/reset-Password/${token}`,
         method: "POST",
         body: data,
+      }),
+    }),
+    deleteAccount: builder.mutation({
+      query: (body) => ({
+        url: `/auth/delete-account/`,
+        method: "DELETE",
+        body: body,
       }),
     }),
   }),
@@ -69,6 +89,11 @@ export const {
   useResetPasswordMutation,
   useLazyGetuserByIdQuery,
   useGetuserByIdQuery,
+  useGetUserProfileQuery,
+  useLazyGetUserProfileQuery,
+  useUpdateUserMutation,
+  useUpdatePasswordMutation,
+  useDeleteAccountMutation,
   middleware: authApiMiddleware,
   reducerPath: authApiReducerPath,
   reducer: authApiReducer,
