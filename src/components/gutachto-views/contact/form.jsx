@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { useSendMessageMutation, useUpdateMessageMutation } from "../../lib/services/contactApi"
 import Loader from "../loader";
 import { Slide, toast } from "react-toastify";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 
 export default function ContactForm({refetch,isedit,setIsOpen,contact={

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserSignUpMutation } from "../../../services/auth-api";
-import { toast } from "react-toastify";
+import { useUserSignUpMutation } from "../../../../services/auth-api";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);

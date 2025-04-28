@@ -5,32 +5,28 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
-    useDeleteAccountMutation,
-  useGetUserProfileQuery,
-} from "@/services/auth-api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+  useGetCaseByIdQuery,
+  useUpdateCaseMutation,
+} from "@/services/admin-api";
+import toast from "react-hot-toast";
 
-export default function DeleteForm() {
-  const [deleteAccount, { isLoading }] = useDeleteAccountMutation();
-  // eslint-disable-next-line no-unused-vars
-  const router=useNavigate();
-  const { data,  } = useGetUserProfileQuery();
+export default function CaseStausForm({ refetch, object }) {
+  const [updateCase, { isLoading }] = useUpdateCaseMutation();
+  const { data } = useGetCaseByIdQuery(object._id);
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    console.log(values);
     try {
-      const response = await deleteAccount(values).unwrap();
+      const response = await updateCase({
+        case_id: object._id,
+        new_status: values.new_status,
+      }).unwrap();
       if (response) {
-        localStorage.clear();
-        await router("/");
+        refetch();
       }
 
       resetForm();
     } catch (error) {
-      toast.error(error.data.message, {
-        hideProgressBar: true,
-        position: "top-center",
-        autoClose: 2000,
-      });
+      toast.error(error.data.detail);
       resetForm();
     } finally {
       setSubmitting(false);
@@ -50,16 +46,16 @@ export default function DeleteForm() {
           <div className="grid grid-cols-2 gap-x-5">
             <div>
               <Label className="text-sm text-[#090F0D] font-medium">
-                Password
+                Status
               </Label>
               <Input
                 type="text"
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                value={props.values.password}
-                name="password"
+                value={props.values.new_status}
+                name="new_status"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="**************************"
+                placeholder="Created"
               />
             </div>
           </div>
@@ -68,11 +64,10 @@ export default function DeleteForm() {
 
           <Button
             type="submit"
-            variant="destructive"
             className="text-xs lg:text-sm font-medium rounded-xl h-[44px] xl:w-[150px]"
           >
             {" "}
-            {isLoading ? <Loader /> : "Delete Account"}
+            {isLoading ? <Loader /> : "Save changes"}
           </Button>
         </Form>
       )}

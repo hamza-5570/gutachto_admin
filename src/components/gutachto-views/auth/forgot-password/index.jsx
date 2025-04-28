@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useForgetPasswordMutation } from "../../../services/auth-api";
-import { toast } from "react-toastify";
+import { useForgetPasswordMutation } from "../../../../services/auth-api";
 import Loader from "@/common/loader";
+import toast from "react-hot-toast";
 
 export default function ForgotPassword() {
   const navigate = useNavigate();

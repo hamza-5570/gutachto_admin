@@ -1,7 +1,5 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { toast } from "react-toastify";
-
 import { Loader } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -12,6 +10,7 @@ import {
   useLazyGetUserProfileQuery,
   useUpdateUserMutation,
 } from "@/services/auth-api";
+import toast from "react-hot-toast";
 
 export default function AccountForm() {
   const [UpdateUser, { isLoading }] = useUpdateUserMutation();

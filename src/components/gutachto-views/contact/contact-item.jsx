@@ -3,7 +3,7 @@ import { useDeleteContactMutation } from "@/lib/services/contactApi";
 import AddContact from "./add-contact";
 import TexTruncate from "../text-truncate";
 import ViewContact from "./view-contact";
-import GenericTableItem from "../generic-table-Item";
+import GenericTableItem from "../../generic-table-Item";
 
 export default function ContactItem({ contact, refetch }) {
   const onDelete=useDeleteContactMutation()

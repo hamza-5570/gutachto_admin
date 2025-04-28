@@ -6,8 +6,8 @@ import React, { useState } from "react";
 import { MdBlock, MdDelete } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
 import { useBlockUserMutation, useUnblockUserMutation } from "@/services/admin-api";
-import { toast } from "react-toastify";
 import Loader from "@/common/loader";
+import toast from "react-hot-toast";
 
 export default function TableRow({ item ,refetch}) {
 const [unblockUser,{isLoading}]=useUnblockUserMutation()
@@ -19,12 +19,9 @@ const [blockUser,{isLoading:blockLoading}] =useBlockUserMutation()
       user_id:item?._id
     }).unwrap().then((res)=>{
       refetch()
-      toast.success(res?.message,{
-        position:"top-center",
-        autoClose:2000,
-        hideProgressBar:true,
-        theme:"colored"
-      })
+      toast.success(res?.message)
+    }).catch((err)=>{
+      toast.error(err?.data?.message)
     })
   }
   const handleUnBlock=()=>{
@@ -32,12 +29,9 @@ const [blockUser,{isLoading:blockLoading}] =useBlockUserMutation()
       user_id:item?._id
     }).unwrap().then((res)=>{
       refetch()
-      toast.success(res?.message,{
-        position:"top-center",
-        autoClose:2000,
-        hideProgressBar:true,
-        theme:"colored"
-      })
+      toast.success(res?.message)
+    }).catch((err)=>{
+      toast.error(err?.data?.message)
     })
   }
   return (

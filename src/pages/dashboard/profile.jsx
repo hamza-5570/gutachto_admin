@@ -1,6 +1,6 @@
-import AccountForm from "@/components/dash-board/profile/account-form";
-import DeleteForm from "@/components/dash-board/profile/delete-form";
-import PasswordForm from "@/components/dash-board/profile/password-form";
+import AccountForm from "@/components/gutachto-views/dash-board/profile/account-form";
+import DeleteForm from "@/components/gutachto-views/dash-board/profile/delete-form";
+import PasswordForm from "@/components/gutachto-views/dash-board/profile/password-form";
 import React from "react";
 
 export default function Profile() {

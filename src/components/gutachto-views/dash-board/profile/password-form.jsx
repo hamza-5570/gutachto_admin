@@ -9,8 +9,7 @@ import {
   useLazyGetUserProfileQuery,
   useUpdatePasswordMutation,
 } from "@/services/auth-api";
-import { toast } from "react-toastify";
-
+import toast from "react-hot-toast";
 export default function PasswordForm() {
   const [updatePassword, { isLoading }] = useUpdatePasswordMutation();
   // eslint-disable-next-line no-unused-vars
@@ -24,6 +23,7 @@ export default function PasswordForm() {
         const userData = await GetUserProfile().unwrap();
         localStorage.setItem("user", JSON.stringify(userData));
         refetch();
+        toast.success(response.message);
       }
 
       resetForm();

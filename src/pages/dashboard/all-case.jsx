@@ -1,4 +1,4 @@
-import CasesTable from "@/components/dash-board/cases-table";
+import CasesTable from "@/components/gutachto-views/dash-board/cases-table";
 import { useGetCasesQuery } from "@/services/admin-api";
 import React from "react";
 

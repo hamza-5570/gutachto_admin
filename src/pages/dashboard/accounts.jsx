@@ -1,4 +1,4 @@
-import AccountTable from "@/components/dash-board/account-table";
+import AccountTable from "@/components/gutachto-views/dash-board/account-table";
 import { useGetAccountsQuery } from "@/services/admin-api";
 import React from "react";
 

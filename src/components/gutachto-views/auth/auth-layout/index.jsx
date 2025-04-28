@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import  leftImage from "../../../../public/assets/png/veri.f247d9b89eed1f02cf33.png"
+import  leftImage from "../../../../../public/assets/png/veri.f247d9b89eed1f02cf33.png"
 export default function AuthLayout() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:h-screen">

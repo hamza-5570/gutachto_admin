@@ -4,7 +4,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import dateFormat from "dateformat";
 import { useState } from "react";
 import GenericDeleteDialog from "./GenericDeleteDialog";
-import AddContact from "./contact/add-contact";
+import AddContact from "./gutachto-views/contact/add-contact";
 import { Eye } from "lucide-react";
 
 /**

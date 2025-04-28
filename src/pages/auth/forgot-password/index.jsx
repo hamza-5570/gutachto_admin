@@ -1,4 +1,4 @@
-import ForgotPassword from "@/components/auth/forgot-password";
+import ForgotPassword from "@/components/gutachto-views/auth/forgot-password";
 import React from "react";
 
 export default function index() {
