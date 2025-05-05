@@ -7,14 +7,16 @@ import ForgetPssword from "./components/gutachto-views/auth/forgot-password";
 import Signup from "./components/gutachto-views/auth/signup";
 import SentEmail from "./components/gutachto-views/auth/sent-email";
 import DashboardLayout from "./layouts/dashboard-layout";
-import AllCase from "./pages/dashboard/all-case";
-import Accounts from "./pages/dashboard/accounts";
+import AllCase from "./pages/dashboard/case/all-case";
+import Accounts from "./pages/dashboard/account/accounts";
 import {
   ProtectedRouteMiddleware,
   PublicRouteMiddleware,
 } from "./components/auth-gaurd";
 
 import Profile from "./pages/dashboard/profile";
+import AccountDetail from "./pages/dashboard/account/account-detail";
+import CaseDetail from "./pages/dashboard/case/case-detail";
 export default function App() {
   return (
     <Router>
@@ -40,7 +42,9 @@ export default function App() {
           <Route element={<ProtectedRouteMiddleware />}>
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard/accounts" element={<Accounts />} />
+              <Route path="/dashboard/accounts/:id" element={<AccountDetail />} />
               <Route path="/dashboard/all-case" element={<AllCase />} />
+              <Route path="/dashboard/all-case/:id" element={<CaseDetail />} />
               <Route path="/dashboard/profile" element={<Profile />} />
               <Route path="*" element={<h2>404</h2>} />
             </Route>

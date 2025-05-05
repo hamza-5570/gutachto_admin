@@ -3,18 +3,19 @@ import TableHeader from "./table-header";
 import TableRow from "./table-row";
 import Mypaginations from "@/components/my-paginations";
 import Loader from "@/common/loader";
+import {  useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-export default function AccountTable({ accounts, onIsLoading,refetch }) {
+export default function AccountTable({ accounts, onIsLoading,refetch,setFilters,filters }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const { totalPages } = accounts?.pagination || {};
-  // const location=useLocation()
-  // const params=URLSearchParams(location.search)
+  const {items,pages } = accounts || {};
+  const location=useLocation()
+  const navigate=useNavigate()
+  const [searchParams,setSearchParams]=useSearchParams()
   const onPageChange = (newPage) => {
     setCurrentPage(newPage);
-    // navigate({
-    //   to: location.pathname, // Keeps the current path
-    //   search: { ...params.query, page: newPage }, // Merge existing and new query args
-    // });
+    setFilters({...filters,page:newPage})
+    navigate(location.pathname);
+    setSearchParams({ ...searchParams, page: newPage });
   };
   return (
     <div className="overflow-x-auto border border-[#DBE0E5] rounded-xl mt-5">
@@ -22,8 +23,8 @@ export default function AccountTable({ accounts, onIsLoading,refetch }) {
         <TableHeader />
         {onIsLoading ? (
           <Loader />
-        ) : accounts?.length > 0 ? (
-          accounts?.map((item, index) => {
+        ) : items?.length > 0 ? (
+          items?.map((item, index) => {
             return <TableRow refetch={refetch} key={index} item={item} />;
           })
         ) : (
@@ -33,7 +34,7 @@ export default function AccountTable({ accounts, onIsLoading,refetch }) {
         )}
         <div className="flex justify-center my-4 ">
           <Mypaginations
-            count={totalPages}
+            count={pages}
             page={currentPage}
             onChange={onPageChange}
           />

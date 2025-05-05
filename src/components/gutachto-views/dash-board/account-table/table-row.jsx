@@ -5,13 +5,17 @@ import { Item } from "@radix-ui/react-select";
 import React, { useState } from "react";
 import { MdBlock, MdDelete } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
-import { useBlockUserMutation, useUnblockUserMutation } from "@/services/admin-api";
+import { useBlockUserMutation, useDeleteAccountMutation, useUnblockUserMutation } from "@/services/admin-api";
 import Loader from "@/common/loader";
 import toast from "react-hot-toast";
+import { IoMdEye } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 export default function TableRow({ item ,refetch}) {
 const [unblockUser,{isLoading}]=useUnblockUserMutation()
 const [blockUser,{isLoading:blockLoading}] =useBlockUserMutation()
+const deleteAccount =useDeleteAccountMutation()
+const navigate=useNavigate()
 
   const [open,setOpen]=useState(false)
   const handleBlock=()=>{
@@ -54,13 +58,15 @@ const [blockUser,{isLoading:blockLoading}] =useBlockUserMutation()
       </div>
       <div className="w-[100px] text-sm text-[#61788A]">
         <div className="flex items-center">
-          {isLoading || blockLoading ? <Loader/> : <ToolTipCom icon={item.is_active ? <MdBlock 
+          {isLoading || blockLoading ? <Loader/> : <ToolTipCom icon={item?.is_active ? <MdBlock 
+           className="cursor-pointer" 
           onClick={handleBlock}
-          size={20} />: <CgUnblock
+          size={20} />: <CgUnblock  className="cursor-pointer" 
           onClick={handleUnBlock}
           size={20} />} content="Block/Unblock" />}
-          <ToolTipCom icon={<MdDelete onClick={() => setOpen(true)}  size={20} />} content="Delete" />
-          <DeleteModal open={open} setOpen={setOpen} />
+          <ToolTipCom icon={<MdDelete  className="cursor-pointer"  onClick={() => setOpen(true)}  size={20} />} content="Delete" />
+          <DeleteModal className="cursor-pointer" id={item?._id} open={open} setOpen={setOpen} deleteAction={deleteAccount}/>
+          <ToolTipCom icon={<IoMdEye className="cursor-pointer" onClick={()=>{navigate(`/dashboard/accounts/${item?._id}`)}} size={20}/>} content="View Details" />
 
         </div>
       </div>

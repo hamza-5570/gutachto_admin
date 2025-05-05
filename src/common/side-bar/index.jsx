@@ -89,7 +89,7 @@ export default function SideBar({ open, setOpen, }) {
                 onClick={() => handleNavigate(item.link)}
                 key={index}
                 className={`flex items-center gap-3 rounded-full cursor-pointer mt-2 ${
-                  active === item.link
+                  active === item.link 
                     ? "bg-black text-white"
                     : "bg-white text-black"
                 } ${

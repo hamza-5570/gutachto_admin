@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { BsTrash3Fill } from "react-icons/bs";
 import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
+import Loader from "../loader";
 
-export default function DeleteModal({ open, setOpen,deleteAction }) {
-  const [deleteItem,] = deleteAction || [];
-
+export default function DeleteModal({ open, setOpen, deleteAction,id }) {
+  const [deleteAccount, { isLoading: deleteLoading }] = deleteAction || [];
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -33,10 +33,22 @@ export default function DeleteModal({ open, setOpen,deleteAction }) {
             </Button>
             <Button
               variant={"destructive"}
-             onClick={() => deleteItem()}
+              onClick={async() => {
+               const res = await deleteAccount(id).unwrap();
+               if(res){
+                setOpen(false)
+               } 
+            
+              }}
               className="w-fit h-10 bg-[#F0414C] dark:bg-[#F0414C] dark:text-white"
             >
-              { "Delete Account"}
+              {deleteLoading ? (
+                <>
+                  <Loader /> Deleting
+                </>
+              ) : (
+                "Delete Account"
+              )}
             </Button>
           </DialogFooter>
         </div>

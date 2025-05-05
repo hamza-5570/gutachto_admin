@@ -13,55 +13,80 @@ const accountsApi = createApi({
       return headers;
     },
   }),
-
+  tagTypes: ["Accounts", "Cases"],
   endpoints: (builder) => ({
- 
-
     getAccounts: builder.query({
-      query: () => ({
-        url: `/admin/accounts/all/`,
+
+      query: (filters) => {
+        const params = new URLSearchParams(filters).toString();
+        return {
+          url: `/admin/accounts/all?${params}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["Accounts"],
+    }),
+    getAccount: builder.query({
+      query: (id) => ({
+        url: `/admin/account/view/${id}`,
         method: "GET",
       }),
+      providesTags: ["Accounts"],
+    }),
+    deleteAccount: builder.mutation({
+      query: (id) => ({
+        url: `/admin/accounts/delete/${id}`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["Accounts"],
     }),
     getCases: builder.query({
-      query: () => ({
-        url: `/admin/cases/all/`,
-        method: "GET",
-      }),
+      query: (filters) => {
+        const params = new URLSearchParams(filters).toString();
+        return {
+          url: `/admin/cases/all?${params}`,
+          method: "GET",
+        }
+      },
+      providesTags: ["Cases"],
     }),
     getCaseById: builder.query({
       query: (id) => ({
-        url: `/case/view/${id}`,
+        url: `/admin/cases/view/${id}`,
         method: "GET",
       }),
+      providesTags: ["Cases"],
     }),
     deleteCase: builder.mutation({
       query: (id) => ({
-        url: `/cases/delete/${id}`,
+        url: `/admin/delete/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Cases"],
     }),
     updateCase: builder.mutation({
-      query: ({case_id,new_status}) => ({
-        url: `/case/update-status/${case_id}/${new_status}`,
+      query: ({ case_id, new_status }) => ({
+        url: `/admin/update-status/${case_id}/${new_status}`,
         method: "PUT",
       }),
+      invalidatesTags: ["Cases"],
     }),
     unblockUser: builder.mutation({
       query: (body) => ({
         url: `/admin/accounts/unblock/`,
         method: "PUT",
-        body:body
+        body: body,
       }),
+      invalidatesTags: ["Accounts"],
     }),
     blockUser: builder.mutation({
       query: (body) => ({
         url: `/admin/accounts/block/`,
         method: "PUT",
-        body:body
+        body: body,
       }),
-    })
- 
+      invalidatesTags: ["Accounts"],
+    }),
   }),
 });
 
@@ -73,6 +98,9 @@ export const {
   useDeleteCaseMutation,
   useGetCaseByIdQuery,
   useUpdateCaseMutation,
+  useDeleteAccountMutation,
+  useLazyGetAccountQuery,
+  useGetAccountQuery,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,
   reducer: adminApiReducer,
