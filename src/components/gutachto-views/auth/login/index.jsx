@@ -7,7 +7,7 @@ import {
   useUserLoginMutation,
 } from "../../../../services/auth-api";
 import Loader from "@/common/loader";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 export default function Login() {
   const router = useNavigate();
@@ -44,7 +44,8 @@ export default function Login() {
         }
       })
       .catch((err) => {
-        toast.error(err?.details);
+        console.log("err", err.dat);
+        toast.error(err?.data.detail);
       })
       .finally(() => {
         setFormData({
@@ -85,25 +86,23 @@ export default function Login() {
           </div>
 
           <Link to={"/auth/forgot-password"}>
-            <button className="text-base text-black font-medium underline mt-5 cursor-pointer">
+            <button
+              type="button"
+              className="text-base text-black font-medium underline mt-5 cursor-pointer"
+            >
               Forgot Password?
             </button>
           </Link>
 
           <button
             onClick={handleSubmit}
+            type="submit"
             disabled={!formData.email || !formData.password}
             className="w-full h-12 flex items-center justify-center bg-gradient-to-r from-[#000000] to-[#80C2A1]  text-white font-semibold rounded-full mt-8 cursor-pointer text-sm md:text-base disabled:cursor-default disabled:opacity-50"
           >
             {isLoading ? <Loader /> : "Log in"}
           </button>
         </form>
-        {/* <Link to={"/auth/sign-up"}>
-          <p className="text-base font-semibold text-[#696F79] text-center pt-7">
-            Don’t you have an account?{" "}
-            <span className="text-black font-bold cursor-pointer">Signup</span>
-          </p>
-        </Link> */}
       </div>
     </>
   );

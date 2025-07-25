@@ -16,7 +16,6 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
 
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -79,7 +78,6 @@ export default function SignUp() {
             </button>
           </div>
         </div>
-
 
         <button
           onClick={handleSubmit}
