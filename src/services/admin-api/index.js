@@ -1,10 +1,10 @@
-import { base_Url } from "@/utils/base-url";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const accountsApi = createApi({
   reducerPath: "adminApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: base_Url,
+    // eslint-disable-next-line no-undef
+    baseUrl: import.meta.env.VITE_SOME_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) {
@@ -16,7 +16,6 @@ const accountsApi = createApi({
   tagTypes: ["Accounts", "Cases"],
   endpoints: (builder) => ({
     getAccounts: builder.query({
-
       query: (filters) => {
         const params = new URLSearchParams(filters).toString();
         return {
@@ -28,7 +27,7 @@ const accountsApi = createApi({
     }),
     getAccount: builder.query({
       query: (id) => ({
-        url: `/admin/account/view/${id}`,
+        url: `/admin/accounts/detail/{account_id}?user_id=${id}`,
         method: "GET",
       }),
       providesTags: ["Accounts"],
@@ -40,19 +39,27 @@ const accountsApi = createApi({
       }),
       invalidatesTags: ["Accounts"],
     }),
+    createCase: builder.mutation({
+      query: (data) => ({
+        url: "/case/register/",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Cases"],
+    }),
     getCases: builder.query({
       query: (filters) => {
         const params = new URLSearchParams(filters).toString();
         return {
           url: `/admin/cases/all?${params}`,
           method: "GET",
-        }
+        };
       },
       providesTags: ["Cases"],
     }),
     getCaseById: builder.query({
       query: (id) => ({
-        url: `/admin/cases/view/${id}`,
+        url: `/admin/cases/detail/${id}`,
         method: "GET",
       }),
       providesTags: ["Cases"],
@@ -101,6 +108,7 @@ export const {
   useDeleteAccountMutation,
   useLazyGetAccountQuery,
   useGetAccountQuery,
+  useCreateCaseMutation,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,
   reducer: adminApiReducer,

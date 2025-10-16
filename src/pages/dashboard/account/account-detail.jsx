@@ -18,8 +18,6 @@ export default function AccountDetail() {
   const { id } = useParams();
   const { data, isLoading } = useGetAccountQuery(id);
 
-  console.log("data", data);
-
   return (
     <>
       {/* Breadcrumbs */}
@@ -53,9 +51,9 @@ export default function AccountDetail() {
               <div>
                 <Table>
                   <TableBody>
-                  <TableRow>
+                    <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                       Id
+                        Id
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -132,109 +130,107 @@ export default function AccountDetail() {
           </Card>
         </div>
         <div className="col-span-6 2 flex flex-col gap-2">
-        <div className="col-span-3">
-          <Card className="w-full rounded-3xl">
-            <CardContent>
-              <ul className="py-4">
-                <li className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
-                    <TbAlertSmall size={20}  />
-                  </div>
-                  <span className="font-semibold text-lg">
-                    Alerts Information
-                  </span>
-                </li>
-              </ul>
-              <div>
-                <Table>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Enable Email Alerts
-                      </TableCell>
-                      <TableCell className="font-semibold">
-                        {isLoading ? (
-                          <Skeleton className="h-2 min-w-[100px]" />
-                        ) : data?.enable_email_alerts ? (
-                          "Yes"
-                        ) : (
-                          "No"
-                        )}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Enable Sms Alerts
-                      </TableCell>
-                      <TableCell className="font-semibold">
-                        {isLoading ? (
-                          <Skeleton className="h-2 min-w-[100px]" />
-                        ) : data?.enable_sms_alerts ? (
-                          "Yes"
-                        ) : (
-                          "No"
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        </div>{" "}
-        <div className="col-span-3">
-          <Card className="w-full rounded-3xl">
-            <CardContent>
-              <ul className="py-4">
-                <li className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
-                  <FiActivity  />
-
-                  </div>
-                  <span className="font-semibold text-lg">
-                    Role & Status Information
-                  </span>
-                </li>
-              </ul>
-              <div>
-                <Table>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Admin
-                      </TableCell>
-                      <TableCell className="font-semibold">
-                        {isLoading ? (
-                          <Skeleton className="h-2 min-w-[100px]" />
-                        ) : data?.is_admin ? (
-                          "Yes"
-                        ) : (
-                          "No"
-                        )}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Active
-                      </TableCell>
-                      <TableCell className="font-semibold">
-                        {isLoading ? (
-                          <Skeleton className="h-2 min-w-[100px]" />
-                        ) : data?.is_active ? (
-                          "Yes"
-                        ) : (
-                          "No"
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        </div>{" "}
+          <div className="col-span-3">
+            <Card className="w-full rounded-3xl">
+              <CardContent>
+                <ul className="py-4">
+                  <li className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
+                      <TbAlertSmall size={20} />
+                    </div>
+                    <span className="font-semibold text-lg">
+                      Alerts Information
+                    </span>
+                  </li>
+                </ul>
+                <div>
+                  <Table>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-normal text-gray-400">
+                          Enable Email Alerts
+                        </TableCell>
+                        <TableCell className="font-semibold">
+                          {isLoading ? (
+                            <Skeleton className="h-2 min-w-[100px]" />
+                          ) : data?.enable_email_alerts ? (
+                            "Yes"
+                          ) : (
+                            "No"
+                          )}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-normal text-gray-400">
+                          Enable Sms Alerts
+                        </TableCell>
+                        <TableCell className="font-semibold">
+                          {isLoading ? (
+                            <Skeleton className="h-2 min-w-[100px]" />
+                          ) : data?.enable_sms_alerts ? (
+                            "Yes"
+                          ) : (
+                            "No"
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>{" "}
+          <div className="col-span-3">
+            <Card className="w-full rounded-3xl">
+              <CardContent>
+                <ul className="py-4">
+                  <li className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
+                      <FiActivity />
+                    </div>
+                    <span className="font-semibold text-lg">
+                      Role & Status Information
+                    </span>
+                  </li>
+                </ul>
+                <div>
+                  <Table>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-normal text-gray-400">
+                          Admin
+                        </TableCell>
+                        <TableCell className="font-semibold">
+                          {isLoading ? (
+                            <Skeleton className="h-2 min-w-[100px]" />
+                          ) : data?.is_admin ? (
+                            "Yes"
+                          ) : (
+                            "No"
+                          )}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-normal text-gray-400">
+                          Active
+                        </TableCell>
+                        <TableCell className="font-semibold">
+                          {isLoading ? (
+                            <Skeleton className="h-2 min-w-[100px]" />
+                          ) : data?.is_active ? (
+                            "Yes"
+                          ) : (
+                            "No"
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>{" "}
         </div>
-    
       </div>
     </>
   );

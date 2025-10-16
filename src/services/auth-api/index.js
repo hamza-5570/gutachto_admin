@@ -1,10 +1,10 @@
-import { base_Url } from "@/utils/base-url";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: base_Url,
+    // eslint-disable-next-line no-undef
+    baseUrl: import.meta.env.VITE_SOME_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) {
@@ -44,11 +44,15 @@ const authApi = createApi({
     }),
     GetUserProfile: builder.query({
       query: () => ({ url: `/auth/profile` }),
-      transformResponse: (response) => response
+      transformResponse: (response) => response,
     }),
     UpdateUser: builder.mutation({
-      query: (body) => ({ url: `/auth/update-profile/`, method: 'PUT', body: body }),
-      transformResponse: (response) => response
+      query: (body) => ({
+        url: `/auth/update-profile/`,
+        method: "PUT",
+        body: body,
+      }),
+      transformResponse: (response) => response,
     }),
     forgetPassword: builder.mutation({
       query: (data) => ({
