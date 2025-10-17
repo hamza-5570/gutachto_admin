@@ -25,7 +25,6 @@ export default function CaseDetail() {
   //     photoIndex: 0,
   //     isOpen: false,
   //   });
-  console.log("data", data);
 
   return (
     <>
@@ -74,7 +73,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      Car Repair Shop
+                        Car Repair Shop
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -86,7 +85,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      account_id
+                        account_id
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -198,7 +197,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      Person in charge  
+                        Person in charge
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -210,7 +209,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      Internal Inspector
+                        Internal Inspector
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -258,7 +257,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      Police file
+                        Police file
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
@@ -329,17 +328,15 @@ export default function CaseDetail() {
               </div>
             </CardContent>
           </Card>
-          
         </div>
         <div className="col-span-6 flex flex-col gap-4">
-             {/* Status */}
-             <Card className="w-full rounded-3xl">
+          {/* Status */}
+          <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
                 <li className="flex items-center gap-2">
                   <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
-                  <SiStatuspage />
-
+                    <SiStatuspage />
                   </div>
                   <span className="font-semibold text-lg">
                     Status Information
@@ -347,20 +344,22 @@ export default function CaseDetail() {
                 </li>
               </ul>
               <div>
-              <Table>
+                <Table>
                   <TableBody>
                     <TableRow>
                       <TableCell className="font-normal text-gray-400">
-                      status
+                        status
                       </TableCell>
                       <TableCell className="font-semibold">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
-                        ) : data?.status }
+                        ) : (
+                          data?.status
+                        )}
                       </TableCell>
                     </TableRow>
-                    </TableBody>
-                    </Table>
+                  </TableBody>
+                </Table>
               </div>
             </CardContent>
           </Card>
@@ -561,20 +560,18 @@ export default function CaseDetail() {
                     </div>
                   </div>
                   <TableBody>
-                    {  data?.witness?.map((item, index) => {
-                        return (
-                          <TableRow key={index}>
-                            <TableCell className="font-normal text-gray-400">
-                              {item.id}
-                            </TableCell>
-                            <TableCell className="font-semibold">
-                              {item.address}
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })
-                    }
-                   
+                    {data?.witness?.map((item, index) => {
+                      return (
+                        <TableRow key={index}>
+                          <TableCell className="font-normal text-gray-400">
+                            {item.id}
+                          </TableCell>
+                          <TableCell className="font-semibold">
+                            {item.address}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </div>
