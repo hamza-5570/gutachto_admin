@@ -5,22 +5,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import { Slide, toast } from "react-toastify";
 import Loader from "@/common/loader";
 
-/**
- * GenericDeleteDialog component
- * @param {Object} props - Component props.
- * @param {Boolean} props.isOpen - Controls dialog visibility.
- * @param {Function} props.setIsOpen - Function to set dialog visibility.
- * @param {Object} props.item - The entity to be deleted (e.g., user, product).
- * @param {Function} props.deleteAction - Function that triggers the delete mutation.
- * @param {Function} props.refetch - Function to refresh data after deletion.
- * @param {String} props.entityName - Name of the entity (for messages).
- */
 export default function GenericDeleteDialog({
   isOpen,
   setIsOpen,
@@ -49,20 +37,17 @@ export default function GenericDeleteDialog({
               const id = item._id;
               try {
                 await deleteItem(id).unwrap();
-                toast.warning(`${entityName} deleted successfully.`);
                 refetch();
                 setIsOpen(false);
               } catch (error) {
-                toast.error(
+                console.log(
                   error?.data?.message || `Failed to delete ${entityName}.`
                 );
-              } finally {
-                refetch();
               }
             }}
           >
             {isLoading ? (
-              <div className="text-center flex gap-2 justify-center mx-auto">
+              <div className="flex items-center text-center  gap-2 justify-center mx-auto">
                 <Loader color="#00132f" /> <span>Loading...</span>
               </div>
             ) : (

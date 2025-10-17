@@ -5,15 +5,16 @@ import { Item } from "@radix-ui/react-select";
 import React, { useState } from "react";
 import { MdBlock, MdDelete } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
-import {
-  useBlockUserMutation,
-  useDeleteAccountMutation,
-  useUnblockUserMutation,
-} from "@/services/admin-api";
+
 import Loader from "@/common/loader";
 import toast from "react-hot-toast";
 import { IoMdEye } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import {
+  useBlockUserMutation,
+  useDeleteAccountMutation,
+  useUnblockUserMutation,
+} from "@/services/admin-api/accountapi";
 
 export default function TableRow({ item, refetch }) {
   const [unblockUser, { isLoading }] = useUnblockUserMutation();

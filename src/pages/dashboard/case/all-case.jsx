@@ -1,7 +1,8 @@
-import AddCaseMultiStepDialog from "@/components/gutachto-views/dash-board/add-case";
 import CasesTable from "@/components/gutachto-views/dash-board/cases-table";
+import { Button } from "@/components/ui/button";
 import { useGetCasesQuery } from "@/services/admin-api";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AllCase() {
   const [filters, setFilters] = useState({
@@ -11,7 +12,11 @@ export default function AllCase() {
   const { data: cases, isLoading } = useGetCasesQuery(filters);
   return (
     <div className="font-sans">
-      <AddCaseMultiStepDialog />.
+      <div className="text-right">
+        <Link to="/dashboard/all-case/register-case">
+          <Button>Registor Case</Button>
+        </Link>
+      </div>
       <div>
         <CasesTable
           cases={cases}

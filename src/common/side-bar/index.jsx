@@ -8,7 +8,7 @@ import { MdAccountCircle, MdSettings } from "react-icons/md";
 const menuItems = [
   {
     title: "All Accounts",
-    icon: <MdAccountCircle  size={22} />,
+    icon: <MdAccountCircle size={22} />,
     link: "/dashboard/accounts",
   },
   {
@@ -21,14 +21,12 @@ const menuItems = [
     icon: <MdSettings size={22} />,
     link: "/dashboard/profile",
   },
- 
-
 ];
 
-export default function SideBar({ open, setOpen, }) {
+export default function SideBar({ open, setOpen }) {
   const router = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const active=useLocation().pathname
+  const active = useLocation().pathname;
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -84,15 +82,16 @@ export default function SideBar({ open, setOpen, }) {
 
         <div className="mt-5 lg:mt-16">
           <ul>
-            {menuItems?.map((item, index) => (
+            {menuItems?.map((item) => (
               <div
                 onClick={() => handleNavigate(item.link)}
-                key={index}
-                className={`flex items-center gap-3 rounded-full cursor-pointer mt-2 ${
-                  active === item.link 
-                    ? "bg-black text-white"
-                    : "bg-white text-black"
-                } ${
+                className={`flex items-center gap-3 rounded-full cursor-pointer mt-2
+                ${
+                  active.startsWith(item.link)
+                    ? "bg-black text-white" // ACTIVE
+                    : "bg-white text-black" // INACTIVE
+                }
+                ${
                   open
                     ? "px-5 py-4 lg:justify-baseline"
                     : "p-2 lg:justify-center"

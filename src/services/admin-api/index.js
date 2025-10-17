@@ -15,30 +15,6 @@ const accountsApi = createApi({
   }),
   tagTypes: ["Accounts", "Cases"],
   endpoints: (builder) => ({
-    getAccounts: builder.query({
-      query: (filters) => {
-        const params = new URLSearchParams(filters).toString();
-        return {
-          url: `/admin/accounts/all?${params}`,
-          method: "GET",
-        };
-      },
-      providesTags: ["Accounts"],
-    }),
-    getAccount: builder.query({
-      query: (id) => ({
-        url: `/admin/accounts/detail/{account_id}?user_id=${id}`,
-        method: "GET",
-      }),
-      providesTags: ["Accounts"],
-    }),
-    deleteAccount: builder.mutation({
-      query: (id) => ({
-        url: `/admin/accounts/delete/${id}`,
-        method: "PUT",
-      }),
-      invalidatesTags: ["Accounts"],
-    }),
     createCase: builder.mutation({
       query: (data) => ({
         url: "/case/register/",
@@ -66,7 +42,7 @@ const accountsApi = createApi({
     }),
     deleteCase: builder.mutation({
       query: (id) => ({
-        url: `/admin/delete/${id}`,
+        url: `/admin/cases/delete/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Cases"],
@@ -78,37 +54,34 @@ const accountsApi = createApi({
       }),
       invalidatesTags: ["Cases"],
     }),
-    unblockUser: builder.mutation({
-      query: (body) => ({
-        url: `/admin/accounts/unblock/`,
+    updateCaseDetails: builder.mutation({
+      query: ({ case_id, data }) => ({
+        url: `/admin/update-details/${case_id}`,
         method: "PUT",
-        body: body,
+        body: data,
       }),
-      invalidatesTags: ["Accounts"],
+      invalidatesTags: ["Cases"],
     }),
-    blockUser: builder.mutation({
+
+    uploadImage: builder.mutation({
       query: (body) => ({
-        url: `/admin/accounts/block/`,
-        method: "PUT",
+        url: `/case/upload-damage-images/`,
+        method: "POST",
         body: body,
       }),
-      invalidatesTags: ["Accounts"],
     }),
   }),
 });
 
 export const {
-  useGetAccountsQuery,
   useGetCasesQuery,
-  useUnblockUserMutation,
-  useBlockUserMutation,
+
   useDeleteCaseMutation,
   useGetCaseByIdQuery,
   useUpdateCaseMutation,
-  useDeleteAccountMutation,
-  useLazyGetAccountQuery,
-  useGetAccountQuery,
   useCreateCaseMutation,
+  useUploadImageMutation,
+  useUpdateCaseDetailsMutation,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,
   reducer: adminApiReducer,

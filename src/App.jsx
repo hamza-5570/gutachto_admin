@@ -17,6 +17,8 @@ import {
 import Profile from "./pages/dashboard/profile";
 import AccountDetail from "./pages/dashboard/account/account-detail";
 import CaseDetail from "./pages/dashboard/case/case-detail";
+import AddCase from "./pages/dashboard/case/add-case";
+import EidtCase from "./pages/dashboard/case/edit-case";
 export default function App() {
   return (
     <Router>
@@ -42,8 +44,19 @@ export default function App() {
           <Route element={<ProtectedRouteMiddleware />}>
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard/accounts" element={<Accounts />} />
-              <Route path="/dashboard/accounts/:id" element={<AccountDetail />} />
+              <Route
+                path="/dashboard/accounts/:id"
+                element={<AccountDetail />}
+              />
               <Route path="/dashboard/all-case" element={<AllCase />} />
+              <Route
+                path="/dashboard/all-case/register-case"
+                element={<AddCase />}
+              />
+              <Route
+                path="/dashboard/all-case/edit-case"
+                element={<EidtCase />}
+              />
               <Route path="/dashboard/all-case/:id" element={<CaseDetail />} />
               <Route path="/dashboard/profile" element={<Profile />} />
               <Route path="*" element={<h2>404</h2>} />

@@ -8,11 +8,11 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { useGetAccountQuery } from "@/services/admin-api";
 import { UserIcon } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { FiActivity } from "react-icons/fi";
 import { TbAlertSmall } from "react-icons/tb";
+import { useGetAccountQuery } from "@/services/admin-api/accountapi";
 
 export default function AccountDetail() {
   const { id } = useParams();

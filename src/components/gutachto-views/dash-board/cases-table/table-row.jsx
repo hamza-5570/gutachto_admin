@@ -8,13 +8,13 @@ import UpdateStatus from "./update-status";
 import { IoMdEye } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-export default function TableRow({ item ,refetch}) {
+export default function TableRow({ item, refetch }) {
   const [open, setOpen] = useState(false);
   const [openStatus, setOpenStatus] = useState(false);
-  const handleStatus=()=>{
-    setOpenStatus(true)
-  }
-  const navigate=useNavigate()
+  // const handleStatus = () => {
+  //   setOpenStatus(true);
+  // };
+  const navigate = useNavigate();
 
   return (
     <div className="min-w-[1000px] flex items-center justify-between border-b border-[#DBE0E5] p-5">
@@ -35,16 +35,64 @@ export default function TableRow({ item ,refetch}) {
       <div className="w-[100px] text-sm text-[#61788A]">
         <div className="flex items-center">
           <ToolTipCom
-            icon={<MdDelete className="cursor-pointer"   onClick={() => setOpen(true)} size={20} />}
+            icon={
+              <MdDelete
+                className="cursor-pointer"
+                onClick={() => setOpen(true)}
+                size={20}
+              />
+            }
             content="Delete"
           />
-           <ToolTipCom
-            icon={<HiOutlinePencilAlt  className="cursor-pointer"  onClick={handleStatus} size={20} />}
+          {/* <ToolTipCom
+            icon={
+              <HiOutlinePencilAlt
+                className="cursor-pointer"
+                onClick={handleStatus}
+                size={20}
+              />
+            }
             content="Status"
+          /> */}
+          <ToolTipCom
+            icon={
+              <HiOutlinePencilAlt
+                className="cursor-pointer"
+                onClick={() =>
+                  navigate(`/dashboard/all-case/edit-case?id=${item?._id}`)
+                }
+                size={20}
+              />
+            }
+            content="Update"
           />
-          <UpdateStatus isOpen={openStatus} setIsOpen={setOpenStatus} refetch={refetch} isedit={true} object={item}/>
-          <ToolTipCom icon={<IoMdEye className="cursor-pointer" onClick={()=>{navigate(`/dashboard/all-case/${item?._id}`)}} size={20}/>} content="View Details" />
-          <GenericDeleteDialog refetch={refetch} isOpen={open} setIsOpen={setOpen} deleteAction={useDeleteCaseMutation()} item={item} entityName="case" />
+          <UpdateStatus
+            isOpen={openStatus}
+            setIsOpen={setOpenStatus}
+            refetch={refetch}
+            isedit={true}
+            object={item}
+          />
+          <ToolTipCom
+            icon={
+              <IoMdEye
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate(`/dashboard/all-case/${item?._id}`);
+                }}
+                size={20}
+              />
+            }
+            content="View Details"
+          />
+          <GenericDeleteDialog
+            refetch={refetch}
+            isOpen={open}
+            setIsOpen={setOpen}
+            deleteAction={useDeleteCaseMutation()}
+            item={item}
+            entityName="case"
+          />
         </div>
       </div>
     </div>

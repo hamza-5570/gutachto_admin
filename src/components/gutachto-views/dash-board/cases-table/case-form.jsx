@@ -43,7 +43,7 @@ export default function CaseStausForm({ refetch, object }) {
     >
       {(props) => (
         <Form className="mt-5" onSubmit={props.handleSubmit}>
-          <div className="grid grid-cols-2 gap-x-5">
+          <div className="grid grid-cols-1 gap-x-5">
             <div>
               <Label className="text-sm text-[#090F0D] font-medium">
                 Status
