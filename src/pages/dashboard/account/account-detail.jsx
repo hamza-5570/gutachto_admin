@@ -12,7 +12,7 @@ import { UserIcon } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { FiActivity } from "react-icons/fi";
 import { TbAlertSmall } from "react-icons/tb";
-import { useGetAccountQuery } from "@/services/admin-api/accountapi";
+import { useGetAccountQuery } from "@/services/admin-api/accountsApi";
 
 export default function AccountDetail() {
   const { id } = useParams();

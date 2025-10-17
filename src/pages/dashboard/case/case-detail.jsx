@@ -11,7 +11,6 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { useGetCaseByIdQuery } from "@/services/admin-api";
 import { UserIcon } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { FiActivity } from "react-icons/fi";
 import { TbAlertSmall, TbReportSearch } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
 import damage from "../../../../public/assets/svg/damage-svgrepo-com.svg";

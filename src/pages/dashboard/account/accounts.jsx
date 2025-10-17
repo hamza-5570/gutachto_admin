@@ -1,5 +1,5 @@
 import AccountTable from "@/components/gutachto-views/dash-board/account-table";
-import { useGetAccountsQuery } from "@/services/admin-api/accountapi";
+import { useGetAccountsQuery } from "@/services/admin-api/accountsApi";
 import React, { useState } from "react";
 
 export default function Accounts() {

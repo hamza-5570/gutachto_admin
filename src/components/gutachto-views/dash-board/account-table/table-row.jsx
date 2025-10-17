@@ -14,7 +14,7 @@ import {
   useBlockUserMutation,
   useDeleteAccountMutation,
   useUnblockUserMutation,
-} from "@/services/admin-api/accountapi";
+} from "@/services/admin-api/accountsApi";
 
 export default function TableRow({ item, refetch }) {
   const [unblockUser, { isLoading }] = useUnblockUserMutation();

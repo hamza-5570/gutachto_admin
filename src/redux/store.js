@@ -13,7 +13,7 @@ import {
   accountsApiMiddleware,
   accountsApiReducer,
   accountsApiReducerPath,
-} from "@/services/admin-api/accountapi";
+} from "@/services/admin-api/accountsApi";
 
 const store = configureStore({
   reducer: {
