@@ -1,19 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQueryWithTokenCheck } from "../admin-api/authBaseQuery";
 
 const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    // eslint-disable-next-line no-undef
-    baseUrl: import.meta.env.VITE_SOME_BASE_URL,
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-
+  baseQuery: baseQueryWithTokenCheck(),
   endpoints: (builder) => ({
     userSignUp: builder.mutation({
       query: (data) => ({
