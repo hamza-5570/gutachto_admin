@@ -42,11 +42,8 @@ const accountsApi = createApi({
     }),
     deleteAccount: builder.mutation({
       query: (id) => ({
-        url: `/admin/accounts/delete/${id}`,
+        url: `/admin/accounts/delete/${id}?user_id=${id}`,
         method: "DELETE",
-        body: {
-          user_id: id,
-        },
       }),
       invalidatesTags: ["Accounts"],
     }),
