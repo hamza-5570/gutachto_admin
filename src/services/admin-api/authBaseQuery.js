@@ -1,11 +1,11 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 // Check if token is expired
 const isTokenExpired = (token) => {
   if (!token) return true;
   try {
-    const { exp } = jwt_decode(token);
+    const { exp } = jwtDecode(token);
     return !exp || Date.now() >= exp * 1000;
   } catch {
     return true;
