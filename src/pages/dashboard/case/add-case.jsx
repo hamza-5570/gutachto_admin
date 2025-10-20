@@ -105,10 +105,6 @@ function getIn(obj, path) {
   return cur;
 }
 
-// -------------------------
-// 4) Helper: stepFields(step)
-// -------------------------
-// For witnesses we return "witness" (array) and handle detailed checks in onNext
 function stepFields(step) {
   switch (step) {
     case 1:

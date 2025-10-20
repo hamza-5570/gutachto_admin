@@ -1,10 +1,9 @@
 import { Suspense } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Login from "./pages/auth/log-in";
 import "./assets/scss/style.scss";
 import AuthLayout from "./components/gutachto-views/auth/auth-layout";
 import ForgetPssword from "./components/gutachto-views/auth/forgot-password";
-import Signup from "./components/gutachto-views/auth/signup";
 import SentEmail from "./components/gutachto-views/auth/sent-email";
 import DashboardLayout from "./layouts/dashboard-layout";
 import AllCase from "./pages/dashboard/case/all-case";
@@ -19,6 +18,7 @@ import AccountDetail from "./pages/dashboard/account/account-detail";
 import CaseDetail from "./pages/dashboard/case/case-detail";
 import AddCase from "./pages/dashboard/case/add-case";
 import EidtCase from "./pages/dashboard/case/edit-case";
+import Registor from "./pages/dashboard/account/registor-account";
 export default function App() {
   return (
     <Router>
@@ -37,8 +37,18 @@ export default function App() {
             <Route element={<AuthLayout />}>
               <Route path="/" element={<Login />} />
               <Route path="/auth/forgot-password" element={<ForgetPssword />} />
-              <Route path="/auth/sign-up" element={<Signup />} />
               <Route path="/auth/email-sent" element={<SentEmail />} />
+              <Route
+                path="*"
+                element={
+                  <h2 className="text-center text-4xl">
+                    Page Not Found{" "}
+                    <Link to="/" className="cursor-pointer underline text-sm">
+                      back
+                    </Link>
+                  </h2>
+                }
+              />
             </Route>
           </Route>
           <Route element={<ProtectedRouteMiddleware />}>
@@ -59,7 +69,20 @@ export default function App() {
               />
               <Route path="/dashboard/all-case/:id" element={<CaseDetail />} />
               <Route path="/dashboard/profile" element={<Profile />} />
-              <Route path="*" element={<h2>404</h2>} />
+              <Route
+                path="/dashboard/accounts/registor-account"
+                element={<Registor />}
+              />
+
+              <Route
+                path="*"
+                element={
+                  <h2 className="text-center text-4xl">
+                    Page Not Found{" "}
+                    <span className="cursor-pointer underline">Back</span>
+                  </h2>
+                }
+              />
             </Route>
           </Route>
         </Routes>

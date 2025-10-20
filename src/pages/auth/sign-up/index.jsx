@@ -1,4 +1,4 @@
-import SignUp from "@/components/gutachto-views/auth/signup";
+import SignUp from "@/pages/dashboard/account/registor-account";
 import React from "react";
 
 export default function index() {
