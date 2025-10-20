@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useUserSignUpMutation } from "../../../services/auth-api";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
@@ -8,10 +7,11 @@ import { Input } from "@/components/ui/input"; // ShadCN Input
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useCreateAccountMutation } from "@/services/admin-api/accountsApi";
 
 export default function Registor() {
   const [showPassword, setShowPassword] = useState(false);
-  const [signUp, { isLoading }] = useUserSignUpMutation();
+  const [createAccount, { isLoading }] = useCreateAccountMutation();
   const navigate = useNavigate();
 
   const initialValues = {
@@ -53,7 +53,7 @@ export default function Registor() {
 
   const handleSubmit = async (values) => {
     try {
-      await signUp(values).unwrap();
+      await createAccount(values).unwrap();
       toast.success("Account created successfully");
       navigate("/dashboard/accounts");
     } catch (err) {

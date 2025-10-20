@@ -13,8 +13,16 @@ const accountsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Accounts", "Cases"],
+  tagTypes: ["Accounts"],
   endpoints: (builder) => ({
+    createAccount: builder.mutation({
+      query: (data) => ({
+        url: `/auth/register/`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Accounts"],
+    }),
     getAccounts: builder.query({
       query: (filters) => {
         const params = new URLSearchParams(filters).toString();
@@ -35,7 +43,7 @@ const accountsApi = createApi({
     deleteAccount: builder.mutation({
       query: (id) => ({
         url: `/admin/accounts/delete/${id}`,
-        method: "PUT",
+        method: "DELETE",
       }),
       invalidatesTags: ["Accounts"],
     }),
@@ -65,6 +73,7 @@ export const {
   useGetAccountQuery,
   useBlockUserMutation,
   useUnblockUserMutation,
+  useCreateAccountMutation,
   middleware: accountsApiMiddleware,
   reducerPath: accountsApiReducerPath,
   reducer: accountsApiReducer,
