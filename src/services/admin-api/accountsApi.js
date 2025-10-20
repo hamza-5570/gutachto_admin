@@ -44,6 +44,9 @@ const accountsApi = createApi({
       query: (id) => ({
         url: `/admin/accounts/delete/${id}`,
         method: "DELETE",
+        body: {
+          user_id: id,
+        },
       }),
       invalidatesTags: ["Accounts"],
     }),
