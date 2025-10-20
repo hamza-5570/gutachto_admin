@@ -144,40 +144,6 @@ export default function SideBar({ open, setOpen }) {
             </div>
           )}
         </div>
-        <div
-          className={`flex items-center gap-3 pt-6 cursor-pointer ${
-            open ? "lg:justify-baseline" : "lg:justify-center"
-          }`}
-        >
-          <PiQuestionBold size={24} />
-          <p
-            className={`text-sm text-[#0D171C] font-medium ${
-              open ? "lg:block" : "lg:hidden"
-            }`}
-          >
-            Help & Docs
-          </p>
-        </div>
-
-        <div
-          className={`flex items-center gap-3 pt-6 cursor-pointer ${
-            open ? "lg:justify-baseline" : "lg:justify-center"
-          }`}
-        >
-          <img
-            src={"/assets/svg/feed-back.svg"}
-            alt=""
-            width={24}
-            height={24}
-          />
-          <p
-            className={`text-sm text-[#0D171C] font-medium ${
-              open ? "lg:block" : "lg:hidden"
-            }`}
-          >
-            Feedback
-          </p>
-        </div>
       </div>
     </div>
   );
