@@ -3,7 +3,7 @@ import { baseQueryWithTokenCheck } from "../admin-api/authBaseQuery";
 
 const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: baseQueryWithTokenCheck(),
+  baseQuery: baseQueryWithTokenCheck,
   endpoints: (builder) => ({
     userSignUp: builder.mutation({
       query: (data) => ({
