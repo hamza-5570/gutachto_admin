@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import jwt_decode from "jwt-decode"; // npm i jwt-decode
+import { jwtDecode } from "jwt-decode"; // npm i jwt-decode
 import ProgressBar from "./progress-bar";
 
 // Function to check if token is expired
 const isTokenExpired = (token) => {
   if (!token) return true;
   try {
-    const { exp } = jwt_decode(token); // decode JWT
+    const { exp } = jwtDecode(token); // decode JWT
     if (!exp) return true;
     return Date.now() >= exp * 1000; // exp is in seconds
     // eslint-disable-next-line no-unused-vars
@@ -75,4 +75,13 @@ export const ProtectedRouteMiddleware = () => {
       <Outlet />
     </ProgressBar>
   );
+};
+export const PublicRouteMiddleware = () => {
+  const token = localStorage.getItem("token");
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (token && isLoggedIn) {
+    return <Navigate to={"/dashboard/accounts"} replace />;
+  }
+  return <Outlet />;
 };

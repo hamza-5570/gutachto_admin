@@ -8,10 +8,6 @@ import SentEmail from "./components/gutachto-views/auth/sent-email";
 import DashboardLayout from "./layouts/dashboard-layout";
 import AllCase from "./pages/dashboard/case/all-case";
 import Accounts from "./pages/dashboard/account/accounts";
-import {
-  ProtectedRouteMiddleware,
-  PublicRouteMiddleware,
-} from "./components/auth-gaurd";
 
 import Profile from "./pages/dashboard/profile";
 import AccountDetail from "./pages/dashboard/account/account-detail";
@@ -19,6 +15,7 @@ import CaseDetail from "./pages/dashboard/case/case-detail";
 import AddCase from "./pages/dashboard/case/add-case";
 import EidtCase from "./pages/dashboard/case/edit-case";
 import Registor from "./pages/dashboard/account/registor-account";
+import { PublicRouteMiddleware } from "./components/auth-gaurd";
 export default function App() {
   return (
     <Router>
