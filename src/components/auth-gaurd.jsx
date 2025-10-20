@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import jwt_decode from "jwt-decode"; // npm i jwt-decode
 import ProgressBar from "./progress-bar";
+
+// Function to check if token is expired
+const isTokenExpired = (token) => {
+  if (!token) return true;
+  try {
+    const { exp } = jwt_decode(token); // decode JWT
+    if (!exp) return true;
+    return Date.now() >= exp * 1000; // exp is in seconds
+    // eslint-disable-next-line no-unused-vars
+  } catch (error) {
+    return true;
+  }
+};
 
 // Function to refresh token
 const refreshToken = async () => {
@@ -22,7 +36,7 @@ const refreshToken = async () => {
     if (!response.ok) return null;
 
     const data = await response.json();
-    localStorage.setItem("token", data.token); // save new token
+    localStorage.setItem("token", data.token); // update token
     if (data.refresh_token) {
       localStorage.setItem("refresh_token", data.refresh_token); // update refresh token if provided
     }
@@ -33,16 +47,6 @@ const refreshToken = async () => {
   }
 };
 
-export const PublicRouteMiddleware = () => {
-  const token = localStorage.getItem("token");
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-  if (token && isLoggedIn) {
-    return <Navigate to={"/dashboard/accounts"} replace />;
-  }
-  return <Outlet />;
-};
-
 export const ProtectedRouteMiddleware = () => {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
@@ -51,23 +55,19 @@ export const ProtectedRouteMiddleware = () => {
     const checkAuth = async () => {
       let token = localStorage.getItem("token");
 
-      if (!token) {
-        // Try refresh
-        token = await refreshToken();
+      // Check if token exists and is not expired
+      if (!token || isTokenExpired(token)) {
+        token = await refreshToken(); // try refreshing
       }
 
-      if (token) {
-        setAuthorized(true);
-      } else {
-        setAuthorized(false);
-      }
+      setAuthorized(!!token);
       setLoading(false);
     };
 
     checkAuth();
   }, []);
 
-  if (loading) return <div>Loading...</div>; // Optional: show spinner while checking
+  if (loading) return <div>Loading...</div>; // show loader while checking
   if (!authorized) return <Navigate to={"/"} replace />;
 
   return (
