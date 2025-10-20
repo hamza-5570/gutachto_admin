@@ -15,7 +15,10 @@ import CaseDetail from "./pages/dashboard/case/case-detail";
 import AddCase from "./pages/dashboard/case/add-case";
 import EidtCase from "./pages/dashboard/case/edit-case";
 import Registor from "./pages/dashboard/account/registor-account";
-import { PublicRouteMiddleware } from "./components/auth-gaurd";
+import {
+  ProtectedRouteMiddleware,
+  PublicRouteMiddleware,
+} from "./components/auth-gaurd";
 export default function App() {
   return (
     <Router>
