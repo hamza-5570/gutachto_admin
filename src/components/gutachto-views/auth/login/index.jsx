@@ -37,6 +37,7 @@ export default function Login() {
         router("/dashboard/accounts");
         localStorage.setItem("token", res?.access_token);
         localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("refresh_token", res?.refresh_token);
         if (res) {
           const profile = await GetUserProfile().unwrap();
           localStorage.setItem("user", JSON.stringify(profile));
