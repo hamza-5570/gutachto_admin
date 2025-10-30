@@ -22,6 +22,7 @@ export default function AccountForm() {
     try {
       const response = await UpdateUser(values).unwrap();
       if (response) {
+        toast.success(response.message);
         const userData = await GetUserProfile().unwrap();
         localStorage.setItem("user", JSON.stringify(userData));
         refetch();

@@ -4,26 +4,27 @@ import PasswordForm from "@/components/gutachto-views/dash-board/profile/passwor
 import React from "react";
 
 export default function Profile() {
-
   return (
     <div className="font-sans">
-      <p className="text-xl text-black font-bold">My Account</p>
       <div>
-        <AccountForm/>
+        <AccountForm />
       </div>
-      <div >
-      <hr className="border-t border-[#EEEEEE] my-10" />
+      <div>
+        <hr className="border-t border-[#EEEEEE] my-10" />
       </div>
       <p className="text-xl text-black font-bold"> Change Password</p>
       <div>
-        <PasswordForm/>
+        <PasswordForm />
       </div>
       <hr className="border-t border-[#EEEEEE] my-10" />
 
       <p className="text-xl text-black font-bold">Danger Zone</p>
       <div>
-        <p className="text-sm text-[#696F79] font-medium">Once you delete your account, there is no going back. Please be certain.</p>
-        <DeleteForm/>
+        <p className="text-sm text-[#696F79] font-medium">
+          Once you delete your account, there is no going back. Please be
+          certain.
+        </p>
+        <DeleteForm />
       </div>
     </div>
   );
