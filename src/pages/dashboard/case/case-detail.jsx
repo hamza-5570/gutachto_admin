@@ -89,7 +89,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        account_id
+                        Account Id
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -197,7 +197,7 @@ export default function CaseDetail() {
                   <TableBody>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Dismantling fee
+                        Dismantling Fee
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -209,7 +209,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Person in charge
+                        Person In Charge
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -233,7 +233,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Total car damage
+                        Total Car Damage
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -245,7 +245,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Inspector fee
+                        Inspector Fee
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -257,7 +257,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Lawyer fee
+                        Lawyer Fee
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -269,7 +269,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Police file
+                        Police File
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -359,7 +359,7 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">status</TableCell>
+                      <TableCell className="font-semibold ">Status</TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -446,7 +446,7 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-semibold ">other</TableCell>
+                      <TableCell className="font-semibold ">Other</TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -457,7 +457,7 @@ export default function CaseDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        description
+                        Description
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
