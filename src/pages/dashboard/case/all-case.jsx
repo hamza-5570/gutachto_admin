@@ -14,7 +14,7 @@ export default function AllCase() {
     <div className="font-sans">
       <div className="text-right">
         <Link to="/dashboard/all-case/register-case">
-          <Button>Registor Case</Button>
+          <Button>Register Case</Button>
         </Link>
       </div>
       <div>

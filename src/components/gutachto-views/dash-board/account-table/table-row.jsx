@@ -1,7 +1,5 @@
 import DeleteModal from "@/common/delete-modal";
-import { Tooltip } from "@/components/ui/tooltip";
 import ToolTipCom from "@/components/ui/tooltip-com";
-import { Item } from "@radix-ui/react-select";
 import React, { useState } from "react";
 import { MdBlock, MdDelete } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
@@ -23,32 +21,28 @@ export default function TableRow({ item, refetch }) {
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const handleBlock = () => {
-    blockUser({
-      user_id: item?._id,
-    })
-      .unwrap()
-      .then((res) => {
-        refetch();
-        toast.success(res?.message);
-      })
-      .catch((err) => {
-        toast.error(err?.data?.message);
-      });
+  const handleBlock = async () => {
+    try {
+      const res = await blockUser({ user_id: item?._id }).unwrap();
+      // refetch();
+      if (res) {
+        toast.success("Account blocked");
+      }
+    } catch (err) {
+      toast.error(err?.data?.message || "Failed to block user");
+    }
   };
-  const handleUnBlock = () => {
-    unblockUser({
-      user_id: item?._id,
-    })
-      .unwrap()
-      .then((res) => {
-        refetch();
-        toast.success(res?.message);
-      })
-      .catch((err) => {
-        toast.error(err?.data?.message);
-      });
+
+  const handleUnBlock = async () => {
+    try {
+      const res = await unblockUser({ user_id: item?._id }).unwrap();
+      // refetch();
+      toast.success(res?.message || "Account unblocked");
+    } catch (err) {
+      toast.error(err?.data?.message || "Failed to unblock user");
+    }
   };
+
   return (
     <div className="min-w-[1000px] flex items-center justify-between border-b border-[#DBE0E5] p-5">
       <div className="w-[190px] text-sm text-[#61788A] text-left">

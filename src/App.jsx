@@ -36,6 +36,7 @@ export default function App() {
           <Route element={<PublicRouteMiddleware />}>
             <Route element={<AuthLayout />}>
               <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/auth/forgot-password" element={<ForgetPssword />} />
               <Route path="/auth/email-sent" element={<SentEmail />} />
               <Route

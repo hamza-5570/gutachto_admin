@@ -14,7 +14,7 @@ export default function Accounts() {
     <div className="font-sans">
       <div className="text-right">
         <Link to="/dashboard/accounts/registor-account">
-          <Button>Registor Account</Button>
+          <Button>Register Account</Button>
         </Link>
       </div>
       <div>

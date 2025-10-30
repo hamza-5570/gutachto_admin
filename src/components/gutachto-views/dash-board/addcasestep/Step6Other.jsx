@@ -7,33 +7,34 @@ import { FieldArray } from "formik";
 export default function Step6Other({ values, handleChange, handleBlur }) {
   return (
     <div>
-      <FieldArray name="mail_correspondence">
-        {({ push, remove }) => (
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-medium">Mail Correspondence</h3>
-              <Button type="button" onClick={() => push("")}>
-                Add Mail
-              </Button>
-            </div>
-
-            {values.mail_correspondence.map((m, i) => (
-              <div key={i} className="flex items-center gap-2 mt-2">
-                <Input
-                  name={`mail_correspondence[${i}]`}
-                  value={m}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <Button type="button" onClick={() => remove(i)}>
-                  Remove
+      <div className="bg-gray-100 p-3 rounded">
+        <FieldArray name="mail_correspondence">
+          {({ push, remove }) => (
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-medium">Mail Correspondence</h3>
+                <Button type="button" onClick={() => push("")}>
+                  Add Mail
                 </Button>
               </div>
-            ))}
-          </div>
-        )}
-      </FieldArray>
 
+              {values.mail_correspondence.map((m, i) => (
+                <div key={i} className="flex items-center gap-2 mt-2">
+                  <Input
+                    name={`mail_correspondence[${i}]`}
+                    value={m}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Button type="button" onClick={() => remove(i)}>
+                    Remove
+                  </Button>
+                </div>
+              ))}
+            </div>
+          )}
+        </FieldArray>
+      </div>
       <div className="mt-4">
         <Label>Police File</Label>
         <Input

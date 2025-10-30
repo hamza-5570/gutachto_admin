@@ -13,8 +13,8 @@ export default function Step2Witness({
   handleBlur,
 }) {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-2">
+    <div className="bg-gray-100 p-3 rounded">
+      <div className="flex items-center justify-between mb-2 ">
         <h3 className="text-lg font-medium">Witnesses</h3>
         <FieldArray name="witness">
           {(arrayHelpers) => (

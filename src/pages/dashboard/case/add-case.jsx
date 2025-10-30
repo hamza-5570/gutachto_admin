@@ -1,11 +1,10 @@
 // -------------------------
 // 1) Imports
 // -------------------------
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Formik, Form } from "formik";
+import { Formik, Form, FieldArray } from "formik";
 import * as Yup from "yup";
-
 import { getUser } from "@/utils/helper";
 import Step1GeneralInfo from "@/components/gutachto-views/dash-board/addcasestep/Step1GeneralInfo";
 import Step2Witness, {
@@ -16,11 +15,11 @@ import Step4Damage from "@/components/gutachto-views/dash-board/addcasestep/Step
 import Step5ReportInvoice from "@/components/gutachto-views/dash-board/addcasestep/Step5ReportInvoice";
 import Step6Other from "@/components/gutachto-views/dash-board/addcasestep/Step6Other";
 import { useCreateCaseMutation } from "@/services/admin-api";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 // -------------------------
-// 2) Stepper Component
+// 2) Step Labels
 // -------------------------
 const stepLabels = [
   "General Info",
@@ -31,67 +30,84 @@ const stepLabels = [
   "Other",
 ];
 
+// -------------------------
+// 3) Stepper Component (Responsive)
+// -------------------------
 function Stepper({ currentStep }) {
+  useEffect(() => {
+    const activeStep = document.querySelector(".active-step");
+    if (activeStep) {
+      activeStep.scrollIntoView({ behavior: "smooth", inline: "center" });
+    }
+  }, [currentStep]);
+
   return (
-    <div className="flex items-center justify-between mb-6">
-      {stepLabels.map((label, index) => {
-        const stepNumber = index + 1;
-        const isActive = stepNumber === currentStep;
-        const isCompleted = stepNumber < currentStep;
-        const isLast = index === stepLabels.length - 1;
+    <div className="mb-6 overflow-x-auto scrollbar-hide">
+      <div
+        className="
+          flex items-center justify-start gap-2 sm:gap-3
+          min-w-[550px] sm:min-w-0 px-2 sm:px-0
+        "
+      >
+        {stepLabels.map((label, index) => {
+          const stepNumber = index + 1;
+          const isActive = stepNumber === currentStep;
+          const isCompleted = stepNumber < currentStep;
+          const isLast = index === stepLabels.length - 1;
 
-        return (
-          <React.Fragment key={index}>
-            <div className="flex flex-col items-center flex-shrink-0 w-28">
+          return (
+            <React.Fragment key={index}>
               <div
-                className={`flex items-center justify-center w-9 h-9 rounded-full border-2 z-10
-                  ${
-                    isCompleted
-                      ? "bg-green-500 text-white border-green-500"
-                      : ""
-                  }
-                  ${
-                    isActive && !isCompleted
-                      ? "bg-black text-white border-black"
-                      : ""
-                  }
-                  ${
-                    !isActive && !isCompleted
-                      ? "bg-white text-gray-500 border-gray-300"
-                      : ""
-                  }
-                `}
-              >
-                {isCompleted ? "✓" : stepNumber}
-              </div>
-
-              <span
-                className={`mt-2 text-[12px] text-center ${
-                  isActive ? "text-black font-semibold" : "text-gray-500"
+                className={`flex flex-col items-center flex-shrink-0 w-20 sm:w-24 md:w-28 ${
+                  isActive ? "active-step" : ""
                 }`}
               >
-                {label}
-              </span>
-            </div>
-
-            {!isLast && (
-              <div className="flex-1 h-0.5 mx-2">
                 <div
-                  className={`h-0.5 w-full rounded ${
-                    index + 1 < currentStep ? "bg-green-500" : "bg-gray-300"
+                  className={`
+                    flex items-center justify-center
+                    w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10
+                    rounded-full border-2 z-10 text-xs sm:text-sm
+                    transition-all duration-200
+                    ${
+                      isCompleted
+                        ? "bg-green-500 text-white border-green-500"
+                        : isActive
+                        ? "bg-black text-white border-black"
+                        : "bg-white text-gray-500 border-gray-300"
+                    }
+                  `}
+                >
+                  {isCompleted ? "✓" : stepNumber}
+                </div>
+
+                <span
+                  className={`mt-2 text-[10px] sm:text-[12px] text-center leading-tight ${
+                    isActive ? "text-black font-semibold" : "text-gray-500"
                   }`}
-                />
+                >
+                  {label}
+                </span>
               </div>
-            )}
-          </React.Fragment>
-        );
-      })}
+
+              {!isLast && (
+                <div className="flex-1 h-0.5 mx-1 sm:mx-2 hidden sm:block">
+                  <div
+                    className={`h-0.5 w-full rounded ${
+                      index + 1 < currentStep ? "bg-green-500" : "bg-gray-300"
+                    }`}
+                  />
+                </div>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
 // -------------------------
-// 3) Helper: getIn
+// 4) Helper: getIn
 // -------------------------
 function getIn(obj, path) {
   if (!obj) return undefined;
@@ -105,6 +121,9 @@ function getIn(obj, path) {
   return cur;
 }
 
+// -------------------------
+// 5) Step Field Mapping
+// -------------------------
 function stepFields(step) {
   switch (step) {
     case 1:
@@ -116,7 +135,7 @@ function stepFields(step) {
         "status",
       ];
     case 2:
-      return ["witness"]; // handle per-item validation in onNext
+      return ["witness"];
     case 3:
       return [
         "accident.date",
@@ -150,7 +169,7 @@ function stepFields(step) {
 }
 
 // -------------------------
-// 5) Yup Validation Schemas
+// 6) Validation Schemas
 // -------------------------
 const vehicleImageSchema = Yup.object().shape({
   angle: Yup.string().required("Angle is required"),
@@ -161,7 +180,6 @@ const vehicleImageSchema = Yup.object().shape({
 
 const witnessSchema = Yup.object().shape({
   address: Yup.string().required("Address is required"),
-  // add other witness fields here if you have them (name, phone, etc.)
 });
 
 const accidentSchema = Yup.object().shape({
@@ -192,38 +210,16 @@ const damageSchema = Yup.object().shape({
 });
 
 const reportSchema = Yup.object().shape({
-  dismantling_fee: Yup.number()
-    .min(0)
-    .required("Dismantling fee is required")
-    .positive("Dismantling fee must be a positive number"),
-  total_car_damage_sum: Yup.number()
-    .min(0)
-    .required("Sum is required")
-    .positive("Sum must be a positive"),
-  inspector_fee: Yup.number()
-    .min(0)
-    .required("Fee is required")
-    .positive("Fee must be a positive"),
-  lawyer_fee: Yup.number()
-    .min(0)
-    .required("Fee is required")
-    .positive("Fee must be a positive"),
+  dismantling_fee: Yup.number().min(0).required("Required").positive(),
+  total_car_damage_sum: Yup.number().min(0).required("Required").positive(),
+  inspector_fee: Yup.number().min(0).required("Required").positive(),
+  lawyer_fee: Yup.number().min(0).required("Required").positive(),
 });
 
 const invoiceSchema = Yup.object().shape({
-  total_invoiced_amount: Yup.number()
-    .min(0)
-    .required("Amount is required")
-    .positive("Amount must be a positive"),
-  open_sum: Yup.number()
-    .min(0)
-    .required("Open Sum is required")
-    .positive("Amount must be a positive"),
-
-  paid_sum: Yup.number()
-    .min(0)
-    .required("Paid Sum is required")
-    .positive("Amount must be a positive"),
+  total_invoiced_amount: Yup.number().min(0).required("Required").positive(),
+  open_sum: Yup.number().min(0).required("Required").positive(),
+  paid_sum: Yup.number().min(0).required("Required").positive(),
 });
 
 const CaseSchema = Yup.object().shape({
@@ -232,10 +228,10 @@ const CaseSchema = Yup.object().shape({
   date_of_last_change: Yup.date()
     .nullable()
     .required("Date of last change required"),
-  person_in_charge: Yup.string().required("Person in charge is required"),
+  person_in_charge: Yup.string().required("Person in charge required"),
   witness: Yup.array().of(witnessSchema).min(0),
-  internal_inspector: Yup.string().required("Internal inspector is required"),
-  car_repair_shop: Yup.string().required("Car repair shop is required"),
+  internal_inspector: Yup.string().required("Internal inspector required"),
+  car_repair_shop: Yup.string().required("Car repair shop required"),
   accident: accidentSchema,
   damage: damageSchema,
   status: Yup.string().required("Status is required"),
@@ -247,7 +243,7 @@ const CaseSchema = Yup.object().shape({
 });
 
 // -------------------------
-// 6) Main Component: AddCase
+// 7) Main Component
 // -------------------------
 export default function AddCase() {
   const [step, setStep] = useState(1);
@@ -261,7 +257,7 @@ export default function AddCase() {
     start_date: new Date().toISOString(),
     date_of_last_change: new Date().toISOString(),
     person_in_charge: "",
-    witness: [emptyWitness()], // multiple witnesses supported (start with 1)
+    witness: [emptyWitness()],
     internal_inspector: "",
     car_repair_shop: "",
     accident: {
@@ -303,7 +299,7 @@ export default function AddCase() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       {/* Stepper */}
       <Stepper currentStep={step} />
 
@@ -312,18 +308,15 @@ export default function AddCase() {
         initialValues={initialValues}
         validationSchema={CaseSchema}
         onSubmit={async (values, { setSubmitting }) => {
-          // handle submit (API call etc.)
-          console.log("Submitting values:", values);
-          createCase(values)
-            .unwrap()
-            .then((result) => {
-              toast.success(result.message);
-              navigate("/dashboard/all-case");
-            })
-            .catch((error) => {
-              toast.error(error.data.message);
-            });
-          setSubmitting(false);
+          try {
+            const result = await createCase(values).unwrap();
+            toast.success(result.message);
+            navigate("/dashboard/all-case");
+          } catch (error) {
+            toast.error(error?.data?.message || "Error creating case");
+          } finally {
+            setSubmitting(false);
+          }
         }}
       >
         {({
@@ -338,46 +331,30 @@ export default function AddCase() {
           setFieldValue,
           isSubmitting,
         }) => {
-          // onNext with special handling for witness array validation
           const onNext = async () => {
             const fields = stepFields(step);
             const formErrors = await validateForm();
-
-            // Base check using stepFields paths
             let hasError = fields.some(
               (f) => getIn(formErrors, f) !== undefined
             );
 
-            // Special handling for witness (multiple)
             if (step === 2) {
               const witnessErrors = getIn(formErrors, "witness");
-              // witnessErrors is likely an array where items may be undefined or { address: '...' }
               if (Array.isArray(witnessErrors)) {
-                const anyWitnessInvalid = witnessErrors.some(
-                  (we) => we && we.address !== undefined && we.address !== null
-                );
-                if (anyWitnessInvalid) hasError = true;
+                const anyInvalid = witnessErrors.some((we) => we && we.address);
+                if (anyInvalid) hasError = true;
               }
             }
 
             if (hasError) {
-              // build touched object that marks the relevant fields as touched
               const touchedObj = {};
-
               fields.forEach((path) => {
-                // If field is witness (array) we want to mark each witness address as touched
                 if (path === "witness") {
-                  // If values.witness exists, create touched.witness = [{ address: true }, ...]
-                  const witnessArr = Array.isArray(values.witness)
-                    ? values.witness
-                    : [];
-                  touchedObj.witness = witnessArr.map(() => ({
+                  touchedObj.witness = (values.witness || []).map(() => ({
                     address: true,
                   }));
                 } else {
-                  // generic path-to-object conversion (handles nested fields like "accident.date")
-                  const normalized = path.replace(/\[(\d+)\]/g, ".$1");
-                  const parts = normalized.split(".");
+                  const parts = path.split(".");
                   let cur = touchedObj;
                   for (let i = 0; i < parts.length; i++) {
                     const p = parts[i];
@@ -389,20 +366,13 @@ export default function AddCase() {
                   }
                 }
               });
-
-              // Merge with existing touched so we don't erase other touched flags
-              setTouched({
-                ...touched,
-                ...touchedObj,
-              });
+              setTouched({ ...touched, ...touchedObj });
               return;
             }
 
-            // advance step
             setStep((s) => Math.min(s + 1, totalSteps));
             window.scrollTo({ top: 0 });
           };
-          console.log("Submitting values:", values);
 
           const onPrev = () => {
             setStep((s) => Math.max(s - 1, 1));
@@ -411,69 +381,57 @@ export default function AddCase() {
 
           return (
             <>
-              {/* Form Body */}
               <div className="flex-1 overflow-y-auto p-4">
                 <Form>
                   {step === 1 && (
                     <Step1GeneralInfo
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
+                      {...{ values, errors, touched, handleChange, handleBlur }}
                     />
                   )}
-
                   {step === 2 && (
                     <Step2Witness
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
-                      setFieldValue={setFieldValue}
+                      {...{
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        setFieldValue,
+                      }}
                     />
                   )}
-
                   {step === 3 && (
                     <Step3Accident
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
-                      setFieldValue={setFieldValue}
+                      {...{
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        setFieldValue,
+                      }}
                     />
                   )}
-
                   {step === 4 && (
                     <Step4Damage
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
+                      {...{ values, errors, touched, handleChange, handleBlur }}
                     />
                   )}
-
                   {step === 5 && (
                     <Step5ReportInvoice
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
-                      setFieldValue={setFieldValue}
+                      {...{
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        setFieldValue,
+                      }}
                     />
                   )}
-
                   {step === 6 && (
                     <Step6Other
-                      values={values}
-                      errors={errors}
-                      touched={touched}
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
+                      {...{ values, errors, touched, handleChange, handleBlur }}
                     />
                   )}
                 </Form>
@@ -486,7 +444,6 @@ export default function AddCase() {
                     Previous
                   </Button>
                 )}
-
                 {step < totalSteps ? (
                   <Button type="button" onClick={onNext}>
                     Next

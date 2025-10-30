@@ -50,8 +50,8 @@ export default function AccountForm() {
     >
       {(props) => (
         <Form className="mt-5" onSubmit={props.handleSubmit}>
-          <div className="grid grid-cols-2 gap-x-5">
-            <div>
+          <div className="grid grid-cols-2 gap-5">
+            <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 First name
               </Label>
@@ -65,7 +65,7 @@ export default function AccountForm() {
                 placeholder="Jhon wick"
               />
             </div>
-            <div>
+            <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Last Name
               </Label>
@@ -81,7 +81,7 @@ export default function AccountForm() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-5">
-            <div>
+            <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Username
               </Label>
@@ -95,7 +95,7 @@ export default function AccountForm() {
                 placeholder="Jhon wick"
               />
             </div>
-            <div>
+            <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Address
               </Label>
@@ -111,7 +111,7 @@ export default function AccountForm() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-5">
-            <div>
+            <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Phone
               </Label>
@@ -127,7 +127,7 @@ export default function AccountForm() {
             </div>
           </div>
           <div className="grid grid-cols-1 mt-3 gap-x-5">
-            <div className="flex flex-col">
+            <div className="flex  gap-2  mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Enable email alerts
               </Label>
@@ -140,7 +140,7 @@ export default function AccountForm() {
             </div>
           </div>
           <div className="grid grid-cols-1 mt-3 gap-x-5">
-            <div className="flex flex-col">
+            <div className="flex gap-2 mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 Enable SMS notifications{" "}
               </Label>

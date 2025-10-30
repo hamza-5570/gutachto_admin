@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { jwtDecode } from "jwt-decode"; // npm i jwt-decode
 import ProgressBar from "./progress-bar";
+import { Loader } from "lucide-react";
 
 // Function to check if token is expired
 const isTokenExpired = (token) => {
@@ -67,7 +68,12 @@ export const ProtectedRouteMiddleware = () => {
     checkAuth();
   }, []);
 
-  if (loading) return <div>Loading...</div>; // show loader while checking
+  if (loading)
+    return (
+      <div className="h-screen flex justify-center items-center ">
+        <Loader className="animate-pulse" />
+      </div>
+    ); // show loader while checking
   if (!authorized) return <Navigate to={"/"} replace />;
 
   return (

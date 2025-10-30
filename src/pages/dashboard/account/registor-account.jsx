@@ -62,14 +62,14 @@ export default function Registor() {
   };
 
   return (
-    <div className=" mx-auto pt-12">
+    <div className=" mx-auto">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {() => (
-          <Form className="space-y-5 pt-5">
+          <Form className="space-y-5">
             <div className="grid grid-cols-2 gap-2">
               <div>
                 <Label>First Name*</Label>

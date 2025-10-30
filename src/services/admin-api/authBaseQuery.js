@@ -1,10 +1,11 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { jwtDecode } from "jwt-decode";
 
-// Read base URL from env
 const BASE_URL = import.meta.env.VITE_SOME_BASE_URL;
 
-// Check if token is expired
+// --------------------
+// Check if token expired
+// --------------------
 const isTokenExpired = (token) => {
   if (!token) return true;
   try {
@@ -15,7 +16,9 @@ const isTokenExpired = (token) => {
   }
 };
 
-// Refresh token function
+// --------------------
+// Refresh token
+// --------------------
 const refreshToken = async () => {
   const refresh_token = localStorage.getItem("refresh_token");
   if (!refresh_token) return null;
@@ -43,8 +46,10 @@ const refreshToken = async () => {
   }
 };
 
-// Reusable baseQuery wrapper
-export const baseQueryWithTokenCheck = fetchBaseQuery({
+// --------------------
+// Base query with token handling
+// --------------------
+const rawBaseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   prepareHeaders: async (headers) => {
     let token = localStorage.getItem("token");
@@ -58,3 +63,21 @@ export const baseQueryWithTokenCheck = fetchBaseQuery({
     return headers;
   },
 });
+
+// --------------------
+// Wrapper: redirect if unauthorized
+// --------------------
+export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
+  const result = await rawBaseQuery(args, api, extraOptions);
+
+  if (result.error && [401, 403].includes(result.error.status)) {
+    // Clear stored tokens
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh_token");
+
+    // Redirect to login
+    window.location.href = "/login";
+  }
+
+  return result;
+};

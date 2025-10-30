@@ -16,8 +16,8 @@ import {
   useGetCaseByIdQuery,
   useUpdateCaseDetailsMutation,
 } from "@/services/admin-api";
-import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 // -------------------------
 // 2) Stepper Component

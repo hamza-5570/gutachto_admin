@@ -7,14 +7,21 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useGetCaseByIdQuery } from "@/services/admin-api";
-import { UserIcon } from "lucide-react";
+import { Mail, UserIcon } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { TbAlertSmall, TbReportSearch } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
 import damage from "../../../../public/assets/svg/damage-svgrepo-com.svg";
-import { PiInvoiceDuotone } from "react-icons/pi";
+import { PiEnvelope, PiInvoiceDuotone } from "react-icons/pi";
 import { SiStatuspage } from "react-icons/si";
 
 export default function CaseDetail() {
@@ -59,10 +66,8 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Id
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Id</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -71,10 +76,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Car Repair Shop
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -83,10 +88,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         account_id
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -95,10 +100,8 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Date
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Date</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -107,10 +110,8 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Location
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Location</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -119,10 +120,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Vehicle Images
                       </TableCell>
-                      <TableCell className="font-semibold flex items-center overflow-x-auto">
+                      <TableCell className="font-normal flex items-center overflow-x-auto">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -139,10 +140,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Vehicle Id
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -151,14 +152,26 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Vehicle opponent license plate
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
                           data?.accident?.vehicle_opponent_license_plate
+                        )}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold ">
+                        Accident Description
+                      </TableCell>
+                      <TableCell className="font-normal">
+                        {isLoading ? (
+                          <Skeleton className="h-2 min-w-[100px]" />
+                        ) : (
+                          data?.accident?.accident_description
                         )}
                       </TableCell>
                     </TableRow>
@@ -183,10 +196,10 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Dismantling fee
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -195,10 +208,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Person in charge
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -207,10 +220,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Internal Inspector
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -219,10 +232,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Total car damage
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -231,10 +244,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Inspector fee
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -243,10 +256,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Lawyer fee
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -255,10 +268,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Police file
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -287,10 +300,10 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Total Invoiced Amount
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -299,10 +312,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Open Amount
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -311,10 +324,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Paid Amount
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -346,10 +359,8 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        status
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">status</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -379,10 +390,10 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Rear Impact Crash
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.rear_impact_crash ? (
@@ -393,10 +404,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Lane Change
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.lane_change ? (
@@ -407,10 +418,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Right Of Way Violation
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.right_of_way_violation ? (
@@ -421,10 +432,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Parking lot
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.parking_lot ? (
@@ -435,10 +446,8 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        other
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">other</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -447,10 +456,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         description
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -459,10 +468,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Diagonal View
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.diagonal_view ? (
@@ -473,10 +482,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         View of damage
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.view_of_damage ? (
@@ -487,10 +496,10 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
+                      <TableCell className="font-semibold ">
                         Prior damage
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.prior_damage ? (
@@ -501,10 +510,8 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Tires
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Tires</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.tires ? (
@@ -515,10 +522,8 @@ export default function CaseDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Status
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Status</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.status ? (
@@ -535,49 +540,155 @@ export default function CaseDetail() {
           </Card>
 
           {/* Witness */}
-          <Card className="w-full rounded-3xl">
-            <CardContent>
-              <ul className="py-4">
-                <li className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-300">
-                    <PiInvoiceDuotone />
-                  </div>
-                  <span className="font-semibold text-lg">
-                    Witness Information
-                  </span>
-                </li>
-              </ul>
-              <div>
-                <Table className="w-full">
-                  <div className="w-full flex items-center justify-between px-5 py-3 border-b border-[#DBE0E5]">
-                    <div className="w-fit text-sm text-[#121417] font-medium">
-                      Id
-                    </div>
+          <WitnessInfoCard data={data} />
 
-                    <div className="w-fit text-sm text-[#121417] font-medium">
-                      Address
-                    </div>
-                  </div>
-                  <TableBody>
-                    {data?.witness?.map((item, index) => {
-                      return (
-                        <TableRow key={index}>
-                          <TableCell className="font-normal text-gray-400">
-                            {item.id}
-                          </TableCell>
-                          <TableCell className="font-semibold">
-                            {item.address}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
+          <MailCorrespondence data={data} />
+          <Note data={data} isLoading={isLoading} />
         </div>
       </div>
     </>
+  );
+}
+
+function WitnessInfoCard({ data }) {
+  return (
+    <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
+      <CardContent>
+        <ul className="py-4">
+          <li className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-200 text-gray-700">
+              <PiInvoiceDuotone className="text-xl" />
+            </div>
+            <span className="font-semibold text-lg text-gray-900">
+              Witness Information
+            </span>
+          </li>
+        </ul>
+
+        <div className="overflow-x-auto">
+          <Table className="w-full border border-[#DBE0E5] rounded-lg">
+            <TableHeader>
+              <TableRow className="bg-gray-50">
+                <TableHead className="w-[100px] text-sm text-[#121417] font-medium">
+                  Id
+                </TableHead>
+                <TableHead className="text-sm text-[#121417] font-medium">
+                  Address
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+
+            <TableBody>
+              {data?.witness?.length > 0 ? (
+                data.witness.map((item, index) => (
+                  <TableRow key={index} className="hover:bg-gray-50 transition">
+                    <TableCell className="font-semibold text-gray-800">
+                      {item.id}
+                    </TableCell>
+                    <TableCell className="font-normal text-gray-700">
+                      {item.address}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={2}
+                    className="text-center text-gray-500 py-4"
+                  >
+                    No witness information available.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+function MailCorrespondence({ data }) {
+  return (
+    <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
+      <CardContent>
+        <ul className="py-4">
+          <li className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-200 text-gray-700">
+              <PiEnvelope className="text-xl" />
+            </div>
+            <span className="font-semibold text-lg text-gray-900">
+              MailCorrespondence
+            </span>
+          </li>
+        </ul>
+
+        <div className="overflow-x-auto">
+          <Table className="w-full border border-[#DBE0E5] rounded-lg">
+            <TableHeader>
+              <TableRow className="bg-gray-50">
+                <TableHead className="text-sm text-[#121417] font-medium">
+                  Mail
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+
+            <TableBody>
+              {data?.mail_correspondence?.length > 0 ? (
+                data?.mail_correspondence?.map((item, index) => (
+                  <TableRow key={index} className="hover:bg-gray-50 transition">
+                    <TableCell className="font-normal text-gray-700">
+                      {item}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={2}
+                    className="text-center text-gray-500 py-4"
+                  >
+                    No witness information available.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+function Note({ data, isLoading }) {
+  return (
+    <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
+      <CardContent>
+        <ul className="py-4">
+          <li className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-200 text-gray-700">
+              <PiEnvelope className="text-xl" />
+            </div>
+            <span className="font-semibold text-lg text-gray-900">Note</span>
+          </li>
+        </ul>
+        <div>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-semibold ">
+                  Total Invoiced Amount
+                </TableCell>
+                <TableCell className="font-normal">
+                  {isLoading ? (
+                    <Skeleton className="h-2 min-w-[100px]" />
+                  ) : (
+                    data?.invoice?.total_invoiced_amount
+                  )}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

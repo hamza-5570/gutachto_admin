@@ -52,10 +52,8 @@ export default function AccountDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Id
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Id</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -64,10 +62,10 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        First Name
+                      <TableCell className="font-semibold ">
+                        Firstname
                       </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -76,10 +74,8 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Last Name
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Lastname</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -88,10 +84,8 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Address
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Address</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 w-" />
                         ) : (
@@ -100,10 +94,8 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Phone
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Phone</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -112,10 +104,8 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-normal text-gray-400">
-                        Username
-                      </TableCell>
-                      <TableCell className="font-semibold">
+                      <TableCell className="font-semibold ">Username</TableCell>
+                      <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
@@ -147,10 +137,10 @@ export default function AccountDetail() {
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-normal text-gray-400">
+                        <TableCell className="font-semibold ">
                           Enable Email Alerts
                         </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
                           ) : data?.enable_email_alerts ? (
@@ -161,10 +151,10 @@ export default function AccountDetail() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-normal text-gray-400">
+                        <TableCell className="font-semibold ">
                           Enable Sms Alerts
                         </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
                           ) : data?.enable_sms_alerts ? (
@@ -197,10 +187,8 @@ export default function AccountDetail() {
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-normal text-gray-400">
-                          Admin
-                        </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="font-semibold ">Admin</TableCell>
+                        <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
                           ) : data?.is_admin ? (
@@ -211,13 +199,25 @@ export default function AccountDetail() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-normal text-gray-400">
-                          Active
-                        </TableCell>
-                        <TableCell className="font-semibold">
+                        <TableCell className="font-semibold ">Active</TableCell>
+                        <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
                           ) : data?.is_active ? (
+                            "Yes"
+                          ) : (
+                            "No"
+                          )}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-semibold ">
+                          Login Attempts
+                        </TableCell>
+                        <TableCell className="font-normal">
+                          {isLoading ? (
+                            <Skeleton className="h-2 min-w-[100px]" />
+                          ) : data?.login_attempts ? (
                             "Yes"
                           ) : (
                             "No"
