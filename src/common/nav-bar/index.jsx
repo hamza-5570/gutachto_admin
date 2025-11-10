@@ -1,14 +1,16 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { useGetUserProfileQuery } from "@/services/auth-api";
 import React, { useEffect, useState } from "react";
-import { BiBell } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 import { IoIosArrowDown } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 // eslint-disable-next-line no-unused-vars
 export default function Navbar({ handleDrawer, open, data }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +18,12 @@ export default function Navbar({ handleDrawer, open, data }) {
   const pathname = useLocation().pathname;
   const [routeName, setRouteName] = useState("");
   const { data: user } = useGetUserProfileQuery();
+  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+
+  const handleChange = (lang) => {
+    i18n.changeLanguage(lang);
+  };
 
   useEffect(() => {
     if (router) {
@@ -27,13 +35,15 @@ export default function Navbar({ handleDrawer, open, data }) {
         } else {
           const formattedName = pathSegments[1]
             .split("-")
-            ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            ?.map((word) => word.charAt(0).toLocaleLowerCase() + word.slice(1))
             .join(" ");
           setRouteName(formattedName);
         }
       }
     }
   }, [router, pathname]);
+
+  console.log("routeName", routeName);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -46,22 +56,30 @@ export default function Navbar({ handleDrawer, open, data }) {
   };
 
   return (
-    <div className="h-[70px] md:h-[82px] flex items-center justify-between shadow-md shadow-[#0000000D] pr-5 pl-5 py-5 lg:pr-8 lg:py-8 lg:pl-[100px] xl:pl-8">
+    <div className="h-[70px] md:h-[82px] relative shadow-md shadow-[#0000000D] flex items-center justify-between pr-5 pl-5 py-5 lg:pr-8 lg:py-8 lg:pl-[100px] xl:pl-8">
+      {/* Left Edge: Absolute Back Arrow */}
       <img
         src={"/assets/svg/left-arrow.svg"}
         alt=""
         width={30}
         height={30}
         onClick={handleDrawer}
-        className={`fixed z-50 top-5 w-12 cursor-pointer lg:block hidden ${
-          open ? "left-[235px]" : "left-2"
-        }`}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer w-12`}
       />
-      <p className="text-xl md:text-[28px] text-[#17191B] font-semibold">
-        {routeName}
-      </p>
 
-      <div className="flex items-center gap-3">
+      {/* Left Side: Title */}
+      <div className="flex items-center gap-4 ml-12">
+        {" "}
+        {/* add left margin to avoid overlapping arrow */}
+        <p className="text-xl md:text-[28px] text-[#17191B] font-semibold">
+          {t(`navigation.${routeName}`)}
+        </p>
+      </div>
+
+      {/* Right Side: Language + Profile */}
+      <div className="flex items-center gap-4">
+        <LanguageDropdown onChange={handleChange} />
+
         <div
           className="relative w-[206px] hidden md:block cursor-pointer"
           onClick={toggleDropdown}
@@ -90,28 +108,54 @@ export default function Navbar({ handleDrawer, open, data }) {
                   onClick={() => router("/dashboard/profile")}
                   className="p-2 hover:bg-gray-100 cursor-pointer border-b border-[#EEEEEE]"
                 >
-                  Settings
+                  {t("profile.settings")}
                 </li>
                 <li
                   onClick={handlelogout}
                   className="p-2 hover:bg-gray-100 cursor-pointer"
                 >
-                  Logout
+                  {t("profile.logout")}
                 </li>
               </ul>
             </div>
           )}
         </div>
-
-        <img
-          src={"/assets/svg/left-arrow.svg"}
-          alt=""
-          width={30}
-          height={30}
-          onClick={handleDrawer}
-          className="cursor-pointer w-12 rotate-180 block lg:hidden"
-        />
       </div>
     </div>
+  );
+}
+
+function LanguageDropdown({ onChange }) {
+  const [selected, setSelected] = useState("en");
+
+  // Optional: load saved language from localStorage
+  useEffect(() => {
+    const savedLang = localStorage.getItem("language") || "en";
+    setSelected(savedLang);
+  }, []);
+
+  const handleChange = (lang) => {
+    setSelected(lang);
+    localStorage.setItem("language", lang);
+    onChange(lang);
+  };
+
+  const languageLabel = selected === "en" ? "🇬🇧 English" : "🇳🇱 Dutch";
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">{languageLabel}</Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => handleChange("en")}>
+          🇬🇧 English
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleChange("nl")}>
+          🇳🇱 Dutch
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

@@ -8,7 +8,7 @@ import SentEmail from "./components/gutachto-views/auth/sent-email";
 import DashboardLayout from "./layouts/dashboard-layout";
 import AllCase from "./pages/dashboard/case/all-case";
 import Accounts from "./pages/dashboard/account/accounts";
-
+import "../i18n";
 import Profile from "./pages/dashboard/profile";
 import AccountDetail from "./pages/dashboard/account/account-detail";
 import CaseDetail from "./pages/dashboard/case/case-detail";

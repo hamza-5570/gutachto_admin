@@ -8,8 +8,11 @@ import {
 } from "../../../../services/auth-api";
 import Loader from "@/common/loader";
 import { toast } from "react-hot-toast";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const router = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -73,17 +76,27 @@ export default function Login() {
               className="w-full h-12 md:h-[64px] rounded-full border border-[#8692A6] placeholder:text-[#8692A6] text-black mt-3 px-7 text-sm md:text-base"
             />
           </div>
-
           <div className="mt-5">
             <p className="text-base text-[#696F79] font-medium">Password*</p>
-            <input
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              name="password"
-              placeholder="Enter password"
-              className="w-full h-12 md:h-[64px] rounded-full border border-[#8692A6] placeholder:text-[#8692A6] text-black text-sm md:text-base mt-3 px-7"
-            />
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={formData.password}
+                onChange={handleChange}
+                name="password"
+                placeholder="Enter password"
+                className="w-full h-12 md:h-[64px] rounded-full border border-[#8692A6] placeholder:text-[#8692A6] text-black text-sm md:text-base mt-3 px-7 pr-12"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute bottom-0 top-[10px] right-4 flex items-center text-gray-500"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
 
           <Link to={"/auth/forgot-password"}>

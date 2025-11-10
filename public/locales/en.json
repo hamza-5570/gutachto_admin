@@ -1,0 +1,17 @@
+{
+  "profile": {
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "navigation": {
+    "accounts": "All Accounts",
+    "all case": "All Cases",
+    "profile": "My Profile"
+  },
+  "language_selector": {
+    "en": "English",
+    "du": "Dutch",
+    "placeholder": "Language",
+    "label": "Select Language"
+  }
+}

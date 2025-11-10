@@ -4,26 +4,27 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "@/components/logo";
 import { MdAccountCircle, MdSettings } from "react-icons/md";
-
-const menuItems = [
-  {
-    title: "All Accounts",
-    icon: <MdAccountCircle size={22} />,
-    link: "/dashboard/accounts",
-  },
-  {
-    title: "All Cases",
-    icon: <PiQuestionBold size={22} />,
-    link: "/dashboard/all-case",
-  },
-  {
-    title: "My Profile",
-    icon: <MdSettings size={22} />,
-    link: "/dashboard/profile",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function SideBar({ open, setOpen }) {
+  const { t } = useTranslation();
+  const menuItems = [
+    {
+      title: t("navigation.accounts"),
+      icon: <MdAccountCircle size={22} />,
+      link: "/dashboard/accounts",
+    },
+    {
+      title: t("navigation.all case"),
+      icon: <PiQuestionBold size={22} />,
+      link: "/dashboard/all-case",
+    },
+    {
+      title: t("navigation.profile"),
+      icon: <MdSettings size={22} />,
+      link: "/dashboard/profile",
+    },
+  ];
   const router = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const active = useLocation().pathname;

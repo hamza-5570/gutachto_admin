@@ -1,0 +1,17 @@
+{
+  "profile": {
+    "settings": "Instellingen",
+    "logout": "Uitloggen"
+  },
+  "navigation": {
+    "accounts": "Alle Accounts",
+    "all case": "Alle Cases",
+    "profile": "Mijn Profiel"
+  },
+  "language_selector": {
+    "en": "Engels",
+    "du": "Nederlands",
+    "placeholder": "Taal",
+    "label": "Selecteer Taal"
+  }
+}
