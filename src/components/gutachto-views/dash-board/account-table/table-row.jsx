@@ -1,5 +1,4 @@
 import DeleteModal from "@/common/delete-modal";
-import ToolTipCom from "@/components/ui/tooltip-com";
 import React, { useState } from "react";
 import { MdBlock, MdDelete } from "react-icons/md";
 import { CgUnblock } from "react-icons/cg";
@@ -13,14 +12,15 @@ import {
   useDeleteAccountMutation,
   useUnblockUserMutation,
 } from "@/services/admin-api/accountsApi";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { Ellipsis, MenuIcon } from "lucide-react";
+import { t } from "i18next";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
-export default function TableRow({ item, refetch }) {
+export default function TableRow({ item }) {
   const [unblockUser, { isLoading }] = useUnblockUserMutation();
   const [blockUser, { isLoading: blockLoading }] = useBlockUserMutation();
   const deleteAccount = useDeleteAccountMutation();
-  const navigate = useNavigate();
-
-  const [open, setOpen] = useState(false);
   const handleBlock = async () => {
     try {
       const res = await blockUser({ user_id: item?._id }).unwrap();
@@ -48,76 +48,103 @@ export default function TableRow({ item, refetch }) {
       <div className="w-[190px] text-sm text-[#61788A] text-left">
         {item?.first_name} {item?.last_name}
       </div>
-      <div className="w-[190px] text-sm  text-[#121417] text-left">
+      <div className="w-[190px] text-sm  text-[#121417] text-center">
         {item?.enable_email_alerts ? "Yes" : "No"}
       </div>
 
-      <div className="w-[200px] text-sm truncate text-[#61788A] text-left">
+      <div className="w-[200px] text-sm truncate text-[#61788A] text-center">
         {item?.enable_sms_alerts ? "Yes" : "No"}
       </div>
 
-      <div className="w-[170px] text-sm text-[#61788A] text-left">
+      <div className="w-[170px] text-sm text-[#61788A] text-center">
         {item?.phone}
       </div>
 
-      <div className="w-[100px] text-sm text-[#61788A] text-left">
-        {item?.is_admin ? "Yes" : "No"}
-      </div>
-      <div className="w-[100px] text-sm text-[#61788A] text-left">
-        <div className="flex items-center">
+      <AccountActionsDropdown
+        item={item}
+        isLoading={isLoading}
+        blockLoading={blockLoading}
+        handleBlock={handleBlock}
+        handleUnBlock={handleUnBlock}
+        deleteAccount={deleteAccount}
+      />
+    </div>
+  );
+}
+
+function AccountActionsDropdown({
+  item,
+  isLoading,
+  blockLoading,
+  handleBlock,
+  handleUnBlock,
+  deleteAccount,
+}) {
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const [dropdown, setDropdown] = useState(false);
+
+  return (
+    <div className="w-[100px] text-sm text-[#61788A] text-center">
+      <DropdownMenuPrimitive.Root open={dropdown} onOpenChange={setDropdown}>
+        <DropdownMenuPrimitive.Trigger className="px-2 py-1  rounded cursor-pointer ">
+          <BsThreeDotsVertical size={20} />
+        </DropdownMenuPrimitive.Trigger>
+
+        <DropdownMenuPrimitive.Content className="bg-white shadow-md rounded-md w-40 p-2">
           {isLoading || blockLoading ? (
-            <Loader />
+            <div className="flex justify-center">
+              <Loader />
+            </div>
           ) : (
-            <ToolTipCom
-              icon={
-                item?.is_active ? (
-                  <MdBlock
-                    className="cursor-pointer"
-                    onClick={handleBlock}
-                    size={20}
-                  />
+            <>
+              <DropdownMenuPrimitive.Item
+                className="flex items-center gap-2 p-2 rounded hover:bg-gray-100 cursor-pointer"
+                onClick={item?.is_active ? handleBlock : handleUnBlock}
+              >
+                {item?.is_active ? (
+                  <MdBlock size={18} />
                 ) : (
-                  <CgUnblock
-                    className="cursor-pointer"
-                    onClick={handleUnBlock}
-                    size={20}
-                  />
-                )
-              }
-              content="Block/Unblock"
-            />
-          )}
-          <ToolTipCom
-            icon={
-              <MdDelete
-                className="cursor-pointer"
-                onClick={() => setOpen(true)}
-                size={20}
-              />
-            }
-            content="Delete"
-          />
-          <DeleteModal
-            className="cursor-pointer"
-            id={item?._id}
-            open={open}
-            setOpen={setOpen}
-            deleteAction={deleteAccount}
-          />
-          <ToolTipCom
-            icon={
-              <IoMdEye
-                className="cursor-pointer"
+                  <CgUnblock size={18} />
+                )}
+                {item?.is_active
+                  ? t("accounts_table.block")
+                  : t("accounts_table.unblock")}
+              </DropdownMenuPrimitive.Item>
+
+              <DropdownMenuPrimitive.Item
+                className="flex items-center gap-2 p-2 rounded hover:bg-gray-100 cursor-pointer"
                 onClick={() => {
+                  setDropdown(false);
+                  setOpen(true);
+                }}
+              >
+                <MdDelete size={18} />
+                {t("accounts_table.delete")}
+              </DropdownMenuPrimitive.Item>
+
+              <DropdownMenuPrimitive.Item
+                className="flex items-center gap-2 p-2 rounded hover:bg-gray-100 cursor-pointer"
+                onClick={() => {
+                  setDropdown(false);
                   navigate(`/dashboard/accounts/${item?._id}`);
                 }}
-                size={20}
-              />
-            }
-            content="View Details"
-          />
-        </div>
-      </div>
+              >
+                <IoMdEye size={18} />
+                {t("accounts_table.view_detail")}
+              </DropdownMenuPrimitive.Item>
+            </>
+          )}
+        </DropdownMenuPrimitive.Content>
+      </DropdownMenuPrimitive.Root>
+
+      <DeleteModal
+        className="cursor-pointer"
+        id={item?._id}
+        open={open}
+        setOpen={setOpen}
+        deleteAction={deleteAccount}
+      />
     </div>
   );
 }

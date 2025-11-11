@@ -64,7 +64,9 @@ export default function Navbar({ handleDrawer, open, data }) {
         width={30}
         height={30}
         onClick={handleDrawer}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer w-12`}
+        className={`${
+          open ? "rotate-0" : "rotate-180"
+        } absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer w-12`}
       />
 
       {/* Left Side: Title */}

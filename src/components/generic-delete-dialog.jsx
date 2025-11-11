@@ -7,7 +7,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import Loader from "@/common/loader";
+import { useTranslation } from "react-i18next";
+import { Loader } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function GenericDeleteDialog({
   isOpen,
@@ -18,15 +20,15 @@ export default function GenericDeleteDialog({
   entityName = "item",
 }) {
   const [deleteItem, { isLoading }] = deleteAction || [];
+  const { t } = useTranslation();
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>{t("delete_case_model.title")}</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. Are you sure you want to permanently
-            delete this {entityName} from our servers?
+            {t("delete_case_model.description")}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -37,6 +39,7 @@ export default function GenericDeleteDialog({
               const id = item._id;
               try {
                 await deleteItem(id).unwrap();
+                toast.success(`${entityName} deleted successfully`);
                 refetch();
                 setIsOpen(false);
               } catch (error) {
@@ -48,10 +51,10 @@ export default function GenericDeleteDialog({
           >
             {isLoading ? (
               <div className="flex items-center text-center  gap-2 justify-center mx-auto">
-                <Loader color="#00132f" /> <span>Loading...</span>
+                <Loader color="#00132f" />
               </div>
             ) : (
-              "Confirm"
+              t("delete_case_model.delete")
             )}
           </Button>
         </DialogFooter>

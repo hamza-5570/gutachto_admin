@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getIn } from "formik";
+import { useTranslation } from "react-i18next";
 
 export default function Step1GeneralInfo({
   values,
@@ -9,10 +10,11 @@ export default function Step1GeneralInfo({
   handleChange,
   handleBlur,
 }) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <Label>Account ID</Label>
+        <Label>{t("regiser_case.step1generalinfo.id")}</Label>
         <Input
           name="account_id"
           value={values.account_id}
@@ -27,7 +29,7 @@ export default function Step1GeneralInfo({
       </div>
 
       <div>
-        <Label>Person In Charge</Label>
+        <Label>{t("regiser_case.step1generalinfo.person_in_charge")}</Label>
         <Input
           name="person_in_charge"
           value={values.person_in_charge}
@@ -43,7 +45,7 @@ export default function Step1GeneralInfo({
       </div>
 
       <div>
-        <Label>Internal Inspector</Label>
+        <Label>{t("regiser_case.step1generalinfo.internal_inspector")}</Label>
         <Input
           name="internal_inspector"
           value={values.internal_inspector}
@@ -59,7 +61,7 @@ export default function Step1GeneralInfo({
       </div>
 
       <div>
-        <Label>Car Repair Shop</Label>
+        <Label>{t("regiser_case.step1generalinfo.car_repair_shop")}</Label>
         <Input
           name="car_repair_shop"
           value={values.car_repair_shop}
@@ -75,7 +77,7 @@ export default function Step1GeneralInfo({
       </div>
 
       <div>
-        <Label>Status</Label>
+        <Label>{t("regiser_case.step1generalinfo.status")}</Label>
         <Input
           name="status"
           value={values.status}

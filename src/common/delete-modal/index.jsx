@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button";
 import { BsTrash3Fill } from "react-icons/bs";
 import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
 import Loader from "../loader";
+import { useTranslation } from "react-i18next";
 
-export default function DeleteModal({ open, setOpen, deleteAction,id }) {
+export default function DeleteModal({ open, setOpen, deleteAction, id }) {
   const [deleteAccount, { isLoading: deleteLoading }] = deleteAction || [];
+
+  const { t } = useTranslation();
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -15,10 +18,10 @@ export default function DeleteModal({ open, setOpen, deleteAction,id }) {
             <BsTrash3Fill size={45} className="text-[#F0414C]" />
             <div>
               <p className="text-xl font-bold text-black dark:text-white">
-                Delete Account?
+                {t("delete_model.title")}
               </p>
               <p className="text-sm font-medium text-black dark:text-white/80 pt-2">
-                This account will be Deleted.
+                {t("delete_model.description")}
               </p>
             </div>
           </div>
@@ -29,25 +32,24 @@ export default function DeleteModal({ open, setOpen, deleteAction,id }) {
               variant={"ghost"}
               className="w-24 h-10 font-bold text-black dark:text-white"
             >
-              Cancel
+              {t("delete_model.cancel")}
             </Button>
             <Button
               variant={"destructive"}
-              onClick={async() => {
-               const res = await deleteAccount(id).unwrap();
-               if(res){
-                setOpen(false)
-               } 
-            
+              onClick={async () => {
+                const res = await deleteAccount(id).unwrap();
+                if (res) {
+                  setOpen(false);
+                }
               }}
               className="w-fit h-10 bg-[#F0414C] dark:bg-[#F0414C] dark:text-white"
             >
               {deleteLoading ? (
                 <>
-                  <Loader /> Deleting
+                  <Loader /> {t("delete_model.deleting")}
                 </>
               ) : (
-                "Delete Account"
+                t("delete_model.title")
               )}
             </Button>
           </DialogFooter>

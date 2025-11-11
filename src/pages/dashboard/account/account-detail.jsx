@@ -13,10 +13,12 @@ import { Link, useParams } from "react-router-dom";
 import { FiActivity } from "react-icons/fi";
 import { TbAlertSmall } from "react-icons/tb";
 import { useGetAccountQuery } from "@/services/admin-api/accountsApi";
+import { useTranslation } from "react-i18next";
 
 export default function AccountDetail() {
   const { id } = useParams();
   const { data, isLoading } = useGetAccountQuery(id);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -24,18 +26,22 @@ export default function AccountDetail() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <Link href="/dashboard/accounts">Accounts</Link>
+            <Link href="/dashboard/accounts">
+              {t("account_detail.breadcrumbs.accounts")}
+            </Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <Link href={`/dashboard/accounts/${id}`}>Account</Link>
+            <Link href={`/dashboard/accounts/${id}`}>
+              {t("account_detail.breadcrumbs.account")}
+            </Link>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
       {/* Account Detail */}
       <div className="grid grid-cols-12 my-5  gap-4">
-        <div className="col-span-6">
+        <div className="md:col-span-6 col-span-12">
           <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
@@ -44,7 +50,7 @@ export default function AccountDetail() {
                     <UserIcon />
                   </div>
                   <span className="font-semibold text-lg">
-                    Account Information
+                    {t("account_detail.account_information.title")}
                   </span>
                 </li>
               </ul>
@@ -52,7 +58,9 @@ export default function AccountDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">Id</TableCell>
+                      <TableCell className="font-semibold ">
+                        {t("account_detail.account_information.id")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -63,7 +71,7 @@ export default function AccountDetail() {
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-semibold ">
-                        Firstname
+                        {t("account_detail.account_information.firstname")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -74,7 +82,9 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-semibold ">Lastname</TableCell>
+                      <TableCell className="font-semibold ">
+                        {t("account_detail.account_information.lastname")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -84,7 +94,9 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-semibold ">Address</TableCell>
+                      <TableCell className="font-semibold ">
+                        {t("account_detail.account_information.address")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 w-" />
@@ -94,7 +106,9 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-semibold ">Phone</TableCell>
+                      <TableCell className="font-semibold ">
+                        {t("account_detail.account_information.phone")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -104,7 +118,10 @@ export default function AccountDetail() {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-semibold ">Username</TableCell>
+                      <TableCell className="font-semibold ">
+                        {" "}
+                        {t("account_detail.account_information.username")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -119,7 +136,7 @@ export default function AccountDetail() {
             </CardContent>
           </Card>
         </div>
-        <div className="col-span-6 2 flex flex-col gap-2">
+        <div className="md:col-span-6 col-span-12 2 flex flex-col gap-4">
           <div className="col-span-3">
             <Card className="w-full rounded-3xl">
               <CardContent>
@@ -129,7 +146,7 @@ export default function AccountDetail() {
                       <TbAlertSmall size={20} />
                     </div>
                     <span className="font-semibold text-lg">
-                      Alerts Information
+                      {t("account_detail.alerts_information.title")}
                     </span>
                   </li>
                 </ul>
@@ -138,7 +155,9 @@ export default function AccountDetail() {
                     <TableBody>
                       <TableRow>
                         <TableCell className="font-semibold ">
-                          Enable Email Alerts
+                          {t(
+                            "account_detail.alerts_information.enable_email_alerts"
+                          )}
                         </TableCell>
                         <TableCell className="font-normal">
                           {isLoading ? (
@@ -152,7 +171,9 @@ export default function AccountDetail() {
                       </TableRow>
                       <TableRow>
                         <TableCell className="font-semibold ">
-                          Enable Sms Alerts
+                          {t(
+                            "account_detail.alerts_information.enable_sms_alerts"
+                          )}
                         </TableCell>
                         <TableCell className="font-normal">
                           {isLoading ? (
@@ -179,7 +200,7 @@ export default function AccountDetail() {
                       <FiActivity />
                     </div>
                     <span className="font-semibold text-lg">
-                      Role & Status Information
+                      {t("account_detail.role_status_information.title")}
                     </span>
                   </li>
                 </ul>
@@ -187,7 +208,10 @@ export default function AccountDetail() {
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <TableCell className="font-semibold ">Admin</TableCell>
+                        <TableCell className="font-semibold ">
+                          {" "}
+                          {t("account_detail.role_status_information.admin")}
+                        </TableCell>
                         <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
@@ -199,7 +223,9 @@ export default function AccountDetail() {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-semibold ">Active</TableCell>
+                        <TableCell className="font-semibold ">
+                          {t("account_detail.role_status_information.active")}
+                        </TableCell>
                         <TableCell className="font-normal">
                           {isLoading ? (
                             <Skeleton className="h-2 min-w-[100px]" />
@@ -212,7 +238,9 @@ export default function AccountDetail() {
                       </TableRow>
                       <TableRow>
                         <TableCell className="font-semibold ">
-                          Login Attempts
+                          {t(
+                            "account_detail.role_status_information.login_attempt"
+                          )}
                         </TableCell>
                         <TableCell className="font-normal">
                           {isLoading ? (

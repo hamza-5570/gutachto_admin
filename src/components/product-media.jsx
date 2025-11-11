@@ -9,6 +9,7 @@ import { getFileType, normalizeUrl } from "@/utils/helper";
 import ImageCropper from "./image-cropper";
 import { useUploadImageMutation } from "@/services/admin-api";
 import Thumbnail from "./Thumbnail";
+import { useTranslation } from "react-i18next";
 
 const MAX_IMAGES = 15;
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -25,7 +26,7 @@ export default function ProductMedia({
   const [imageIndex, setImageIndex] = React.useState(-1);
   const { values, setFieldValue, errors, touched } = useFormikContext();
   const currentValues = getIn(values, fieldname);
-  console.log("currentValues", currentValues);
+  const { t } = useTranslation();
 
   const handleUpload = async (file) => {
     console.log("file", file);
@@ -158,10 +159,10 @@ export default function ProductMedia({
           </div>
 
           <p className="text-base text-[#111827] dark:text-white font-medium text-center mt-3">
-            Drag & drop your file here
+            {t("upload_img.drag_drop")}
           </p>
           <p className="text-sm text-[#6B7280] dark:text-white text-center mt-2">
-            or click to browse file
+            {t("upload_img.browse_file")}
           </p>
 
           <button
@@ -170,7 +171,7 @@ export default function ProductMedia({
             type="button"
             onClick={() => document.getElementById("fileInput")?.click()}
           >
-            Choose File
+            {t("upload_img.choose_file")}
           </button>
 
           <input
@@ -182,7 +183,9 @@ export default function ProductMedia({
           />
 
           <p className="text-sm text-[#9CA3AF] text-center mt-3">
-            Upload {MAX_IMAGES} images • Max 5MB • JPG, PNG
+            {t("upload_img.upload")} {MAX_IMAGES} {t("upload_img.images")} •{" "}
+            {t("upload_img.max")}
+            5MB • JPG, PNG
           </p>
         </div>
         {/* 

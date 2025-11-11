@@ -23,14 +23,13 @@ import { FaCarCrash } from "react-icons/fa";
 import damage from "../../../../public/assets/svg/damage-svgrepo-com.svg";
 import { PiEnvelope, PiInvoiceDuotone } from "react-icons/pi";
 import { SiStatuspage } from "react-icons/si";
+import { useTranslation } from "react-i18next";
 
 export default function CaseDetail() {
   const { id } = useParams();
   const { data, isLoading } = useGetCaseByIdQuery(id);
-  //  const [photoIndex, setPhotoIndex] = useState({
-  //     photoIndex: 0,
-  //     isOpen: false,
-  //   });
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -38,18 +37,21 @@ export default function CaseDetail() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <Link href="/dashboard/all-case">Cases</Link>
+            <Link href="/dashboard/all-case">{t("case_detail.cases")}</Link>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <Link href={`/dashboard/all-case/${id}`}>Case</Link>
+            <Link href={`/dashboard/all-case/${id}`}>
+              {t("case_detail.case")}
+            </Link>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
       {/* Account Detail */}
-      <div className="grid grid-cols-12 my-5  gap-4">
+      <div className="grid grid-cols-12 my-5 gap-4">
         <div className="col-span-6 flex flex-col gap-4">
+          {/* Accident Information */}
           <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
@@ -58,7 +60,7 @@ export default function CaseDetail() {
                     <FaCarCrash />
                   </div>
                   <span className="font-semibold text-lg">
-                    Accident Information
+                    {t("case_detail.accident_information.title")}
                   </span>
                 </li>
               </ul>
@@ -66,7 +68,9 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">Id</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.id")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -75,9 +79,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Car Repair Shop
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.car_repair_shop")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -87,9 +92,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Account Id
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.account_id")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -99,8 +105,11 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">Date</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.date")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -109,8 +118,11 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">Location</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.location")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -119,29 +131,30 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Vehicle Images
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.vehicle_images")}
                       </TableCell>
                       <TableCell className="font-normal flex items-center overflow-x-auto">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : (
-                          data?.accident?.vehicle_images.map((image) => {
-                            return (
-                              <img
-                                src={image.image_url}
-                                alt="image"
-                                className="w-10  h-10 rounded-lg"
-                              />
-                            );
-                          })
+                          data?.accident?.vehicle_images?.map((image) => (
+                            <img
+                              key={image.id}
+                              src={image.image_url}
+                              alt="image"
+                              className="w-10 h-10 rounded-lg"
+                            />
+                          ))
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Vehicle Id
+                      <TableCell className="font-semibold">
+                        {t("case_detail.accident_information.vehicle_id")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -151,9 +164,12 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Vehicle opponent license plate
+                      <TableCell className="font-semibold">
+                        {t(
+                          "case_detail.accident_information.vehicle_opponent_license_plate"
+                        )}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -163,9 +179,12 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Accident Description
+                      <TableCell className="font-semibold">
+                        {t(
+                          "case_detail.accident_information.accident_description"
+                        )}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -180,6 +199,8 @@ export default function CaseDetail() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Report Information */}
           <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
@@ -188,7 +209,7 @@ export default function CaseDetail() {
                     <TbReportSearch />
                   </div>
                   <span className="font-semibold text-lg">
-                    Report Information
+                    {t("case_detail.report_information.title")}
                   </span>
                 </li>
               </ul>
@@ -196,8 +217,8 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Dismantling Fee
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.dismantling_fee")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -207,9 +228,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Person In Charge
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.person_in_charge")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -219,9 +241,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Internal Inspector
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.internal_inspector")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -231,9 +254,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Total Car Damage
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.total_car_damage")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -243,9 +267,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Inspector Fee
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.inspector_fee")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -255,9 +280,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Lawyer Fee
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.lawyer_fee")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -267,9 +293,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Police File
+                      <TableCell className="font-semibold">
+                        {t("case_detail.report_information.police_file")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -284,6 +311,8 @@ export default function CaseDetail() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Invoice Information */}
           <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
@@ -292,7 +321,7 @@ export default function CaseDetail() {
                     <PiInvoiceDuotone />
                   </div>
                   <span className="font-semibold text-lg">
-                    Invoice Information
+                    {t("case_detail.invoice_information.title")}
                   </span>
                 </li>
               </ul>
@@ -300,8 +329,10 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Total Invoiced Amount
+                      <TableCell className="font-semibold">
+                        {t(
+                          "case_detail.invoice_information.total_invoiced_amount"
+                        )}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -311,9 +342,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Open Amount
+                      <TableCell className="font-semibold">
+                        {t("case_detail.invoice_information.open_amount")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -323,9 +355,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Paid Amount
+                      <TableCell className="font-semibold">
+                        {t("case_detail.invoice_information.paid_amoount")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -341,6 +374,7 @@ export default function CaseDetail() {
             </CardContent>
           </Card>
         </div>
+
         <div className="col-span-6 flex flex-col gap-4">
           {/* Status */}
           <Card className="w-full rounded-3xl">
@@ -351,7 +385,7 @@ export default function CaseDetail() {
                     <SiStatuspage />
                   </div>
                   <span className="font-semibold text-lg">
-                    Status Information
+                    {t("case_detail.status_information.title")}
                   </span>
                 </li>
               </ul>
@@ -359,7 +393,9 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">Status</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.status_information.status")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -373,7 +409,8 @@ export default function CaseDetail() {
               </div>
             </CardContent>
           </Card>
-          {/* Damage View */}
+
+          {/* Damage Information */}
           <Card className="w-full rounded-3xl">
             <CardContent>
               <ul className="py-4">
@@ -382,7 +419,7 @@ export default function CaseDetail() {
                     <img src={damage} alt="damage" />
                   </div>
                   <span className="font-semibold text-lg">
-                    Damage Information
+                    {t("case_detail.damage_information.title")}
                   </span>
                 </li>
               </ul>
@@ -390,63 +427,69 @@ export default function CaseDetail() {
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Rear Impact Crash
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.rear_impact")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.rear_impact_crash ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Lane Change
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.lane_change")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.lane_change ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Right Of Way Violation
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.right_of_way")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.right_of_way_violation ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Parking lot
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.parking_lot")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.parking_lot ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">Other</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.other")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
@@ -455,9 +498,10 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Description
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.description")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
@@ -467,69 +511,78 @@ export default function CaseDetail() {
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Diagonal View
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.diagonal_view")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.diagonal_view ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        View of damage
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.view_of_damage")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.view_of_damage ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">
-                        Prior damage
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.prior_damage")}
                       </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.prior_damage ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">Tires</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.tires")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.tires ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
-                      <TableCell className="font-semibold ">Status</TableCell>
+                      <TableCell className="font-semibold">
+                        {t("case_detail.damage_information.status")}
+                      </TableCell>
                       <TableCell className="font-normal">
                         {isLoading ? (
                           <Skeleton className="h-2 min-w-[100px]" />
                         ) : data?.damage?.status ? (
-                          "Yes"
+                          t("common.yes")
                         ) : (
-                          "No"
+                          t("common.no")
                         )}
                       </TableCell>
                     </TableRow>
@@ -542,7 +595,10 @@ export default function CaseDetail() {
           {/* Witness */}
           <WitnessInfoCard data={data} />
 
+          {/* Mail */}
           <MailCorrespondence data={data} />
+
+          {/* Note */}
           <Note data={data} isLoading={isLoading} />
         </div>
       </div>
@@ -551,6 +607,8 @@ export default function CaseDetail() {
 }
 
 function WitnessInfoCard({ data }) {
+  const { t } = useTranslation();
+
   return (
     <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
       <CardContent>
@@ -560,7 +618,7 @@ function WitnessInfoCard({ data }) {
               <PiInvoiceDuotone className="text-xl" />
             </div>
             <span className="font-semibold text-lg text-gray-900">
-              Witness Information
+              {t("case_detail.witness_information.title")}
             </span>
           </li>
         </ul>
@@ -570,10 +628,10 @@ function WitnessInfoCard({ data }) {
             <TableHeader>
               <TableRow className="bg-gray-50">
                 <TableHead className="w-[100px] text-sm text-[#121417] font-medium">
-                  Id
+                  {t("case_detail.witness_information.id")}
                 </TableHead>
                 <TableHead className="text-sm text-[#121417] font-medium">
-                  Address
+                  {t("case_detail.witness_information.address")}
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -596,7 +654,7 @@ function WitnessInfoCard({ data }) {
                     colSpan={2}
                     className="text-center text-gray-500 py-4"
                   >
-                    No witness information available.
+                    {t("case_detail.witness_information.no_data")}
                   </TableCell>
                 </TableRow>
               )}
@@ -607,7 +665,10 @@ function WitnessInfoCard({ data }) {
     </Card>
   );
 }
+
 function MailCorrespondence({ data }) {
+  const { t } = useTranslation();
+
   return (
     <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
       <CardContent>
@@ -617,7 +678,7 @@ function MailCorrespondence({ data }) {
               <PiEnvelope className="text-xl" />
             </div>
             <span className="font-semibold text-lg text-gray-900">
-              MailCorrespondence
+              {t("case_detail.mailCorrespondence.title")}
             </span>
           </li>
         </ul>
@@ -627,14 +688,14 @@ function MailCorrespondence({ data }) {
             <TableHeader>
               <TableRow className="bg-gray-50">
                 <TableHead className="text-sm text-[#121417] font-medium">
-                  Mail
+                  {t("case_detail.mailCorrespondence.mail")}
                 </TableHead>
               </TableRow>
             </TableHeader>
 
             <TableBody>
               {data?.mail_correspondence?.length > 0 ? (
-                data?.mail_correspondence?.map((item, index) => (
+                data.mail_correspondence.map((item, index) => (
                   <TableRow key={index} className="hover:bg-gray-50 transition">
                     <TableCell className="font-normal text-gray-700">
                       {item}
@@ -644,10 +705,10 @@ function MailCorrespondence({ data }) {
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={2}
+                    colSpan={1}
                     className="text-center text-gray-500 py-4"
                   >
-                    No witness information available.
+                    {t("case_detail.mailCorrespondence.no_data")}
                   </TableCell>
                 </TableRow>
               )}
@@ -658,7 +719,10 @@ function MailCorrespondence({ data }) {
     </Card>
   );
 }
+
 function Note({ data, isLoading }) {
+  const { t } = useTranslation();
+
   return (
     <Card className="w-full rounded-3xl shadow-sm border border-gray-200">
       <CardContent>
@@ -667,7 +731,9 @@ function Note({ data, isLoading }) {
             <div className="w-10 h-10 rounded-full flex justify-center items-center bg-gray-200 text-gray-700">
               <PiEnvelope className="text-xl" />
             </div>
-            <span className="font-semibold text-lg text-gray-900">Note</span>
+            <span className="font-semibold text-lg text-gray-900">
+              {t("case_detail.note.title")}
+            </span>
           </li>
         </ul>
         <div>
@@ -675,7 +741,7 @@ function Note({ data, isLoading }) {
             <TableBody>
               <TableRow>
                 <TableCell className="font-semibold ">
-                  Total Invoiced Amount
+                  {t("case_detail.note.total_invoiced_amount")}
                 </TableCell>
                 <TableCell className="font-normal">
                   {isLoading ? (

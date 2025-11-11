@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FieldArray, getIn } from "formik";
+import { useTranslation } from "react-i18next";
 
 export const emptyWitness = () => ({ address: "" });
 
@@ -12,10 +13,13 @@ export default function Step2Witness({
   handleChange,
   handleBlur,
 }) {
+  const { t } = useTranslation();
   return (
     <div className="bg-gray-100 p-3 rounded">
       <div className="flex items-center justify-between mb-2 ">
-        <h3 className="text-lg font-medium">Witnesses</h3>
+        <h3 className="text-lg font-medium">
+          {t("regiser_case.step2witness.witness")}
+        </h3>
         <FieldArray name="witness">
           {(arrayHelpers) => (
             <div>
@@ -24,7 +28,7 @@ export default function Step2Witness({
                 variant="default"
                 onClick={() => arrayHelpers.push(emptyWitness())}
               >
-                Add Witness
+                {t("regiser_case.step2witness.add_witness")}
               </Button>
             </div>
           )}
@@ -37,7 +41,7 @@ export default function Step2Witness({
             {values.witness.map((w, idx) => (
               <div key={idx} className="grid grid-cols-3 gap-2 items-center">
                 <div>
-                  <Label>Address</Label>
+                  <Label>{t("regiser_case.step2witness.add_witness")}</Label>
                   <Input
                     name={`witness[${idx}].address`}
                     value={w.address}
@@ -53,14 +57,14 @@ export default function Step2Witness({
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <Label>Remove</Label>
+                  <Label>{t("regiser_case.step2witness.remove")}</Label>
                   <Button
                     type="button"
                     variant="default"
                     className="w-fit"
                     onClick={() => remove(idx)}
                   >
-                    Remove
+                    {t("regiser_case.step2witness.remove")}
                   </Button>
                 </div>
               </div>

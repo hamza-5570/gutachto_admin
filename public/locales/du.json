@@ -1,7 +1,21 @@
 {
   "profile": {
     "settings": "Instellingen",
-    "logout": "Uitloggen"
+    "logout": "Uitloggen",
+    "account_information": {
+      "title": "Accountinformatie",
+      "id": "ID",
+      "firstname": "Voornaam",
+      "lastname": "Achternaam",
+      "address": "Adres",
+      "phone": "Telefoon",
+      "username": "Gebruikersnaam"
+    },
+    "alerts_information": {
+      "title": "Meldingsinformatie",
+      "enable_email_alerts": "E-mailmeldingen inschakelen",
+      "enable_sms_alerts": "Sms-meldingen inschakelen"
+    }
   },
   "navigation": {
     "accounts": "Alle Accounts",
@@ -13,5 +27,298 @@
     "du": "Nederlands",
     "placeholder": "Taal",
     "label": "Selecteer Taal"
+  },
+  "seach_input": {
+    "placeholder": "Zoeken naar alles..."
+  },
+  "register_account": "Account Registreren",
+  "accounts_table": {
+    "name": "Naam",
+    "enable_email_alerts": "E-mail Alerts inschakelen",
+    "enable_sms_alerts": "SMS Alerts inschakelen",
+    "phone": "Telefoon",
+    "admin": "Admin",
+    "action": "Actie",
+    "block": "Blockeren",
+    "unblock": "Unblockeren",
+    "delete": "Verwijderen",
+    "view_detail": "Detail bekijken"
+  },
+  "register_account_form": {
+    "firstname": "Voornaam",
+    "firstname_placeholder": "Voer voornaam in",
+    "lastname": "Achternaam",
+    "lastname_placeholder": "Voer achternaam in",
+    "email": "E-mail",
+    "email_placeholder": "Voer e-mail in",
+    "phone": "Telefoon",
+    "phone_placeholder": "Voer telefoonnummer in",
+    "company_name": "Bedrijfsnaam",
+    "company_name_placeholder": "Voer bedrijfsnaam in",
+    "corporation_contract": "Bedrijfsovereenkomst",
+    "corporation_contract_placeholder": "Voer bedrijfsovereenkomst in",
+    "address": "Adres",
+    "address_placeholder": "Voer adres in",
+    "password": "Wachtwoord",
+    "password_placeholder": "Voer wachtwoord in",
+    "create_account": "Account aanmaken",
+    "loading": "Laden...",
+    "hide": "Verbergen",
+    "show": "Toon",
+    "errors": {
+      "account_type": "Account type is vereist",
+      "firstname": "Voornaam is vereist",
+      "lastname": "Achternaam is vereist",
+      "invalid_email": "Ongeldig e-mailadres",
+      "email": "E-mail is vereist",
+      "password_length": "Wachtwoord moet minimaal 6 tekens bevatten",
+      "password": "Wachtwoord is vereist",
+      "phone_valid": "Voer een geldig telefoonnummer in",
+      "phone": "Telefoonnummer is vereist",
+      "address": "Adres is vereist",
+      "meta_data": {
+        "company_name": "Bedrijfsnaam is vereist",
+        "corporation_contract": "Ongeldige URL"
+      }
+    },
+    "toast": {
+      "success": "Account is aangemaakt",
+      "error": "Er is iets fout gegaan"
+    }
+  },
+  "delete_model": {
+    "title": "Account Verwijderen",
+    "description": "Weet je zeker dat je dit account wilt verwijderen?",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen"
+  },
+  "role_status_information": {
+    "title": "Rol & Status Informatie",
+    "admin": "Admin",
+    "active": "Actief",
+    "login_attempt": "Login Attempt"
+  },
+
+  "account_detail": {
+    "breadcrumbs": {
+      "accounts": "Accounts",
+      "account": "Account"
+    },
+    "account_information": {
+      "title": "Accountinformatie",
+      "id": "ID",
+      "firstname": "Voornaam",
+      "lastname": "Achternaam",
+      "address": "Adres",
+      "phone": "Telefoon",
+      "username": "Gebruikersnaam"
+    },
+    "alerts_information": {
+      "title": "Alertinformatie",
+      "enable_email_alerts": "E-mailmeldingen inschakelen",
+      "enable_sms_alerts": "Sms-meldingen inschakelen"
+    },
+    "role_status_information": {
+      "title": "Rol & Statusinformatie",
+      "admin": "Beheerder",
+      "active": "Actief",
+      "login_attempt": "Inlogpoging"
+    }
+  },
+  "case_table": {
+    "id": "Account Id",
+    "accident_location": "Accident Locatie",
+    "police_file": "Politiebestand",
+    "status": "Status",
+    "internal_inspector": "Interne Inspecteur",
+    "action": "Actie",
+    "no_accounts": "Geen accounts gevonden",
+    "register_case": "Case Registreren",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "view_detail": "Details bekijken"
+  },
+  "regiser_case": {
+    "steps": {
+      "genral_info": "Algemene informatie",
+      "witness": "Getuige",
+      "accident": "Ongeluk",
+      "damage": "Schade",
+      "report_invoice": "Rapport & Factuur",
+      "other": "Overig"
+    },
+    "step1generalinfo": {
+      "id": "Account Id",
+      "person_in_charge": "Verantwoordelijke",
+      "internal_inspector": "Interne inspecteur",
+      "car_repair_shop": "Autogarage",
+      "status": "Status",
+      "loading": "Laden...",
+      "next": "Volgende",
+      "errors": {
+        "account_id": "Account id is vereist",
+        "start_date": "Startdatum is vereist",
+        "date_of_last_change": "Datum laatste wijziging is vereist",
+        "person_in_charge": "Verantwoordelijke is vereist",
+        "internal_inspector": "Interne inspecteur is vereist",
+        "car_repair_shop": "Autogarage is vereist",
+        "status": "Status is vereist"
+      }
+    },
+    "step2witness": {
+      "witness": "Getuigen",
+      "add_witness": "Getuige toevoegen",
+      "loading": "Laden...",
+      "remove": "Verwijderen",
+      "next": "Volgende",
+      "previous": "Vorige",
+      "errors": {
+        "witness": "Getuige is vereist"
+      }
+    },
+    "step3Accident": {
+      "accident": "Ongeval",
+      "date": "Datum",
+      "location": "Locatie",
+      "vehicle_id": "Voertuig ID",
+      "vehicle_opponent_license_plate": "Kenteken van tegenpartij",
+      "accident_description": "Beschrijving van het ongeval",
+      "vehicle_images": "Voertuigafbeeldingen",
+      "add_image": "Afbeelding toevoegen",
+      "remove": "Verwijderen",
+      "loading": "Laden...",
+      "next": "Volgende",
+      "previous": "Vorige",
+      "errors": {
+        "date": "Datum is vereist",
+        "location": "Locatie is vereist",
+        "vehicle_images": "Minstens één afbeelding is vereist"
+      }
+    },
+    "step4Damage": {
+      "damage": "Schade",
+      "description": "Beschrijving",
+      "other": "Overig",
+      "status": "Status",
+      "rear_impact": "Achteraanrijding",
+      "lane_change": "Rijstrookwisseling",
+      "right_of_way": "Voorrangsverlies",
+      "parking_lot": "Parkeerplaats",
+      "errors": {}
+    },
+    "step5Report": {
+      "report": "Rapport",
+      "dismantling_fee": "Demontagekosten",
+      "total_car_damage_sum": "Totale autoschade",
+      "inspector_fee": "Inspectorkosten",
+      "lawyer_fee": "Advocaatkosten",
+      "invoice": "Factuur",
+      "total_invoiced_amount": "Totaal gefactureerd bedrag",
+      "open_sum": "Openstaand bedrag",
+      "paid_sum": "Betaald bedrag",
+      "errors": {
+        "dismantling_fee": "Demontagekosten zijn vereist",
+        "total_car_damage_sum": "Totale autoschade is vereist",
+        "lawyer_fee": "Advocaatkosten zijn vereist",
+        "inspector_fee": "Inspecteurskosten zijn vereist",
+        "invoice": "Factuur is vereist",
+        "total_invoiced_amount": "Totaal gefactureerd bedrag is vereist",
+        "open_sum": "Openstaand bedrag is vereist",
+        "paid_sum": "Betaald bedrag is vereist"
+      }
+    },
+    "step6Other": {
+      "other": "Overig",
+      "police_file": "Politiedossier",
+      "notes": "Notitie",
+      "add_mail": "Mail toevoegen",
+      "remove": "Verwijderen",
+      "mail_correspondence": "Postcorrespondentie",
+      "save": "Opslaan",
+      "errors": {}
+    }
+  },
+  "delete_case_model": {
+    "title": "Zaak verwijderen",
+    "description": "Deze zaak wordt verwijderd.",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "deleting": "Bezig met verwijderen..."
+  },
+  "case_detail": {
+    "cases": "Zaken",
+    "case": "Zaak",
+    "accident_information": {
+      "title": "Ongevalsinformatie",
+      "id": "ID",
+      "car_repair_shop": "Autogarage",
+      "account_id": "Account ID",
+      "date": "Datum",
+      "location": "Locatie",
+      "vehicle_images": "Voertuigafbeeldingen",
+      "vehicle_id": "Voertuig ID",
+      "vehicle_opponent_license_plate": "Kenteken tegenpartij",
+      "accident_description": "Beschrijving van het ongeval"
+    },
+    "status_information": {
+      "title": "Statusinformatie",
+      "status": "Status"
+    },
+    "damage_information": {
+      "title": "Schade-informatie",
+      "rear_impact": "Achteraanrijding",
+      "lane_change": "Wisselen van rijstrook",
+      "right_of_way": "Voorrangsfout",
+      "parking_lot": "Parkeerplaats",
+      "other": "Overig",
+      "description": "Beschrijving",
+      "diagonal_view": "Diagonale weergave",
+      "view_of_damage": "Schadeweergave",
+      "prior_damage": "Eerdere schade",
+      "tires": "Banden",
+      "status": "Status"
+    },
+    "report_information": {
+      "title": "Rapportinformatie",
+      "dismantling_fee": "Demontagekosten",
+      "person_in_charge": "Verantwoordelijke",
+      "internal_inspector": "Interne inspecteur",
+      "total_car_damage": "Totale autoschade",
+      "inspector_fee": "Inspectiekosten",
+      "lawyer_fee": "Advocaatkosten",
+      "police_file": "Politiedossier"
+    },
+    "invoice_information": {
+      "title": "Factuurinformatie",
+      "total_invoiced_amount": "Totaal gefactureerd bedrag",
+      "open_amount": "Openstaand bedrag",
+      "paid_amoount": "Betaald bedrag"
+    },
+    "witness_information": {
+      "title": "Getuigeninformatie",
+      "id": "ID",
+      "address": "Adres"
+    },
+    "mailCorrespondence": {
+      "title": "Postcorrespondentie",
+      "mail": "Mail"
+    },
+    "note": {
+      "title": "Notitie",
+      "total_invoiced_amount": "Totaal gefactureerd bedrag"
+    }
+  },
+
+  "upload_img": {
+    "drag_drop": "Sleep je bestand hierheen",
+    "browse_file": "of klik om een bestand te selecteren",
+    "choose_file": "Kies Bestand",
+    "upload": "Uploaden",
+    "images": "Afbeeldingen",
+    "max": "Maximaal"
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nee"
   }
 }

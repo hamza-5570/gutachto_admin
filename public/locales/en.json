@@ -1,7 +1,22 @@
 {
   "profile": {
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "account_information": {
+      "title": "Account Information",
+      "id": "ID",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "address": "Address",
+      "phone": "Phone",
+      "username": "Username",
+      "save_changes": "Save changes"
+    },
+    "alerts_information": {
+      "title": "Alerts Information",
+      "enable_email_alerts": "Enable Email Alerts",
+      "enable_sms_alerts": "Enable Sms Alerts"
+    }
   },
   "navigation": {
     "accounts": "All Accounts",
@@ -13,5 +28,303 @@
     "du": "Dutch",
     "placeholder": "Language",
     "label": "Select Language"
+  },
+  "seach_input": {
+    "placeholder": "Search for anything..."
+  },
+  "register_account": "Register Account",
+  "accounts_table": {
+    "name": "Name",
+    "enable_email_alerts": "Enable Email Alerts",
+    "enable_sms_alerts": "Enable Sms Alerts",
+    "phone": "Phone",
+    "admin": "Admin",
+    "action": "Action",
+    "block": "Block",
+    "unblock": "Unblock",
+    "delete": "Delete",
+    "view_detail": "View Detail"
+  },
+  "register_account_form": {
+    "firstname": "Firstname",
+    "firstname_placeholder": "Enter first name",
+
+    "lastname": "Lastname",
+    "lastname_placeholder": "Enter last name",
+
+    "email": "Email",
+    "email_placeholder": "Enter email",
+
+    "phone": "Phone",
+    "phone_placeholder": "Enter phone number",
+
+    "company_name": "Company Name",
+    "company_name_placeholder": "Enter company name",
+
+    "corporation_contract": "Corporation Contract",
+    "corporation_contract_placeholder": "Enter corporation contract",
+
+    "address": "Address",
+    "address_placeholder": "Enter address",
+
+    "password": "Password",
+    "password_placeholder": "Enter password",
+    "create_account": "Create Account",
+    "loading": "Loading...",
+    "hide": "Hide",
+    "show": "Show",
+    "errors": {
+      "account_type": "Account type is required",
+      "firstname": "First name is required",
+      "lastname": "Last name is required",
+      "invalid_email": "Invalid email address",
+      "email": "Email is required",
+      "password_length": "Password must be at least 6 characters",
+      "password": "Password is required",
+      "phone_valid": "Enter a valid phone number",
+      "phone": "Phone number is required",
+      "address": "Address is required",
+      "meta_data": {
+        "company_name": "Company name is required",
+        "corporation_contract": "Invalid URL"
+      }
+    },
+    "toast": {
+      "success": "Account created successfully",
+      "error": "Something went wrong"
+    }
+  },
+
+  "delete_model": {
+    "title": "Delete Account",
+    "description": "This account will be Deleted.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting..."
+  },
+
+  "account_detail": {
+    "breadcrumbs": {
+      "accounts": "Accounts",
+      "account": "Account"
+    },
+    "account_information": {
+      "title": "Account Information",
+      "id": "ID",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "address": "Address",
+      "phone": "Phone",
+      "username": "Username"
+    },
+    "alerts_information": {
+      "title": "Alerts Information",
+      "enable_email_alerts": "Enable Email Alerts",
+      "enable_sms_alerts": "Enable Sms Alerts"
+    },
+    "role_status_information": {
+      "title": "Role & Status Information",
+      "admin": "Admin",
+      "active": "Active",
+      "login_attempt": "Login Attempt"
+    }
+  },
+  "case_table": {
+    "id": "Account Id",
+    "accident_location": "Accident Location",
+    "police_file": "Police File",
+    "status": "Status",
+    "internal_inspector": "Internal Inspector",
+    "action": "Action",
+    "no_accounts": "No Accounts",
+    "register_case": "Register Case",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view_detail": "View Detail"
+  },
+  "regiser_case": {
+    "steps": {
+      "genral_info": "General Info",
+      "witness": "Witness",
+      "accident": "Accident",
+      "damage": "Damage",
+      "report_invoice": "Report & Invoice",
+      "other": "Other"
+    },
+    "step1generalinfo": {
+      "id": "Account Id",
+      "person_in_charge": "Person In Charge",
+      "internal_inspector": "Internal Inspector",
+      "car_repair_shop": "Car Repair Shop",
+      "status": "Status",
+      "loading": "Loading...",
+      "next": "Next",
+      "errors": {
+        "account_id": "Account id is required",
+        "start_date": "Start date required",
+        "date_of_last_change": "Date of last change required",
+        "person_in_charge": "Person in charge required",
+        "internal_inspector": "Internal inspector required",
+        "car_repair_shop": "Car repair shop required",
+        "status": "Status is required"
+      }
+    },
+    "step2witness": {
+      "witness": "Witnesses",
+      "add_witness": "Add Witness",
+      "address": "Address",
+      "remove": "Remove",
+      "loading": "Loading...",
+      "next": "Next",
+      "previous": "Previous",
+      "errors": {
+        "witness": "Witness is required"
+      }
+    },
+    "step3Accident": {
+      "accident": "Ongeval",
+      "date": "Datum",
+      "location": "Locatie",
+      "vehicle_id": "Voertuig ID",
+      "vehicle_opponent_license_plate": "Kenteken van tegenpartij",
+      "accident_description": "Beschrijving van het ongeval",
+      "vehicle_images": "Voertuigafbeeldingen",
+      "add_image": "Afbeelding toevoegen",
+      "remove": "Verwijderen",
+      "loading": "Laden...",
+
+      "next": "Volgende",
+      "previous": "Vorige",
+      "errors": {
+        "date": "Datum is vereist",
+        "location": "Locatie is vereist",
+        "vehicle_images": "Minstens één afbeelding is vereist"
+      }
+    },
+    "step4Damage": {
+      "damage": "Damage",
+      "description": "Description",
+      "other": "Other",
+      "status": "Status",
+      "rear_impact": "Rear Impact Crash",
+      "lane_change": "Lane Change",
+      "right_of_way": "Right of Way Violation",
+      "parking_lot": "Parking Lot",
+      "errors": {}
+    },
+    "step5Report": {
+      "report": "Report",
+      "dismantling_fee": "Dismantling Fee",
+      "total_car_damage_sum": "Total Car Damage Sum",
+      "lawyer_fee": "Lawyer Fee",
+      "inspector_fee": "Inspector Fee",
+      "invoice": "Invoice",
+      "total_invoiced_amount": "Total Invoiced Amount",
+      "open_sum": "Open Sum",
+      "paid_sum": "Paid Sum",
+      "errors": {
+        "dismantling_fee": "Dismantling fee is required",
+        "total_car_damage_sum": "Total car damage sum is required",
+        "lawyer_fee": "Lawyer fee is required",
+        "inspector_fee": "Inspector fee is required",
+        "invoice": "Invoice is required",
+        "total_invoiced_amount": "Total invoiced amount is required",
+        "open_sum": "Open sum is required",
+        "paid_sum": "Paid sum is required"
+      }
+    },
+    "step6Other": {
+      "other": "Other",
+      "police_file": "Politiebestand",
+      "notes": "Note",
+      "add_mail": "add Mail",
+      "remove": "Remove",
+      "mail_correspondence": "Mail Correspondence",
+      "save": "Save",
+      "errors": {}
+    }
+  },
+  "delete_case_model": {
+    "title": "Delete Case",
+    "description": "This case will be Deleted.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting..."
+  },
+  "case_detail": {
+    "cases": "Cases",
+    "case": "case",
+    "accident_information": {
+      "title": "Accident Information",
+      "id": "Id",
+      "car_repair_shop": "Car Repair Shop",
+      "account_id": "Account Id",
+      "date": "Date",
+      "location": "Location",
+      "vehicle_images": "Vehicle Images",
+      "vehicle_id": "Vehicle Id",
+      "vehicle_opponent_license_plate": "Vehicle Opponent License Plate",
+      "accident_description": "Accident Description"
+    },
+    "status_information": {
+      "title": "Status Information",
+      "status": "Status"
+    },
+    "damage_information": {
+      "title": "Damage Information",
+      "rear_impact": "Rear Impact Crash",
+      "lane_change": "Lane Change",
+      "right_of_way": "Right of Way Violation",
+      "parking_lot": "Parking Lot",
+      "other": "Other",
+      "description": "Description",
+      "diagonal_view": "Diagonal View",
+      "view_of_damage": "View of Damage",
+      "prior_damage": "Prior Damage",
+      "tires": "Tires",
+      "status": "Status"
+    },
+
+    "report_information": {
+      "title": "Report Information",
+      "dismantling_fee": "Dismantling Fee",
+      "person_in_charge": "Person In Charge",
+      "internal_inspector": "Internal Inspector",
+      "total_car_damage": "Total Car Damage",
+      "inspector_fee": "Inspector Fee",
+      "lawyer_fee": "Lawyer Fee",
+      "police_file": "Police File"
+    },
+    "invoice_information": {
+      "title": "Invoice Information",
+      "total_invoiced_amount": "Total Invoiced Amount",
+      "open_amount": "Open Amount",
+      "paid_amoount": "Paid Amount"
+    },
+    "witness_information": {
+      "title": "Witness Information",
+      "id": "Id",
+      "address": "Address"
+    },
+    "mailCorrespondence": {
+      "title": "MailCorrespondence",
+      "mail": "Mail"
+    },
+    "note": {
+      "title": "Note",
+      "total_invoiced_amount": "Total Invoiced Amount"
+    }
+  },
+  "upload_img": {
+    "drag_drop": "Drag & drop your file here",
+    "browse_file": "or click to browse file",
+    "choose_file": "Choose File",
+    "upload": "Upload",
+    "images": "Images",
+    "max": "Max"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
   }
 }

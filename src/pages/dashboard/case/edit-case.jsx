@@ -18,20 +18,22 @@ import {
 } from "@/services/admin-api";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
-// -------------------------
-// 2) Stepper Component
-// -------------------------
-const stepLabels = [
-  "General Info",
-  "Witness",
-  "Accident",
-  "Damage",
-  "Report & Invoice",
-  "Other",
-];
+import { useTranslation } from "react-i18next";
+import { Loader } from "lucide-react";
 
 function Stepper({ currentStep }) {
+  const { t } = useTranslation();
+  // -------------------------
+  // 2) Stepper Component
+  // -------------------------
+  const stepLabels = [
+    t("regiser_case.steps.genral_info"),
+    t("regiser_case.steps.witness"),
+    t("regiser_case.steps.accident"),
+    t("regiser_case.steps.damage"),
+    t("regiser_case.steps.report_invoice"),
+    t("regiser_case.steps.other"),
+  ];
   return (
     <div className="flex items-center justify-between mb-6">
       {stepLabels.map((label, index) => {
@@ -164,7 +166,7 @@ export default function EidtCase() {
   const queryParams = new URLSearchParams(search);
   const id = queryParams.get("id"); // e.g. /users?page=2
   const { data: caseData } = useGetCaseByIdQuery(id);
-
+  const { t } = useTranslation();
   const totalSteps = 6;
   const navigate = useNavigate();
 
@@ -352,13 +354,13 @@ export default function EidtCase() {
               <div className="p-4 bg-white flex justify-end items-center gap-2">
                 {step > 1 && (
                   <Button type="button" onClick={onPrev}>
-                    Previous
+                    {t("regiser_case.step2witness.previous")}
                   </Button>
                 )}
 
                 {step < totalSteps ? (
                   <Button type="button" onClick={onNext}>
-                    Next
+                    {t("regiser_case.step1generalinfo.next")}
                   </Button>
                 ) : (
                   <Button
@@ -366,7 +368,11 @@ export default function EidtCase() {
                     onClick={submitForm}
                     disabled={isSubmitting}
                   >
-                    {isCreating ? "Saving..." : "Save"}
+                    {isCreating ? (
+                      <Loader />
+                    ) : (
+                      t("regiser_case.step6Other.save")
+                    )}
                   </Button>
                 )}
               </div>

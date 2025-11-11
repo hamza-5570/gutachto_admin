@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { useFormikContext } from "formik";
+import { useTranslation } from "react-i18next";
 
 export default function Step4Damage() {
   const { values, handleChange, handleBlur, setFieldValue } =
@@ -16,16 +17,20 @@ export default function Step4Damage() {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="p-4 border rounded">
-      <h3 className="text-lg font-medium mb-4">Damage</h3>
+      <h3 className="text-lg font-medium mb-4">
+        {t("regiser_case.step4Damage.damage")}
+      </h3>
 
       {/* 2 Columns: Left = Switches, Right = Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* RIGHT SIDE - ALL INPUTS */}
         <div className="grid grid-cols-1 gap-4">
           <div>
-            <Label>Description</Label>
+            <Label> {t("regiser_case.step4Damage.description")}</Label>
             <Textarea
               name="damage.description"
               value={values.damage.description}
@@ -35,7 +40,7 @@ export default function Step4Damage() {
           </div>
 
           <div>
-            <Label>Other</Label>
+            <Label>{t("regiser_case.step4Damage.other")}</Label>
             <Input
               name="damage.other"
               value={values.damage.other}
@@ -45,7 +50,7 @@ export default function Step4Damage() {
           </div>
 
           <div>
-            <Label>Status</Label>
+            <Label>{t("regiser_case.step4Damage.status")}</Label>
             <Input
               name="damage.status"
               value={values.damage.status}
@@ -68,7 +73,7 @@ export default function Step4Damage() {
                 setFieldValue("damage.rear_impact_crash", checked)
               }
             />
-            <Label>Rear Impact Crash</Label>
+            <Label>{t("regiser_case.step4Damage.rear_impact")}</Label>
           </div>
 
           {/* Lane Change */}
@@ -83,7 +88,7 @@ export default function Step4Damage() {
                 setFieldValue("damage.lane_change", checked)
               }
             />
-            <Label>Lane Change</Label>
+            <Label>{t("regiser_case.step4Damage.lane_change")}</Label>
           </div>
 
           {/* Right of Way Violation */}
@@ -100,7 +105,7 @@ export default function Step4Damage() {
                 setFieldValue("damage.right_of_way_violation", checked)
               }
             />
-            <Label>Right of Way Violation</Label>
+            <Label>{t("regiser_case.step4Damage.right_of_way")}</Label>
           </div>
 
           {/* Parking Lot */}
@@ -115,7 +120,7 @@ export default function Step4Damage() {
                 setFieldValue("damage.parking_lot", checked)
               }
             />
-            <Label>Parking Lot</Label>
+            <Label>{t("regiser_case.step4Damage.parking_lot")}</Label>
           </div>
         </div>
       </div>

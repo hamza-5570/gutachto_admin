@@ -3,8 +3,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { FieldArray } from "formik";
+import { useTranslation } from "react-i18next";
 
 export default function Step6Other({ values, handleChange, handleBlur }) {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="bg-gray-100 p-3 rounded">
@@ -12,9 +14,11 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
           {({ push, remove }) => (
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-medium">Mail Correspondence</h3>
+                <h3 className="text-lg font-medium">
+                  {t("regiser_case.step6Other.mail_correspondence")}
+                </h3>
                 <Button type="button" onClick={() => push("")}>
-                  Add Mail
+                  {t("regiser_case.step6Other.add_mail")}
                 </Button>
               </div>
 
@@ -27,7 +31,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                     onBlur={handleBlur}
                   />
                   <Button type="button" onClick={() => remove(i)}>
-                    Remove
+                    {t("regiser_case.step6Other.remove")}
                   </Button>
                 </div>
               ))}
@@ -36,7 +40,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
         </FieldArray>
       </div>
       <div className="mt-4">
-        <Label>Police File</Label>
+        <Label> {t("regiser_case.step6Other.remove")}</Label>
         <Input
           name="police_file"
           value={values.police_file}
@@ -46,7 +50,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
       </div>
 
       <div className="mt-4">
-        <Label>Notes</Label>
+        <Label>{t("regiser_case.step6Other.notes")}</Label>
         <Textarea
           name="notes"
           value={values.notes}

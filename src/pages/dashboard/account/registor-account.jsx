@@ -8,11 +8,13 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useCreateAccountMutation } from "@/services/admin-api/accountsApi";
+import { useTranslation } from "react-i18next";
 
 export default function Registor() {
   const [showPassword, setShowPassword] = useState(false);
   const [createAccount, { isLoading }] = useCreateAccountMutation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const initialValues = {
     account_type: "car mechanic",
@@ -29,23 +31,36 @@ export default function Registor() {
   };
 
   const validationSchema = Yup.object({
-    account_type: Yup.string().required("Account type is required"),
-    first_name: Yup.string().required("First name is required"),
-    last_name: Yup.string().required("Last name is required"),
+    account_type: Yup.string().required(
+      t("register_account_form.errors.account_type")
+    ),
+    first_name: Yup.string().required(
+      t("register_account_form.errors.firstname")
+    ),
+    last_name: Yup.string().required(
+      t("register_account_form.errors.lastname")
+    ),
     username: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
+      .email(t("register_account_form.errors.invalid_email"))
+      .required(t("register_account_form.errors.email")),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
+      .min(6, t("register_account_form.errors.password_length"))
+      .required(t("register_account_form.errors.password")),
     phone: Yup.string()
-      .matches(/^\+?[0-9]{7,15}$/, "Enter a valid phone number")
-      .required("Phone number is required"),
+      .matches(
+        /^\+?[0-9]{7,15}$/,
+        t("register_account_form.errors.phone_valid")
+      )
+      .required(t("register_account_form.errors.phone")),
 
-    address: Yup.string().required("Address is required"),
+    address: Yup.string().required(t("register_account_form.errors.address")),
     meta_data: Yup.object({
-      company_name: Yup.string().required("Company name is required"),
-      corporation_contract: Yup.string().url("Invalid URL"),
+      company_name: Yup.string().required(
+        t("register_account_form.errors.meta_data.company_name")
+      ),
+      corporation_contract: Yup.string().url(
+        t("register_account_form.errors.meta_data.corporation_contract")
+      ),
     }),
   });
 
@@ -54,10 +69,10 @@ export default function Registor() {
   const handleSubmit = async (values) => {
     try {
       await createAccount(values).unwrap();
-      toast.success("Account created successfully");
+      toast.success(t("register_account_form.toast.success"));
       navigate("/dashboard/accounts");
     } catch (err) {
-      toast.error(err?.data?.message || "Something went wrong");
+      toast.error(err?.data?.message || t("register_account_form.toast.error"));
     }
   };
 
@@ -72,12 +87,14 @@ export default function Registor() {
           <Form className="space-y-5">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label>First Name*</Label>
+                <Label>{t("register_account_form.firstname")}*</Label>
                 <Field name="first_name">
                   {({ field }) => (
                     <Input
                       {...field}
-                      placeholder="Enter first name"
+                      placeholder={t(
+                        "register_account_form.firstname_placeholder"
+                      )}
                       className="mt-3"
                     />
                   )}
@@ -90,12 +107,14 @@ export default function Registor() {
               </div>
 
               <div>
-                <Label>Last Name*</Label>
+                <Label>{t("register_account_form.lastname")}*</Label>
                 <Field name="last_name">
                   {({ field }) => (
                     <Input
                       {...field}
-                      placeholder="Enter last name"
+                      placeholder={t(
+                        "register_account_form.lastname_placeholder"
+                      )}
                       className="mt-3"
                     />
                   )}
@@ -110,12 +129,12 @@ export default function Registor() {
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label>Email*</Label>
+                <Label>{t("register_account_form.email")}*</Label>
                 <Field name="username">
                   {({ field }) => (
                     <Input
                       {...field}
-                      placeholder="Enter email"
+                      placeholder={t("register_account_form.email_placeholder")}
                       className="mt-3"
                     />
                   )}
@@ -128,7 +147,7 @@ export default function Registor() {
               </div>
 
               <div>
-                <Label>Phone*</Label>
+                <Label>{t("register_account_form.phone")}*</Label>
                 <Field name="phone">
                   {({ field }) => (
                     <Input
@@ -150,12 +169,14 @@ export default function Registor() {
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label>Company Name*</Label>
+                <Label>{t("register_account_form.company_name")}*</Label>
                 <Field name="meta_data.company_name">
                   {({ field }) => (
                     <Input
                       {...field}
-                      placeholder="Enter company name"
+                      placeholder={t(
+                        "register_account_form.company_name_placeholder"
+                      )}
                       className="mt-3"
                     />
                   )}
@@ -168,12 +189,14 @@ export default function Registor() {
               </div>
 
               <div>
-                <Label>Corporation Contract (URL)</Label>
+                <Label>{t("register_account_form.corporation_contract")}</Label>
                 <Field name="meta_data.corporation_contract">
                   {({ field }) => (
                     <Input
                       {...field}
-                      placeholder="Enter contract URL"
+                      placeholder={t(
+                        "register_account_form.corporation_contract_placeholder"
+                      )}
                       className="mt-3"
                     />
                   )}
@@ -187,12 +210,12 @@ export default function Registor() {
             </div>
 
             <div>
-              <Label>Address*</Label>
+              <Label>{t("register_account_form.address")}*</Label>
               <Field name="address">
                 {({ field }) => (
                   <Input
                     {...field}
-                    placeholder="Enter address"
+                    placeholder={t("register_account_form.address_placeholder")}
                     className="mt-3"
                   />
                 )}
@@ -205,14 +228,16 @@ export default function Registor() {
             </div>
 
             <div>
-              <Label>Password*</Label>
+              <Label>{t("register_account_form.password")}*</Label>
               <div className="relative">
                 <Field name="password">
                   {({ field }) => (
                     <Input
                       {...field}
                       type={showPassword ? "text" : "password"}
-                      placeholder="Enter password"
+                      placeholder={t(
+                        "register_account_form.password_placeholder"
+                      )}
                       className="mt-3 pr-14"
                     />
                   )}
@@ -222,7 +247,9 @@ export default function Registor() {
                   onClick={handleShowPassword}
                   className="absolute top-3 right-3 text-sm"
                 >
-                  {showPassword ? "Hide" : "Show"}
+                  {showPassword
+                    ? t("register_account_form.hide")
+                    : t("register_account_form.show")}
                 </button>
               </div>
               <ErrorMessage
@@ -233,7 +260,9 @@ export default function Registor() {
             </div>
 
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Loading..." : "Create Account"}
+              {isLoading
+                ? t("register_account_form.loading")
+                : t("register_account_form.create_account")}
             </Button>
           </Form>
         )}

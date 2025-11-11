@@ -11,6 +11,7 @@ import {
   useUpdateUserMutation,
 } from "@/services/auth-api";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export default function AccountForm() {
   const [UpdateUser, { isLoading }] = useUpdateUserMutation();
@@ -18,6 +19,7 @@ export default function AccountForm() {
   const [GetUserProfile, { isLoading: userLoading }] =
     useLazyGetUserProfileQuery();
   const { data, refetch } = useGetUserProfileQuery();
+  const { t } = useTranslation();
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       const response = await UpdateUser(values).unwrap();
@@ -54,7 +56,7 @@ export default function AccountForm() {
           <div className="grid grid-cols-2 gap-5">
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                First name
+                {t("profile.account_information.firstname")}
               </Label>
               <Input
                 type="text"
@@ -68,7 +70,7 @@ export default function AccountForm() {
             </div>
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Last Name
+                {t("profile.account_information.lastname")}
               </Label>
               <Input
                 type="text"
@@ -84,7 +86,7 @@ export default function AccountForm() {
           <div className="grid grid-cols-2 gap-x-5">
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Username
+                {t("profile.account_information.username")}
               </Label>
               <Input
                 onChange={props.handleChange}
@@ -98,7 +100,7 @@ export default function AccountForm() {
             </div>
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Address
+                {t("profile.account_information.address")}
               </Label>
               <Input
                 type="text"
@@ -114,7 +116,7 @@ export default function AccountForm() {
           <div className="grid grid-cols-2 gap-x-5">
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Phone
+                {t("profile.account_information.phone")}
               </Label>
               <Input
                 type="text"
@@ -130,7 +132,7 @@ export default function AccountForm() {
           <div className="grid grid-cols-1 mt-3 gap-x-5">
             <div className="flex  gap-2  mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Enable email alerts
+                {t("profile.alerts_information.enable_email_alerts")}
               </Label>
               <Switch
                 checked={props.values.enable_email_alerts}
@@ -143,7 +145,7 @@ export default function AccountForm() {
           <div className="grid grid-cols-1 mt-3 gap-x-5">
             <div className="flex gap-2 mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
-                Enable SMS notifications{" "}
+                {t("profile.alerts_information.enable_sms_alerts")}
               </Label>
               <Switch
                 checked={props.values.enable_sms_alerts}

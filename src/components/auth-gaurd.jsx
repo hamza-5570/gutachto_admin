@@ -56,11 +56,6 @@ export const ProtectedRouteMiddleware = () => {
     const checkAuth = async () => {
       let token = localStorage.getItem("token");
 
-      // Check if token exists and is not expired
-      if (!token || isTokenExpired(token)) {
-        token = await refreshToken(); // try refreshing
-      }
-
       setAuthorized(!!token);
       setLoading(false);
     };

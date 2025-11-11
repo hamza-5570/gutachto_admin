@@ -1,10 +1,11 @@
 import React from "react";
 import TableHeader from "./table-header";
 import TableRow from "./table-row";
-import Mypaginations from "@/components/my-paginations";
 import Loader from "@/common/loader";
+import { useTranslation } from "react-i18next";
 
 export default function CasesTable({ cases, onIsLoading, refetch }) {
+  const { t } = useTranslation();
   return (
     <div className="overflow-x-auto border border-[#DBE0E5] rounded-xl mt-5">
       <div className="max-w-[300px] xl:max-w-full">
@@ -17,7 +18,9 @@ export default function CasesTable({ cases, onIsLoading, refetch }) {
           })
         ) : (
           <div className="flex flex-col items-center py-4">
-            <p className="text-md text-[#121417] font-medium">No Accounts</p>
+            <p className="text-md text-[#121417] font-medium">
+              {t("case_table.no_accounts")}
+            </p>
           </div>
         )}
       </div>

@@ -17,23 +17,26 @@ import Step6Other from "@/components/gutachto-views/dash-board/addcasestep/Step6
 import { useCreateCaseMutation } from "@/services/admin-api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import { Loader } from "lucide-react";
 
 // -------------------------
 // 2) Step Labels
 // -------------------------
-const stepLabels = [
-  "General Info",
-  "Witness",
-  "Accident",
-  "Damage",
-  "Report & Invoice",
-  "Other",
-];
 
 // -------------------------
 // 3) Stepper Component (Responsive)
 // -------------------------
 function Stepper({ currentStep }) {
+  const { t } = useTranslation();
+  const stepLabels = [
+    t("regiser_case.steps.genral_info"),
+    t("regiser_case.steps.witness"),
+    t("regiser_case.steps.accident"),
+    t("regiser_case.steps.damage"),
+    t("regiser_case.steps.report_invoice"),
+    t("regiser_case.steps.other"),
+  ];
   useEffect(() => {
     const activeStep = document.querySelector(".active-step");
     if (activeStep) {
@@ -169,80 +172,6 @@ function stepFields(step) {
 }
 
 // -------------------------
-// 6) Validation Schemas
-// -------------------------
-const vehicleImageSchema = Yup.object().shape({
-  angle: Yup.string().required("Angle is required"),
-  image_url: Yup.string()
-    .url("Must be a valid URL")
-    .required("Image URL required"),
-});
-
-const witnessSchema = Yup.object().shape({
-  address: Yup.string().required("Address is required"),
-});
-
-const accidentSchema = Yup.object().shape({
-  date: Yup.date().nullable().required("Accident date is required"),
-  location: Yup.string().required("Location is required"),
-  vehicle_images: Yup.array()
-    .of(vehicleImageSchema)
-    .min(1, "At least one image is required"),
-  vehicle_id: Yup.string().required("Vehicle id is required"),
-  vehicle_opponent_license_plate: Yup.string().required(
-    "Opponent license plate required"
-  ),
-  accident_description: Yup.string().required("Description required"),
-});
-
-const damageSchema = Yup.object().shape({
-  rear_impact_crash: Yup.boolean(),
-  lane_change: Yup.boolean(),
-  right_of_way_violation: Yup.boolean(),
-  parking_lot: Yup.boolean(),
-  other: Yup.string().nullable(),
-  description: Yup.string().nullable(),
-  diagonal_view: Yup.boolean(),
-  view_of_damage: Yup.boolean(),
-  prior_damage: Yup.boolean(),
-  tires: Yup.boolean(),
-  status: Yup.string().nullable(),
-});
-
-const reportSchema = Yup.object().shape({
-  dismantling_fee: Yup.number().min(0).required("Required").positive(),
-  total_car_damage_sum: Yup.number().min(0).required("Required").positive(),
-  inspector_fee: Yup.number().min(0).required("Required").positive(),
-  lawyer_fee: Yup.number().min(0).required("Required").positive(),
-});
-
-const invoiceSchema = Yup.object().shape({
-  total_invoiced_amount: Yup.number().min(0).required("Required").positive(),
-  open_sum: Yup.number().min(0).required("Required").positive(),
-  paid_sum: Yup.number().min(0).required("Required").positive(),
-});
-
-const CaseSchema = Yup.object().shape({
-  account_id: Yup.string().required("Account id required"),
-  start_date: Yup.date().nullable().required("Start date required"),
-  date_of_last_change: Yup.date()
-    .nullable()
-    .required("Date of last change required"),
-  person_in_charge: Yup.string().required("Person in charge required"),
-  witness: Yup.array().of(witnessSchema).min(0),
-  internal_inspector: Yup.string().required("Internal inspector required"),
-  car_repair_shop: Yup.string().required("Car repair shop required"),
-  accident: accidentSchema,
-  damage: damageSchema,
-  status: Yup.string().required("Status is required"),
-  report: reportSchema,
-  police_file: Yup.string().nullable(),
-  mail_correspondence: Yup.array().of(Yup.string().nullable()).min(0),
-  invoice: invoiceSchema,
-  notes: Yup.string().nullable(),
-});
-
-// -------------------------
 // 7) Main Component
 // -------------------------
 export default function AddCase() {
@@ -251,7 +180,118 @@ export default function AddCase() {
   const totalSteps = 6;
   const user = getUser();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  // -------------------------
+  // 6) Validation Schemas
+  // -------------------------
+  const vehicleImageSchema = Yup.object().shape({
+    angle: Yup.string().required("Angle is required"),
+    image_url: Yup.string()
+      .url("Must be a valid URL")
+      .required("Image URL required"),
+  });
 
+  const witnessSchema = Yup.object().shape({
+    address: Yup.string().required(
+      t("regiser_case.step2witness.errors.witness")
+    ),
+  });
+
+  const accidentSchema = Yup.object().shape({
+    date: Yup.date().nullable().required("Accident date is required"),
+    location: Yup.string().required("Location is required"),
+    vehicle_images: Yup.array()
+      .of(vehicleImageSchema)
+      .min(1, t("regiser_case.step3Accident.errors.vehicle_images")),
+    vehicle_id: Yup.string().required("Vehicle id is required"),
+    vehicle_opponent_license_plate: Yup.string().required(
+      "Opponent license plate required"
+    ),
+    accident_description: Yup.string().required("Description required"),
+  });
+
+  const damageSchema = Yup.object().shape({
+    rear_impact_crash: Yup.boolean(),
+    lane_change: Yup.boolean(),
+    right_of_way_violation: Yup.boolean(),
+    parking_lot: Yup.boolean(),
+    other: Yup.string().nullable(),
+    description: Yup.string().nullable(),
+    diagonal_view: Yup.boolean(),
+    view_of_damage: Yup.boolean(),
+    prior_damage: Yup.boolean(),
+    tires: Yup.boolean(),
+    status: Yup.string().nullable(),
+  });
+
+  const reportSchema = Yup.object().shape({
+    dismantling_fee: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.dismantling_fee"))
+      .positive(),
+    total_car_damage_sum: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.total_car_damage_sum"))
+      .positive(),
+    inspector_fee: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.inspector_fee"))
+      .positive(),
+    lawyer_fee: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.lawyer_fee"))
+      .positive(),
+  });
+
+  const invoiceSchema = Yup.object().shape({
+    total_invoiced_amount: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.total_invoiced_amount"))
+      .positive(),
+    open_sum: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.open_sum"))
+      .positive(),
+    paid_sum: Yup.number()
+      .min(0)
+      .required(t("regiser_case.step5Report.errors.paid_sum"))
+      .positive(),
+  });
+
+  const CaseSchema = Yup.object().shape({
+    account_id: Yup.string().required(
+      t("regiser_case.step1generalinfo.errors.account_id")
+    ),
+    start_date: Yup.date()
+      .nullable()
+      .required(t("regiser_case.step1generalinfo.errors.start_date")),
+    date_of_last_change: Yup.date()
+      .nullable()
+      .required(t("regiser_case.step1generalinfo.errors.date_of_last_change")),
+    person_in_charge: Yup.string().required(
+      t("regiser_case.step1generalinfo.errors.person_in_charge")
+    ),
+    witness: Yup.array().of(witnessSchema).min(0),
+    internal_inspector: Yup.string().required(
+      t("regiser_case.step1generalinfo.errors.internal_inspector")
+    ),
+    car_repair_shop: Yup.string().required(
+      t("regiser_case.step1generalinfo.errors.car_repair_shop")
+    ),
+    accident: accidentSchema,
+    damage: damageSchema,
+    status: Yup.string().required(
+      t("regiser_case.step1generalinfo.errors.status")
+    ),
+    report: reportSchema,
+    police_file: Yup.string().nullable(),
+    mail_correspondence: Yup.array().of(Yup.string().nullable()).min(0),
+    invoice: invoiceSchema,
+    notes: Yup.string().nullable(),
+  });
+  // /////////////////////
+  // initialValues
+  // //////////////////////
   const initialValues = {
     account_id: user?._id || "",
     start_date: new Date().toISOString(),
@@ -441,12 +481,12 @@ export default function AddCase() {
               <div className="p-4 bg-white flex justify-end items-center gap-2">
                 {step > 1 && (
                   <Button type="button" onClick={onPrev}>
-                    Previous
+                    {t("regiser_case.step2witness.previous")}
                   </Button>
                 )}
                 {step < totalSteps ? (
                   <Button type="button" onClick={onNext}>
-                    Next
+                    {t("regiser_case.step1generalinfo.next")}
                   </Button>
                 ) : (
                   <Button
@@ -454,7 +494,11 @@ export default function AddCase() {
                     onClick={submitForm}
                     disabled={isSubmitting}
                   >
-                    {isCreating ? "Saving..." : "Save"}
+                    {isCreating ? (
+                      <Loader />
+                    ) : (
+                      t("regiser_case.step6Other.save")
+                    )}
                   </Button>
                 )}
               </div>

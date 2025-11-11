@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { getIn } from "formik";
+import { useTranslation } from "react-i18next";
 
 export default function Step3Accident({
   values,
@@ -11,12 +12,15 @@ export default function Step3Accident({
   handleChange,
   handleBlur,
 }) {
+  const { t } = useTranslation();
   return (
     <div className="p-4 border rounded">
-      <h3 className="text-lg font-medium mb-2">Accident</h3>
+      <h3 className="text-lg font-medium mb-2">
+        {t("regiser_case.step3Accident.accident")}
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label>Accident Date</Label>
+          <Label>{t("regiser_case.step3Accident.date")}</Label>
           <Input
             type="datetime-local"
             name="accident.date"
@@ -43,7 +47,7 @@ export default function Step3Accident({
         </div>
 
         <div>
-          <Label>Location</Label>
+          <Label>{t("regiser_case.step3Accident.location")}</Label>
           <Input
             name="accident.location"
             value={values.accident.location}
@@ -59,7 +63,7 @@ export default function Step3Accident({
         </div>
 
         <div>
-          <Label>Vehicle ID</Label>
+          <Label>{t("regiser_case.step3Accident.vehicle_id")}</Label>
           <Input
             name="accident.vehicle_id"
             value={values.accident.vehicle_id}
@@ -75,7 +79,9 @@ export default function Step3Accident({
         </div>
 
         <div>
-          <Label>Opponent License Plate</Label>
+          <Label>
+            {t("regiser_case.step3Accident.vehicle_opponent_license_plate")}
+          </Label>
           <Input
             name="accident.vehicle_opponent_license_plate"
             value={values.accident.vehicle_opponent_license_plate}
@@ -91,7 +97,7 @@ export default function Step3Accident({
         </div>
 
         <div className="md:col-span-2">
-          <Label>Accident Description</Label>
+          <Label>{t("regiser_case.step3Accident.accident_description")}</Label>
           <Textarea
             name="accident.accident_description"
             value={values.accident.accident_description}
@@ -109,7 +115,7 @@ export default function Step3Accident({
 
       {/* Pass setFieldValue so ProductMedia can update vehicle images */}
       <div className="mt-4">
-        <ProductMedia title="Vehicle Images" />
+        <ProductMedia title={t("regiser_case.step3Accident.vehicle_images")} />
         {getIn(touched, "accident.vehicle_images") &&
         getIn(errors, "accident.vehicle_images") ? (
           <div className="text-red-600 text-sm">

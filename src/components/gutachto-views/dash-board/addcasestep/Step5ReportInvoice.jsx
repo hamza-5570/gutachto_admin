@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getIn } from "formik";
+import { useTranslation } from "react-i18next";
 
 export default function Step5ReportInvoice({
   values,
@@ -9,14 +10,15 @@ export default function Step5ReportInvoice({
   errors,
   touched,
 }) {
+  const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="p-4 border rounded">
-        <h3 className="text-lg font-medium mb-2">Report</h3>
+        <h3 className="text-lg font-medium mb-2">{}</h3>
 
         <div className="grid grid-cols-3 gap-2 mt-2">
           <div>
-            <Label>Dismantling Fee</Label>
+            <Label>{t("regiser_case.step5Report.report")}</Label>
             <Input
               type="number"
               name="report.dismantling_fee"
@@ -33,7 +35,7 @@ export default function Step5ReportInvoice({
             ) : null}
           </div>
           <div>
-            <Label>Total Car Damage Sum</Label>
+            <Label>{t("regiser_case.step5Report.total_car_damage_sum")}</Label>
             <Input
               type="number"
               name="report.total_car_damage_sum"
@@ -50,7 +52,7 @@ export default function Step5ReportInvoice({
             ) : null}
           </div>
           <div>
-            <Label>Inspector Fee</Label>
+            <Label>{t("regiser_case.step5Report.inspector_fee")}</Label>
             <Input
               type="number"
               name="report.inspector_fee"
@@ -69,7 +71,7 @@ export default function Step5ReportInvoice({
         </div>
 
         <div className="mt-2">
-          <Label>Lawyer Fee</Label>
+          <Label>{t("regiser_case.step5Report.lawyer_fee")}</Label>
           <Input
             type="number"
             name="report.lawyer_fee"
@@ -88,11 +90,13 @@ export default function Step5ReportInvoice({
       </div>
 
       <div className="p-4 border rounded">
-        <h3 className="text-lg font-medium mb-2">Invoice</h3>
+        <h3 className="text-lg font-medium mb-2">
+          {t("regiser_case.step5Report.invoice")}
+        </h3>
 
         <div className="grid grid-cols-3 gap-2 mt-2">
           <div>
-            <Label>Total Invoiced Amount</Label>
+            <Label>{t("regiser_case.step5Report.total_invoiced_amount")}</Label>
             <Input
               type="number"
               name="invoice.total_invoiced_amount"
@@ -109,7 +113,7 @@ export default function Step5ReportInvoice({
             ) : null}
           </div>
           <div>
-            <Label>Open Sum</Label>
+            <Label>{t("regiser_case.step5Report.open_sum")}</Label>
             <Input
               type="number"
               name="invoice.open_sum"
@@ -126,7 +130,7 @@ export default function Step5ReportInvoice({
             ) : null}
           </div>
           <div>
-            <Label>Paid Sum</Label>
+            <Label>{t("regiser_case.step5Report.paid_sum")}</Label>
             <Input
               type="number"
               name="invoice.paid_sum"
