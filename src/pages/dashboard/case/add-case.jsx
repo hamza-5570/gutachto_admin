@@ -49,7 +49,7 @@ function Stepper({ currentStep }) {
       <div
         className="
           flex items-center justify-start gap-2 sm:gap-3
-          max-w-[400px] sm:min-w-full px-2 sm:px-0
+          max-w-[350px] sm:min-w-full px-2 sm:px-0
         "
       >
         {stepLabels.map((label, index) => {
