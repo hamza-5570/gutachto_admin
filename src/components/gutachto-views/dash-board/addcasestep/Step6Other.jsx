@@ -29,6 +29,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                     value={m}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    className="mt-2"
                   />
                   <Button type="button" onClick={() => remove(i)}>
                     {t("regiser_case.step6Other.remove")}
@@ -46,6 +47,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
           value={values.police_file}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
       </div>
 
@@ -56,6 +58,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
           value={values.notes}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
       </div>
     </div>

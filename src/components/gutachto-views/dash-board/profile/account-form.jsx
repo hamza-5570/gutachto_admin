@@ -64,7 +64,7 @@ export default function AccountForm() {
                 onBlur={props.handleBlur}
                 value={props.values.first_name}
                 name="first_name"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder={t(
                   "profile.account_information.firstname_placeholder"
                 )}
@@ -80,7 +80,7 @@ export default function AccountForm() {
                 onBlur={props.handleBlur}
                 value={props.values.last_name}
                 name="last_name"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder={t(
                   "profile.account_information.lastname_placeholder"
                 )}
@@ -98,7 +98,7 @@ export default function AccountForm() {
                 value={props.values.username}
                 name="username"
                 type="text"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder={t(
                   "profile.account_information.username_placeolder"
                 )}
@@ -114,7 +114,7 @@ export default function AccountForm() {
                 onBlur={props.handleBlur}
                 value={props.values.address}
                 name="address"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder={t(
                   "profile.account_information.username_placeolder"
                 )}
@@ -132,7 +132,7 @@ export default function AccountForm() {
                 onBlur={props.handleBlur}
                 value={props.values.phone}
                 name="phone"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder={t(
                   "profile.account_information.address_placeholder"
                 )}

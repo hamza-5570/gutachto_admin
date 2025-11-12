@@ -47,6 +47,7 @@ export default function Step2Witness({
                     value={w.address}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    className="mt-2"
                   />
                   {getIn(touched, `witness.${idx}.address`) &&
                   getIn(errors, `witness.${idx}.address`) ? (

@@ -36,6 +36,7 @@ export default function Step4Damage() {
               value={values.damage.description}
               onChange={handleChange}
               onBlur={handleBlur}
+              className="mt-2"
             />
           </div>
 
@@ -46,6 +47,7 @@ export default function Step4Damage() {
               value={values.damage.other}
               onChange={handleChange}
               onBlur={handleBlur}
+              className="mt-2"
             />
           </div>
 
@@ -56,6 +58,7 @@ export default function Step4Damage() {
               value={values.damage.status}
               onChange={handleChange}
               onBlur={handleBlur}
+              className="mt-2"
             />
           </div>
         </div>

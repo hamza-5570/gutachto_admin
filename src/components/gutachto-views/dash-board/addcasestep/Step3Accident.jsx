@@ -38,6 +38,7 @@ export default function Step3Accident({
               })
             }
             onBlur={handleBlur}
+            className="mt-2"
           />
           {getIn(touched, "accident.date") && getIn(errors, "accident.date") ? (
             <div className="text-red-600 text-sm">
@@ -53,6 +54,7 @@ export default function Step3Accident({
             value={values.accident.location}
             onChange={handleChange}
             onBlur={handleBlur}
+            className="mt-2"
           />
           {getIn(touched, "accident.location") &&
           getIn(errors, "accident.location") ? (
@@ -69,6 +71,7 @@ export default function Step3Accident({
             value={values.accident.vehicle_id}
             onChange={handleChange}
             onBlur={handleBlur}
+            className="mt-2"
           />
           {getIn(touched, "accident.vehicle_id") &&
           getIn(errors, "accident.vehicle_id") ? (
@@ -87,6 +90,7 @@ export default function Step3Accident({
             value={values.accident.vehicle_opponent_license_plate}
             onChange={handleChange}
             onBlur={handleBlur}
+            className="mt-2"
           />
           {getIn(touched, "accident.vehicle_opponent_license_plate") &&
           getIn(errors, "accident.vehicle_opponent_license_plate") ? (
@@ -103,6 +107,7 @@ export default function Step3Accident({
             value={values.accident.accident_description}
             onChange={handleChange}
             onBlur={handleBlur}
+            className="mt-2"
           />
           {getIn(touched, "accident.accident_description") &&
           getIn(errors, "accident.accident_description") ? (

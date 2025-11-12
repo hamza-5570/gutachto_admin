@@ -64,7 +64,7 @@ export default function Login() {
       <p className="text-3xl text-black font-bold text-center">
         {t("login.wellcome")}
       </p>
-      <div className="pt-12">
+      <div className="sm:pt-12 pt-6">
         <form onSubmit={handleSubmit}>
           <div>
             <p className="text-base text-[#696F79] font-medium">

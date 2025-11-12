@@ -62,7 +62,7 @@ export default function PasswordForm() {
                 onBlur={props.handleBlur}
                 value={props.values.old_password}
                 name="old_password"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder="Jhon wick"
               />
             </div>
@@ -76,7 +76,7 @@ export default function PasswordForm() {
                 onBlur={props.handleBlur}
                 value={props.values.new_password}
                 name="new_password"
-                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
+                className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
                 placeholder="Jhon wick"
               />
             </div>

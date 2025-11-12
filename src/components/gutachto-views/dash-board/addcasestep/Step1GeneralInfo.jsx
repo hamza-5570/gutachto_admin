@@ -35,6 +35,7 @@ export default function Step1GeneralInfo({
           value={values.person_in_charge}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
         {getIn(touched, "person_in_charge") &&
         getIn(errors, "person_in_charge") ? (
@@ -51,6 +52,7 @@ export default function Step1GeneralInfo({
           value={values.internal_inspector}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
         {getIn(touched, "internal_inspector") &&
         getIn(errors, "internal_inspector") ? (
@@ -67,6 +69,7 @@ export default function Step1GeneralInfo({
           value={values.car_repair_shop}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
         {getIn(touched, "car_repair_shop") &&
         getIn(errors, "car_repair_shop") ? (
@@ -83,6 +86,7 @@ export default function Step1GeneralInfo({
           value={values.status}
           onChange={handleChange}
           onBlur={handleBlur}
+          className="mt-2"
         />
         {getIn(touched, "status") && getIn(errors, "status") ? (
           <div className="text-red-600 text-sm">{getIn(errors, "status")}</div>
