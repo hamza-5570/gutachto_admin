@@ -9,7 +9,7 @@ export default function AuthLayout() {
       <div className="flex items-center justify-center lg:rounded-r-3xl overflow-hidden">
         <img
           src={leftImage}
-          className="sm:max-w-full sm:max-h-screen object-contain lg:w-full w-96"
+          className="sm:max-w-full sm:max-h-screen object-contain lg:w-full w-72"
           alt="Left"
         />
       </div>

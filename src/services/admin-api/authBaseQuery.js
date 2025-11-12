@@ -69,6 +69,7 @@ const rawBaseQuery = fetchBaseQuery({
 // --------------------
 export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
   const result = await rawBaseQuery(args, api, extraOptions);
+  console.log("result.error", result.error);
 
   if (result.error && [401, 403].includes(result.error.status)) {
     // Clear stored tokens
