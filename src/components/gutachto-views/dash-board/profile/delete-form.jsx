@@ -5,17 +5,19 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
-    useDeleteAccountMutation,
+  useDeleteAccountMutation,
   useGetUserProfileQuery,
 } from "@/services/auth-api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export default function DeleteForm() {
   const [deleteAccount, { isLoading }] = useDeleteAccountMutation();
   // eslint-disable-next-line no-unused-vars
-  const router=useNavigate();
-  const { data,  } = useGetUserProfileQuery();
+  const router = useNavigate();
+  const { data } = useGetUserProfileQuery();
+  const { t } = useTranslation();
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       const response = await deleteAccount(values).unwrap();
@@ -47,7 +49,7 @@ export default function DeleteForm() {
           <div className="grid grid-cols-2 gap-x-5">
             <div>
               <Label className="text-sm text-[#090F0D] font-medium">
-                Password
+                {t("profile.account_information.password")}
               </Label>
               <Input
                 type="text"
@@ -69,7 +71,11 @@ export default function DeleteForm() {
             className="text-xs lg:text-sm font-medium rounded-xl h-[44px] xl:w-[150px]"
           >
             {" "}
-            {isLoading ? <Loader /> : "Delete Account"}
+            {isLoading ? (
+              <Loader />
+            ) : (
+              t("profile.account_information.delete_account")
+            )}
           </Button>
         </Form>
       )}

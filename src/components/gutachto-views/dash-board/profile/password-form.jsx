@@ -10,12 +10,14 @@ import {
   useUpdatePasswordMutation,
 } from "@/services/auth-api";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 export default function PasswordForm() {
   const [updatePassword, { isLoading }] = useUpdatePasswordMutation();
   // eslint-disable-next-line no-unused-vars
   const [GetUserProfile, { isLoading: userLoading }] =
     useLazyGetUserProfileQuery();
   const { data, refetch } = useGetUserProfileQuery();
+  const { t } = useTranslation();
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       const response = await updatePassword(values).unwrap();
@@ -27,13 +29,13 @@ export default function PasswordForm() {
       }
 
       resetForm();
-    } catch (error) { 
-        toast.error(error.data.message, {
-            hideProgressBar: true,
-            position: "top-center",
-            autoClose: 2000,
-          });
-          resetForm();
+    } catch (error) {
+      toast.error(error.data.message, {
+        hideProgressBar: true,
+        position: "top-center",
+        autoClose: 2000,
+      });
+      resetForm();
     } finally {
       setSubmitting(false);
       resetForm();
@@ -52,7 +54,7 @@ export default function PasswordForm() {
           <div className="grid grid-cols-2 gap-x-5">
             <div>
               <Label className="text-sm text-[#090F0D] font-medium">
-                Old Password
+                {t("profile.account_information.old_password")}
               </Label>
               <Input
                 type="text"
@@ -66,7 +68,7 @@ export default function PasswordForm() {
             </div>
             <div>
               <Label className="text-sm text-[#090F0D] font-medium">
-                  New Password
+                {t("profile.account_information.new_password")}
               </Label>
               <Input
                 type="text"
@@ -79,7 +81,6 @@ export default function PasswordForm() {
               />
             </div>
           </div>
-         
 
           <hr className="border-t border-[#EEEEEE] my-5" />
 
@@ -88,7 +89,11 @@ export default function PasswordForm() {
             className="text-xs lg:text-sm font-medium rounded-xl h-[44px] xl:w-[150px]"
           >
             {" "}
-            {isLoading ? <Loader /> : "Save changes"}
+            {isLoading ? (
+              <Loader />
+            ) : (
+              t("profile.account_information.save_changes")
+            )}
           </Button>
         </Form>
       )}

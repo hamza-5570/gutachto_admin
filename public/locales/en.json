@@ -1,4 +1,16 @@
 {
+  "login": {
+    "wellcome": "Wellcome",
+    "email_address": "Email address",
+    "password": "Password",
+    "forget_password": "Forgot Password?",
+    "login": "Log in",
+    "forgot_password_text": "Enter the email you used to create your account so we can send you instructions on how to reset your password.",
+    "email_placeholder": "Enter Email address",
+    "password_placeholder": "Enter password",
+    "send": "Send",
+    "back_to_login": "Back to Login"
+  },
   "profile": {
     "settings": "Settings",
     "logout": "Logout",
@@ -10,7 +22,19 @@
       "address": "Address",
       "phone": "Phone",
       "username": "Username",
-      "save_changes": "Save changes"
+      "save_changes": "Save changes",
+      "change_password": "Change Password",
+      "old_password": "Old Password",
+      "new_password": "New Password",
+      "danager_zone": "Danager Zone",
+      "danager_text": "Once you delete your account, there is no going back. Please be certain.",
+      "password": "Password",
+      "delete_account": "Delete Account",
+      "firstname_placeholder": "Enter first name",
+      "lastname_placeholder": "Enter last name",
+      "email_placeholder": "Enter email",
+      "username_placeolder": "Enter username",
+      "address_placeholder": "Enter address"
     },
     "alerts_information": {
       "title": "Alerts Information",

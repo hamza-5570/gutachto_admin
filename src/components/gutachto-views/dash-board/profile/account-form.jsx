@@ -65,7 +65,9 @@ export default function AccountForm() {
                 value={props.values.first_name}
                 name="first_name"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="Jhon wick"
+                placeholder={t(
+                  "profile.account_information.firstname_placeholder"
+                )}
               />
             </div>
             <div className="mt-3">
@@ -79,7 +81,9 @@ export default function AccountForm() {
                 value={props.values.last_name}
                 name="last_name"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="Jhon wick"
+                placeholder={t(
+                  "profile.account_information.lastname_placeholder"
+                )}
               />
             </div>
           </div>
@@ -95,7 +99,9 @@ export default function AccountForm() {
                 name="username"
                 type="text"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="Jhon wick"
+                placeholder={t(
+                  "profile.account_information.username_placeolder"
+                )}
               />
             </div>
             <div className="mt-3">
@@ -109,7 +115,9 @@ export default function AccountForm() {
                 value={props.values.address}
                 name="address"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="Jhon wick"
+                placeholder={t(
+                  "profile.account_information.username_placeolder"
+                )}
               />
             </div>
           </div>
@@ -125,7 +133,9 @@ export default function AccountForm() {
                 value={props.values.phone}
                 name="phone"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-1"
-                placeholder="Jhon wick"
+                placeholder={t(
+                  "profile.account_information.address_placeholder"
+                )}
               />
             </div>
           </div>
@@ -163,7 +173,11 @@ export default function AccountForm() {
             className="text-xs lg:text-sm font-medium rounded-xl h-[44px] xl:w-[150px]"
           >
             {" "}
-            {isLoading ? <Loader /> : "Save changes"}
+            {isLoading ? (
+              <Loader />
+            ) : (
+              t("profile.account_information.save_changes")
+            )}
           </Button>
         </Form>
       )}

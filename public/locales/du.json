@@ -1,4 +1,16 @@
 {
+  "login": {
+    "wellcome": "Welkom",
+    "email_address": "E-mailadres",
+    "password": "Wachtwoord",
+    "login": "Inloggen",
+    "forgot_password": "Wachtwoord vergeten",
+    "forgot_password_text": "Voer het e-mailadres in dat je hebt gebruikt om je account aan te maken, zodat we je instructies kunnen sturen om je wachtwoord te resetten.",
+    "email_placeholder": "Voer e-mailadres in",
+    "password_placeholder": "Voer wachtwoord in",
+    "send": "Verzenden",
+    "back_to_login": "Terug naar inloggen"
+  },
   "profile": {
     "settings": "Instellingen",
     "logout": "Uitloggen",
@@ -9,7 +21,20 @@
       "lastname": "Achternaam",
       "address": "Adres",
       "phone": "Telefoon",
-      "username": "Gebruikersnaam"
+      "username": "Gebruikersnaam",
+      "save_changes": "Wijzigingen opslaan",
+      "change_password": "Wachtwoord wijzigen",
+      "old_password": "Oud wachtwoord",
+      "new_password": "Nieuw wachtwoord",
+      "danager_zone": "Danager Zone",
+      "danager_text": "Als je account verwijderd, is er geen terugkeer mogelijk. Zeker weten?",
+      "password": "Wachtwoord",
+      "delete_account": "Account verwijderen",
+      "firstname_placeholder": "Voer voornaam in",
+      "lastname_placeholder": "Voer achternaam in",
+      "email_placeholder": "Voer e-mail in",
+      "username_placeolder": "Voer gebruikersnaam in",
+      "address_placeholder": "Voer adres in"
     },
     "alerts_information": {
       "title": "Meldingsinformatie",

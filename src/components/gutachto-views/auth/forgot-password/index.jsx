@@ -3,11 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForgetPasswordMutation } from "../../../../services/auth-api";
 import Loader from "@/common/loader";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [ForgotPassword, { isLoading }] = useForgetPasswordMutation();
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     ForgotPassword({
@@ -24,20 +26,19 @@ export default function ForgotPassword() {
   return (
     <>
       <p className="text-3xl text-black font-bold text-center">
-        Forgot Password
+        {t("login.forgot_password")}
       </p>
       <p className="text-sm text-[#696F79] text-center pt-5">
-        Enter the email you used to create your account so we can send you
-        instructions on how to reset your password.
+        {t("login.forgot_password_text")}
       </p>
       <div className="pt-12">
         <div>
           <p className="text-base text-[#696F79] font-medium">
-            Enter Email address*
+            {t("login.email_address")}
           </p>
           <input
             type="email"
-            placeholder="Enter email address"
+            placeholder={t("login.email_placeholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full h-12 md:h-[64px] rounded-full border border-[#8692A6] placeholder:text-[#8692A6] text-black mt-3 px-7"
@@ -49,12 +50,12 @@ export default function ForgotPassword() {
           disabled={!email}
           className="w-full h-12 flex items-center justify-center  bg-gradient-to-r from-[#000000] to-[#80C2A1] text-white text-sm md:text-base font-semibold rounded-full mt-8 cursor-pointer disabled:cursor-default disabled:opacity-50"
         >
-          {isLoading ? <Loader /> : "Send"}
+          {isLoading ? <Loader /> : t("login.send")}
         </button>
 
         <Link to={"/"}>
           <p className="text-base font-medium text-black underline text-center pt-10">
-            Back to login
+            {t("login.back_to_login")}
           </p>
         </Link>
       </div>
