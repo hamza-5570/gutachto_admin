@@ -13,7 +13,7 @@ export default function Step1GeneralInfo({
   const { t } = useTranslation();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
+      {/* <div>
         <Label>{t("regiser_case.step1generalinfo.id")}</Label>
         <Input
           name="account_id"
@@ -26,7 +26,7 @@ export default function Step1GeneralInfo({
             {getIn(errors, "account_id")}
           </div>
         ) : null}
-      </div>
+      </div> */}
 
       <div>
         <Label>{t("regiser_case.step1generalinfo.person_in_charge")}</Label>

@@ -293,7 +293,7 @@ export default function AddCase() {
   // initialValues
   // //////////////////////
   const initialValues = {
-    account_id: user?._id || "",
+    account_id: user?._id,
     start_date: new Date().toISOString(),
     date_of_last_change: new Date().toISOString(),
     person_in_charge: "",
