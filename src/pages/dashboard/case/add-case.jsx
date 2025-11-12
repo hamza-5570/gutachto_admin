@@ -45,11 +45,11 @@ function Stepper({ currentStep }) {
   }, [currentStep]);
 
   return (
-    <div className="mb-6 overflow-x-auto scrollbar-hide">
+    <div className="mb-6 overflow-x-auto overflow-y-hidden  scrollbar-hide">
       <div
         className="
           flex items-center justify-start gap-2 sm:gap-3
-          min-w-[550px] sm:min-w-0 px-2 sm:px-0
+          max-w-[400px] sm:min-w-full px-2 sm:px-0
         "
       >
         {stepLabels.map((label, index) => {

@@ -85,7 +85,7 @@ export default function Registor() {
       >
         {() => (
           <Form className="space-y-5">
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
               <div>
                 <Label>{t("register_account_form.firstname")}*</Label>
                 <Field name="first_name">
@@ -127,7 +127,7 @@ export default function Registor() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
               <div>
                 <Label>{t("register_account_form.email")}*</Label>
                 <Field name="username">
@@ -167,7 +167,7 @@ export default function Registor() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
               <div>
                 <Label>{t("register_account_form.company_name")}*</Label>
                 <Field name="meta_data.company_name">
