@@ -63,7 +63,7 @@ export default function PasswordForm() {
                 value={props.values.old_password}
                 name="old_password"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
-                placeholder="Jhon wick"
+                placeholder={t("profile.account_information.old_password")}
               />
             </div>
             <div>
@@ -77,7 +77,7 @@ export default function PasswordForm() {
                 value={props.values.new_password}
                 name="new_password"
                 className="w-full h-[45px] bg-white border border-[#D0D5DD] rounded-xl mt-2"
-                placeholder="Jhon wick"
+                placeholder={t("profile.account_information.new_password")}
               />
             </div>
           </div>
