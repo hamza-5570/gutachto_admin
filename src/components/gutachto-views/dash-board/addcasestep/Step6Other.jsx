@@ -41,7 +41,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
         </FieldArray>
       </div>
       <div className="mt-4">
-        <Label> {t("regiser_case.step6Other.remove")}</Label>
+        <Label> {t("regiser_case.step6Other.police_file")}</Label>
         <Input
           name="police_file"
           value={values.police_file}

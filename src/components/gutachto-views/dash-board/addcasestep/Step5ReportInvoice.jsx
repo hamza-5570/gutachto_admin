@@ -16,7 +16,7 @@ export default function Step5ReportInvoice({
       <div className="p-4 border rounded">
         <h3 className="text-lg font-medium mb-2">{}</h3>
 
-        <div className="grid grid-cols-3 gap-2 mt-2">
+        <div className="grid xl:grid-cols-3 grid-cols-1 gap-2 mt-2">
           <div>
             <Label>{t("regiser_case.step5Report.report")}</Label>
             <Input
@@ -98,7 +98,7 @@ export default function Step5ReportInvoice({
           {t("regiser_case.step5Report.invoice")}
         </h3>
 
-        <div className="grid grid-cols-3 gap-2 mt-2">
+        <div className="grid xl:grid-cols-3 grid-cols-1 gap-2 mt-2">
           <div>
             <Label>{t("regiser_case.step5Report.total_invoiced_amount")}</Label>
             <Input

@@ -259,9 +259,9 @@
     },
     "step6Other": {
       "other": "Other",
-      "police_file": "Politiebestand",
+      "police_file": "Police File",
       "notes": "Note",
-      "add_mail": "add Mail",
+      "add_mail": "Add Mail",
       "remove": "Remove",
       "mail_correspondence": "Mail Correspondence",
       "save": "Save",

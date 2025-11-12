@@ -39,7 +39,10 @@ export default function Step2Witness({
         {({ remove }) => (
           <div className="space-y-3">
             {values.witness.map((w, idx) => (
-              <div key={idx} className="grid grid-cols-3 gap-2 items-center">
+              <div
+                key={idx}
+                className="grid sm:grid-cols-3 grid-cols-1 gap-2 items-center"
+              >
                 <div>
                   <Label>{t("regiser_case.step2witness.add_witness")}</Label>
                   <Input
