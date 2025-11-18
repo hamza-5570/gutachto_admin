@@ -384,6 +384,10 @@
     "images": "Images",
     "max": "Max"
   },
+  "crop_model": {
+    "crop_save": "Crop & Save",
+    "cancel": "Cancel"
+  },
   "common": {
     "yes": "Yes",
     "no": "No"

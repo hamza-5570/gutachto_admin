@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import Cropper from "react-easy-crop";
+import { useTranslation } from "react-i18next";
 
 const ImageCropper = ({ imageSrc, onCancel, onCropComplete }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const { t } = useTranslation();
 
   const onCropCompleteInternal = useCallback((_, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -70,14 +72,14 @@ const ImageCropper = ({ imageSrc, onCancel, onCropComplete }) => {
             type="button"
             className="w-[100px] h-[40px] rounded-lg border border-[#D1D5DB] text-sm text-[#374151]"
           >
-            Cancel
+            {t("crop_model.cancel")}
           </button>
           <button
             onClick={getCroppedImage}
             type="button"
-            className="w-[128px] h-[40px] rounded-lg text-sm text-white bg-gradient-to-r from-[#40B0EC] to-[#40CEEC]"
+            className="w-fit px-4 h-[40px] rounded-lg text-sm text-white bg-gradient-to-r from-[#40B0EC] to-[#40CEEC]"
           >
-            Crop & Save
+            {t("crop_model.crop_save")}
           </button>
         </div>
       </div>

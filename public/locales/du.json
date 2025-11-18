@@ -380,6 +380,11 @@
     "images": "Afbeeldingen",
     "max": "Maximaal"
   },
+  "crop_model": {
+    "crop_save": "Bijsnijden & Opslaan",
+    "cancel": "Annuleren"
+  },
+
   "common": {
     "yes": "Ja",
     "no": "Nee"
