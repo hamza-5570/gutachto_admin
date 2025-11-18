@@ -422,7 +422,7 @@ export default function AddCase() {
 
           return (
             <>
-              <div className="flex-1 overflow-y-auto p-4">
+              <div className="flex-1 overflow-y-auto p-4 h-[calc(100vh-305px)]">
                 <Form>
                   {step === 1 && (
                     <Step1GeneralInfo
@@ -479,7 +479,7 @@ export default function AddCase() {
               </div>
 
               {/* Footer Buttons */}
-              <div className="p-4 bg-white flex justify-end items-center gap-2">
+              <div className="p-4  bg-white flex justify-end items-center gap-2">
                 {step > 1 && (
                   <Button type="button" onClick={onPrev}>
                     {t("regiser_case.step2witness.previous")}

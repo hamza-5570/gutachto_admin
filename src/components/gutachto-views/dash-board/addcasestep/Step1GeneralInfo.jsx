@@ -2,11 +2,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
+  SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SelectContent } from "@radix-ui/react-select";
 import { getIn, useFormikContext } from "formik";
 import { useTranslation } from "react-i18next";
 
@@ -52,8 +52,6 @@ const statusOptions = [
     value: "payment",
   },
 ];
-
-// Output: ['case created', 'data questions', 'updated', 'data answers', 'cost calculation commisssioned', 'cost calculation finished', 'sent to lawyer', 'lawyer questions', 'change invoice', 'payment']
 
 export default function Step1GeneralInfo({
   values,
@@ -141,33 +139,32 @@ export default function Step1GeneralInfo({
           </div>
         ) : null}
       </div>
-
       <div>
         <Label>{t("regiser_case.step1generalinfo.status")}</Label>
 
-        <div className="mt-2">
+        <div className="mt-2 w-full">
           <Select
-            className="w-full"
             value={values.status}
-            onValueChange={(value) => {
-              setFieldValue("status", value);
-            }}
+            onValueChange={(value) => setFieldValue("status", value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue
                 placeholder={t(
                   "regiser_case.step1generalinfo.placeholders.car_repair_shop"
                 )}
-                className="w-full"
               />
             </SelectTrigger>
-            <SelectContent className="w-full">
+
+            <SelectContent className="min-w-full">
               {statusOptions.map((option) => (
-                <SelectItem value={option.value}>{option.label}</SelectItem>
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
+
         {getIn(touched, "status") && getIn(errors, "status") ? (
           <div className="text-red-600 text-sm">{getIn(errors, "status")}</div>
         ) : null}
