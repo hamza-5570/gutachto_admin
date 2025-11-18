@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { FieldArray } from "formik";
+import { CirclePlus, Plus, Trash, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export default function Step6Other({ values, handleChange, handleBlur }) {
@@ -18,6 +19,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                   {t("regiser_case.step6Other.mail_correspondence")}
                 </h3>
                 <Button type="button" onClick={() => push("")}>
+                  <CirclePlus />
                   {t("regiser_case.step6Other.add_mail")}
                 </Button>
               </div>
@@ -30,9 +32,10 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className="mt-2"
+                    placeholder={t("regiser_case.step6Other.placeholders.mail")}
                   />
                   <Button type="button" onClick={() => remove(i)}>
-                    {t("regiser_case.step6Other.remove")}
+                    <Trash2 /> {t("regiser_case.step6Other.remove")}
                   </Button>
                 </div>
               ))}
@@ -48,6 +51,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t("regiser_case.step6Other.placeholders.police_file")}
         />
       </div>
 
@@ -59,6 +63,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t("regiser_case.step6Other.placeholders.notes")}
         />
       </div>
     </div>

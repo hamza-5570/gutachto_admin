@@ -53,7 +53,7 @@ export default function AccountForm() {
     >
       {(props) => (
         <Form className="mt-5" onSubmit={props.handleSubmit}>
-          <div className="grid sm:grid-cols-2 grid-cols-1 gap-5">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-5">
             <div className="mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 {t("profile.account_information.firstname")}

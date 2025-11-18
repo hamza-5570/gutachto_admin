@@ -37,6 +37,9 @@ export default function Step4Damage() {
               onChange={handleChange}
               onBlur={handleBlur}
               className="mt-2"
+              placeholder={t(
+                "regiser_case.step4Damage.placeholders.description"
+              )}
             />
           </div>
 
@@ -48,6 +51,7 @@ export default function Step4Damage() {
               onChange={handleChange}
               onBlur={handleBlur}
               className="mt-2"
+              placeholder={t("regiser_case.step4Damage.placeholders.other")}
             />
           </div>
 
@@ -59,6 +63,7 @@ export default function Step4Damage() {
               onChange={handleChange}
               onBlur={handleBlur}
               className="mt-2"
+              placeholder={t("regiser_case.step4Damage.placeholders.status")}
             />
           </div>
         </div>

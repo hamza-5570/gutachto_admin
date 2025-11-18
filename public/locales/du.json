@@ -188,6 +188,12 @@
         "internal_inspector": "Interne inspecteur is vereist",
         "car_repair_shop": "Autogarage is vereist",
         "status": "Status is vereist"
+      },
+      "placeholders": {
+        "person_in_charge": "Enter verantwoordelijke",
+        "internal_inspector": "Enter interne inspecteur",
+        "car_repair_shop": "Enter autogarage",
+        "status": "Enter status"
       }
     },
     "step2witness": {
@@ -199,6 +205,9 @@
       "previous": "Vorige",
       "errors": {
         "witness": "Getuige is vereist"
+      },
+      "placeholders": {
+        "address": "Enter getuige"
       }
     },
     "step3Accident": {
@@ -218,6 +227,13 @@
         "date": "Datum is vereist",
         "location": "Locatie is vereist",
         "vehicle_images": "Minstens één afbeelding is vereist"
+      },
+      "placeholders": {
+        "date": "Voer datum in",
+        "location": "Voer locatie in",
+        "vehicle_opponent_license_plate": "Voer kenteken van tegenpartij in",
+        "accident_description": "Voer beschrijving van het ongeval in",
+        "vehicle_id": "Voer voertuig-ID in"
       }
     },
     "step4Damage": {
@@ -229,7 +245,13 @@
       "lane_change": "Rijstrookwisseling",
       "right_of_way": "Voorrangsverlies",
       "parking_lot": "Parkeerplaats",
-      "errors": {}
+      "errors": {},
+      "placeholders": {
+        "damage": "Voer schade in",
+        "description": "Voer beschrijving in",
+        "other": "Voer anders in",
+        "status": "Voer status in"
+      }
     },
     "step5Report": {
       "report": "Rapport",
@@ -250,6 +272,17 @@
         "total_invoiced_amount": "Totaal gefactureerd bedrag is vereist",
         "open_sum": "Openstaand bedrag is vereist",
         "paid_sum": "Betaald bedrag is vereist"
+      },
+      "placeholders": {
+        "report": "Voer rapport in",
+        "dismantling_fee": "Voer demontagekosten in",
+        "total_car_damage_sum": "Voer totale autoschade in",
+        "lawyer_fee": "Voer advocaatkosten in",
+        "inspector_fee": "Voer inspecteurskosten in",
+        "invoice": "Voer factuur in",
+        "total_invoiced_amount": "Voer totaal gefactureerd bedrag in",
+        "open_sum": "Voer openstaand bedrag in",
+        "paid_sum": "Voer betaald bedrag in"
       }
     },
     "step6Other": {
@@ -260,7 +293,12 @@
       "remove": "Verwijderen",
       "mail_correspondence": "Postcorrespondentie",
       "save": "Opslaan",
-      "errors": {}
+      "errors": {},
+      "placeholders": {
+        "mail": "Voer correspondentiemail in",
+        "police_file": "Voer politiedossier in",
+        "notes": "Voer notities in"
+      }
     }
   },
   "delete_case_model": {

@@ -27,6 +27,7 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t("regiser_case.step5Report.placeholders.report")}
             />
             {getIn(touched, "report.dismantling_fee") &&
             getIn(errors, "report.dismantling_fee") ? (
@@ -45,6 +46,9 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t(
+                "regiser_case.step5Report.placeholders.total_car_damage_sum"
+              )}
             />
             {getIn(touched, "report.total_car_damage_sum") &&
             getIn(errors, "report.total_car_damage_sum") ? (
@@ -63,6 +67,9 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t(
+                "regiser_case.step5Report.placeholders.inspector_fee"
+              )}
             />
             {getIn(touched, "report.inspector_fee") &&
             getIn(errors, "report.inspector_fee") ? (
@@ -83,6 +90,7 @@ export default function Step5ReportInvoice({
             onBlur={handleBlur}
             min={0}
             className="mt-2"
+            placeholder={t("regiser_case.step5Report.placeholders.lawyer_fee")}
           />
           {getIn(touched, "report.lawyer_fee") &&
           getIn(errors, "report.lawyer_fee") ? (
@@ -109,6 +117,9 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t(
+                "regiser_case.step5Report.placeholders.inspector_fee"
+              )}
             />
             {getIn(touched, "invoice.total_invoiced_amount") &&
             getIn(errors, "invoice.total_invoiced_amount") ? (
@@ -127,6 +138,7 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t("regiser_case.step5Report.placeholders.open_sum")}
             />
             {getIn(touched, "invoice.open_sum") &&
             getIn(errors, "invoice.open_sum") ? (
@@ -145,6 +157,7 @@ export default function Step5ReportInvoice({
               onBlur={handleBlur}
               min={0}
               className="mt-2"
+              placeholder={t("regiser_case.step5Report.placeholders.paid_sum")}
             />
             {getIn(touched, "invoice.paid_sum") &&
             getIn(errors, "invoice.paid_sum") ? (

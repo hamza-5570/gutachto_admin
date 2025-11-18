@@ -20,77 +20,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { Loader } from "lucide-react";
-
-function Stepper({ currentStep }) {
-  const { t } = useTranslation();
-  // -------------------------
-  // 2) Stepper Component
-  // -------------------------
-  const stepLabels = [
-    t("regiser_case.steps.genral_info"),
-    t("regiser_case.steps.witness"),
-    t("regiser_case.steps.accident"),
-    t("regiser_case.steps.damage"),
-    t("regiser_case.steps.report_invoice"),
-    t("regiser_case.steps.other"),
-  ];
-  return (
-    <div className="flex items-center justify-between mb-6">
-      {stepLabels.map((label, index) => {
-        const stepNumber = index + 1;
-        const isActive = stepNumber === currentStep;
-        const isCompleted = stepNumber < currentStep;
-        const isLast = index === stepLabels.length - 1;
-
-        return (
-          <React.Fragment key={index}>
-            <div className="flex flex-col items-center flex-shrink-0 w-28">
-              <div
-                className={`flex items-center justify-center w-9 h-9 rounded-full border-2 z-10
-                  ${
-                    isCompleted
-                      ? "bg-green-500 text-white border-green-500"
-                      : ""
-                  }
-                  ${
-                    isActive && !isCompleted
-                      ? "bg-black text-white border-black"
-                      : ""
-                  }
-                  ${
-                    !isActive && !isCompleted
-                      ? "bg-white text-gray-500 border-gray-300"
-                      : ""
-                  }
-                `}
-              >
-                {isCompleted ? "✓" : stepNumber}
-              </div>
-
-              <span
-                className={`mt-2 text-[12px] text-center ${
-                  isActive ? "text-black font-semibold" : "text-gray-500"
-                }`}
-              >
-                {label}
-              </span>
-            </div>
-
-            {!isLast && (
-              <div className="flex-1 h-0.5 mx-2">
-                <div
-                  className={`h-0.5 w-full rounded ${
-                    index + 1 < currentStep ? "bg-green-500" : "bg-gray-300"
-                  }`}
-                />
-              </div>
-            )}
-          </React.Fragment>
-        );
-      })}
-    </div>
-  );
-}
+import { Stepper } from "./add-case";
 
 // -------------------------
 // 3) Helper: getIn

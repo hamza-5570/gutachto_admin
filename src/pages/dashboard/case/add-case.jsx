@@ -27,7 +27,7 @@ import { Loader } from "lucide-react";
 // -------------------------
 // 3) Stepper Component (Responsive)
 // -------------------------
-function Stepper({ currentStep }) {
+export function Stepper({ currentStep }) {
   const { t } = useTranslation();
   const stepLabels = [
     t("regiser_case.steps.genral_info"),
@@ -280,15 +280,27 @@ export default function AddCase() {
     ),
     accident: accidentSchema,
     damage: damageSchema,
-    status: Yup.string().required(
-      t("regiser_case.step1generalinfo.errors.status")
-    ),
+    status: Yup.string()
+      .required(t("regiser_case.step1generalinfo.errors.status"))
+      .oneOf([
+        "case created",
+        "data questions",
+        "updated",
+        "data answers",
+        "cost calculation commisssioned",
+        "cost calculation finished",
+        "sent to lawyer",
+        "lawyer questions",
+        "change invoice",
+        "payment",
+      ]),
     report: reportSchema,
     police_file: Yup.string().nullable(),
     mail_correspondence: Yup.array().of(Yup.string().nullable()).min(0),
     invoice: invoiceSchema,
     notes: Yup.string().nullable(),
   });
+
   // /////////////////////
   // initialValues
   // //////////////////////

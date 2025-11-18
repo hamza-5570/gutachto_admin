@@ -36,6 +36,9 @@ export default function Step1GeneralInfo({
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t(
+            "regiser_case.step1generalinfo.placeholders.person_in_charge"
+          )}
         />
         {getIn(touched, "person_in_charge") &&
         getIn(errors, "person_in_charge") ? (
@@ -53,6 +56,9 @@ export default function Step1GeneralInfo({
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t(
+            "regiser_case.step1generalinfo.placeholders.internal_inspector"
+          )}
         />
         {getIn(touched, "internal_inspector") &&
         getIn(errors, "internal_inspector") ? (
@@ -70,6 +76,9 @@ export default function Step1GeneralInfo({
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t(
+            "regiser_case.step1generalinfo.placeholders.car_repair_shop"
+          )}
         />
         {getIn(touched, "car_repair_shop") &&
         getIn(errors, "car_repair_shop") ? (
@@ -87,6 +96,7 @@ export default function Step1GeneralInfo({
           onChange={handleChange}
           onBlur={handleBlur}
           className="mt-2"
+          placeholder={t("regiser_case.step1generalinfo.placeholders.status")}
         />
         {getIn(touched, "status") && getIn(errors, "status") ? (
           <div className="text-red-600 text-sm">{getIn(errors, "status")}</div>

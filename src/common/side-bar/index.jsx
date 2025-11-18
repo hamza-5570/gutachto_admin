@@ -48,7 +48,7 @@ export default function SideBar({ open, setOpen }) {
 
   return (
     <div
-      className={`fixed xl:relative left-0 top-0 h-screen flex flex-col justify-between lg:shadow-[0.5px_0_15px_#00000026] transition-all bg-white duration-300 ease-in-out z-10 overflow-y-auto border-r border-[#DBE0E5] lg:border-r-0 ${
+      className={`fixed xl:relative left-0 top-0 h-screen flex flex-col justify-between lg:shadow-[0.5px_0_15px_#00000026] transition-all bg-white duration-300 ease-in-out z-50 overflow-y-auto border-r border-[#DBE0E5] lg:border-r-0 ${
         open
           ? "w-[260px] p-5 xl:p-7 -translate-x-0 lg:translate-x-0"
           : "lg:w-[60px] px-2.5 py-7 -translate-x-full lg:translate-x-0"

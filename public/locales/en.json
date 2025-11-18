@@ -191,6 +191,12 @@
         "internal_inspector": "Internal inspector required",
         "car_repair_shop": "Car repair shop required",
         "status": "Status is required"
+      },
+      "placeholders": {
+        "person_in_charge": "Enter person in charge",
+        "internal_inspector": "Enter internal inspector",
+        "car_repair_shop": "Enter car repair shop",
+        "status": "Enter status"
       }
     },
     "step2witness": {
@@ -203,26 +209,35 @@
       "previous": "Previous",
       "errors": {
         "witness": "Witness is required"
+      },
+      "placeholders": {
+        "address": "Enter address"
       }
     },
     "step3Accident": {
-      "accident": "Ongeval",
-      "date": "Datum",
-      "location": "Locatie",
-      "vehicle_id": "Voertuig ID",
-      "vehicle_opponent_license_plate": "Kenteken van tegenpartij",
-      "accident_description": "Beschrijving van het ongeval",
-      "vehicle_images": "Voertuigafbeeldingen",
-      "add_image": "Afbeelding toevoegen",
-      "remove": "Verwijderen",
-      "loading": "Laden...",
-
-      "next": "Volgende",
-      "previous": "Vorige",
+      "accident": "Accident",
+      "date": "Date",
+      "location": "Location",
+      "vehicle_id": "Vehicle ID",
+      "vehicle_opponent_license_plate": "Opponent's License Plate",
+      "accident_description": "Accident Description",
+      "vehicle_images": "Vehicle Images",
+      "add_image": "Add Image",
+      "remove": "Remove",
+      "loading": "Loading...",
+      "next": "Next",
+      "previous": "Previous",
       "errors": {
-        "date": "Datum is vereist",
-        "location": "Locatie is vereist",
-        "vehicle_images": "Minstens één afbeelding is vereist"
+        "date": "Date is required",
+        "location": "Location is required",
+        "vehicle_images": "At least one image is required"
+      },
+      "placeholders": {
+        "date": "Enter date",
+        "location": "Enter location",
+        "vehicle_opponent_license_plate": "Enter opponent's license plate",
+        "accident_description": "Enter accident description",
+        "vehicle_id": "Enter vehicle id"
       }
     },
     "step4Damage": {
@@ -234,7 +249,13 @@
       "lane_change": "Lane Change",
       "right_of_way": "Right of Way Violation",
       "parking_lot": "Parking Lot",
-      "errors": {}
+      "errors": {},
+      "placeholders": {
+        "damage": "Enter damage",
+        "description": "Enter description",
+        "other": "Enter other",
+        "status": "Enter status"
+      }
     },
     "step5Report": {
       "report": "Report",
@@ -255,6 +276,17 @@
         "total_invoiced_amount": "Total invoiced amount is required",
         "open_sum": "Open sum is required",
         "paid_sum": "Paid sum is required"
+      },
+      "placeholders": {
+        "report": "Enter Report",
+        "dismantling_fee": "Enter dismantling fee",
+        "total_car_damage_sum": "Enter total car damage sum",
+        "lawyer_fee": "Enter lawyer fee",
+        "inspector_fee": "Enter inspector fee",
+        "invoice": "Enter invoice",
+        "total_invoiced_amount": "Enter total invoiced amount",
+        "open_sum": "Enter open sum",
+        "paid_sum": "Enter paid sum"
       }
     },
     "step6Other": {
@@ -265,7 +297,12 @@
       "remove": "Remove",
       "mail_correspondence": "Mail Correspondence",
       "save": "Save",
-      "errors": {}
+      "errors": {},
+      "placeholders": {
+        "mail": "Enter correspondence mail",
+        "police_file": "Enter police file",
+        "notes": "Enter notes"
+      }
     }
   },
   "delete_case_model": {

@@ -50,7 +50,7 @@ export default function CaseDetail() {
 
       {/* Account Detail */}
       <div className="grid grid-cols-12 my-5 gap-4">
-        <div className="col-span-6 flex flex-col gap-4">
+        <div className="sm:col-span-6 col-span-12 flex flex-col gap-4">
           {/* Accident Information */}
           <Card className="w-full rounded-3xl">
             <CardContent>
@@ -375,7 +375,7 @@ export default function CaseDetail() {
           </Card>
         </div>
 
-        <div className="col-span-6 flex flex-col gap-4">
+        <div className="sm:col-span-6 col-span-12 flex flex-col gap-4">
           {/* Status */}
           <Card className="w-full rounded-3xl">
             <CardContent>
