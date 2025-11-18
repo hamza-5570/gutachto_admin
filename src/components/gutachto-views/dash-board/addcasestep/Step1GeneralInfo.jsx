@@ -1,7 +1,59 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getIn } from "formik";
+import {
+  Select,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { SelectContent } from "@radix-ui/react-select";
+import { getIn, useFormikContext } from "formik";
 import { useTranslation } from "react-i18next";
+
+const statusOptions = [
+  {
+    label: "Case Created",
+    value: "case created",
+  },
+  {
+    label: "Data Questions",
+    value: "data questions",
+  },
+  {
+    label: "Updated",
+    value: "updated",
+  },
+  {
+    label: "Data Answers",
+    value: "data answers",
+  },
+  {
+    label: "Cost Calculation Commissioned",
+    value: "cost calculation commisssioned",
+  },
+  {
+    label: "Cost Calculation Finished",
+    value: "cost calculation finished",
+  },
+  {
+    label: "Sent to Lawyer",
+    value: "sent to lawyer",
+  },
+  {
+    label: "Lawyer Questions",
+    value: "lawyer questions",
+  },
+  {
+    label: "Change Invoice",
+    value: "change invoice",
+  },
+  {
+    label: "Payment",
+    value: "payment",
+  },
+];
+
+// Output: ['case created', 'data questions', 'updated', 'data answers', 'cost calculation commisssioned', 'cost calculation finished', 'sent to lawyer', 'lawyer questions', 'change invoice', 'payment']
 
 export default function Step1GeneralInfo({
   values,
@@ -11,6 +63,8 @@ export default function Step1GeneralInfo({
   handleBlur,
 }) {
   const { t } = useTranslation();
+  console.log("values", values);
+  const { setFieldValue } = useFormikContext();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* <div>
@@ -90,14 +144,30 @@ export default function Step1GeneralInfo({
 
       <div>
         <Label>{t("regiser_case.step1generalinfo.status")}</Label>
-        <Input
-          name="status"
-          value={values.status}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className="mt-2"
-          placeholder={t("regiser_case.step1generalinfo.placeholders.status")}
-        />
+
+        <div className="mt-2">
+          <Select
+            className="w-full"
+            value={values.status}
+            onValueChange={(value) => {
+              setFieldValue("status", value);
+            }}
+          >
+            <SelectTrigger>
+              <SelectValue
+                placeholder={t(
+                  "regiser_case.step1generalinfo.placeholders.car_repair_shop"
+                )}
+                className="w-full"
+              />
+            </SelectTrigger>
+            <SelectContent className="w-full">
+              {statusOptions.map((option) => (
+                <SelectItem value={option.value}>{option.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         {getIn(touched, "status") && getIn(errors, "status") ? (
           <div className="text-red-600 text-sm">{getIn(errors, "status")}</div>
         ) : null}

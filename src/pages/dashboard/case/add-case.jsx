@@ -280,20 +280,9 @@ export default function AddCase() {
     ),
     accident: accidentSchema,
     damage: damageSchema,
-    status: Yup.string()
-      .required(t("regiser_case.step1generalinfo.errors.status"))
-      .oneOf([
-        "case created",
-        "data questions",
-        "updated",
-        "data answers",
-        "cost calculation commisssioned",
-        "cost calculation finished",
-        "sent to lawyer",
-        "lawyer questions",
-        "change invoice",
-        "payment",
-      ]),
+    // status: Yup.string().required(
+    //   t("regiser_case.step1generalinfo.errors.status")
+    // ),
     report: reportSchema,
     police_file: Yup.string().nullable(),
     mail_correspondence: Yup.array().of(Yup.string().nullable()).min(0),
@@ -333,7 +322,7 @@ export default function AddCase() {
       tires: false,
       status: "",
     },
-    status: "case created",
+    status: "",
     report: {
       dismantling_fee: "",
       total_car_damage_sum: "",

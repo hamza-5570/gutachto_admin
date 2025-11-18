@@ -43,8 +43,6 @@ export default function Navbar({ handleDrawer, open, data }) {
     }
   }, [router, pathname]);
 
-  console.log("routeName", routeName);
-
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
