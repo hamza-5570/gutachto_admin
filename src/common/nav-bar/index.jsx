@@ -102,7 +102,7 @@ export default function Navbar({ handleDrawer, open, data }) {
           </div>
 
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-full bg-white border border-[#EEEEEE] rounded-lg shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-full bg-white border border-[#EEEEEE] rounded-lg shadow-lg z-50">
               <ul className="text-sm text-black">
                 <li
                   onClick={() => router("/dashboard/profile")}
