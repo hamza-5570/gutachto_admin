@@ -351,7 +351,7 @@ export default function AddCase() {
         onSubmit={async (values, { setSubmitting }) => {
           try {
             const result = await createCase(values).unwrap();
-            toast.success(result.message);
+            toast.success(t("regiser_case.success_message.case_created"));
             navigate("/dashboard/all-case");
           } catch (error) {
             toast.error(error?.data?.message || "Error creating case");

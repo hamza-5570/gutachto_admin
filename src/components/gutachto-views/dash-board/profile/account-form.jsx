@@ -12,6 +12,14 @@ import {
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useUpdateAdminMutation } from "@/services/admin-api/accountsApi";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function AccountForm() {
   const [updateAdmin, { isLoading }] = useUpdateAdminMutation();
@@ -23,7 +31,12 @@ export default function AccountForm() {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       const response = await updateAdmin({
-        body: values,
+        body: {
+          ...values,
+          enable_email_alerts:
+            values.enable_email_alerts == "Yes" ? true : false,
+          enable_sms_alerts: values.enable_sms_alerts == "Yes" ? true : false,
+        },
         user_id: data?._id,
       }).unwrap();
       if (response) {
@@ -50,6 +63,8 @@ export default function AccountForm() {
     <Formik
       initialValues={{
         ...data,
+        enable_email_alerts: data?.enable_email_alerts ? "Yes" : "No",
+        enable_sms_alerts: data?.enable_sms_alerts ? "Yes" : "No",
       }}
       enableReinitialize
       onSubmit={handleSubmit}
@@ -142,30 +157,52 @@ export default function AccountForm() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 mt-3 gap-x-5">
-            <div className="flex  gap-2  mt-3">
+          <div className="grid grid-cols-2 mt-3 gap-x-5">
+            <div className="flex  flex-col gap-2  mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 {t("profile.alerts_information.enable_email_alerts")}
               </Label>
-              <Switch
-                checked={props.values.enable_email_alerts}
-                onCheckedChange={(value) => {
+              <Select
+                value={props.values.enable_email_alerts}
+                onValueChange={(value) => {
                   props.setFieldValue("enable_email_alerts", value);
                 }}
-              />
+              >
+                <SelectTrigger>
+                  <SelectValue
+                    placeholder={t("accounts_table.enable_email_alerts")}
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value={"Yes"}>{t("common.yes")}</SelectItem>
+                    <SelectItem value={"No"}>{t("common.no")}</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
-          </div>
-          <div className="grid grid-cols-1 mt-3 gap-x-5">
-            <div className="flex gap-2 mt-3">
+            <div className="flex flex-col gap-2 mt-3">
               <Label className="text-sm text-[#090F0D] font-medium">
                 {t("profile.alerts_information.enable_sms_alerts")}
               </Label>
-              <Switch
-                checked={props.values.enable_sms_alerts}
-                onCheckedChange={(value) => {
+              <Select
+                value={props.values.enable_sms_alerts}
+                onValueChange={(value) => {
                   props.setFieldValue("enable_sms_alerts", value);
                 }}
-              />
+              >
+                <SelectTrigger>
+                  <SelectValue
+                    placeholder={t("accounts_table.enable_sms_alerts")}
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value={"Yes"}>{t("common.yes")}</SelectItem>
+                    <SelectItem value={"No"}>{t("common.no")}</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 

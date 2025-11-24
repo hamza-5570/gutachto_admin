@@ -19,8 +19,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                   {t("regiser_case.step6Other.mail_correspondence")}
                 </h3>
                 <Button type="button" onClick={() => push("")}>
-                  <CirclePlus />
-                  {t("regiser_case.step6Other.add_mail")}
+                  <CirclePlus size="icon" variant="outline" />
                 </Button>
               </div>
 
@@ -35,7 +34,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                     placeholder={t("regiser_case.step6Other.placeholders.mail")}
                   />
                   <Button type="button" onClick={() => remove(i)}>
-                    <Trash2 /> {t("regiser_case.step6Other.remove")}
+                    <Trash2 size="icon" variant="outline" />
                   </Button>
                 </div>
               ))}

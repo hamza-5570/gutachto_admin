@@ -43,9 +43,9 @@
     }
   },
   "navigation": {
-    "accounts": "All Accounts",
-    "all case": "All Cases",
-    "profile": "My Profile"
+    "accounts": "Users",
+    "all case": "Cases",
+    "profile": "Profile"
   },
   "language_selector": {
     "en": "English",
@@ -303,6 +303,10 @@
         "police_file": "Enter police file",
         "notes": "Enter notes"
       }
+    },
+    "success_message": {
+      "case_created": "Case created successfully",
+      "updated_case": "Case updated successfully"
     }
   },
   "delete_case_model": {

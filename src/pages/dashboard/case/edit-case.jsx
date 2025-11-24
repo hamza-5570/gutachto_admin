@@ -111,14 +111,13 @@ export default function EidtCase() {
         enableReinitialize
         onSubmit={async (values, { setSubmitting }) => {
           // handle submit (API call etc.)
-          console.log("Submitting values:", values);
           updateCaseDetails({
             case_id: id,
             data: values,
           })
             .unwrap()
             .then((result) => {
-              toast.success(result.message);
+              toast.success(t("regiser_case.success_message.updated_case"));
               navigate("/dashboard/all-case");
             })
             .catch((error) => {

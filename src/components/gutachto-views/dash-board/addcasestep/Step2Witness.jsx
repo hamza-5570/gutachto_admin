@@ -26,10 +26,10 @@ export default function Step2Witness({
             <div>
               <Button
                 type="button"
-                variant="default"
+                size="icon"
                 onClick={() => arrayHelpers.push(emptyWitness())}
               >
-                <CirclePlus /> {t("regiser_case.step2witness.add_witness")}
+                <CirclePlus size={20} />
               </Button>
             </div>
           )}
@@ -68,12 +68,10 @@ export default function Step2Witness({
                   <div className="flex flex-col gap-2">
                     <Button
                       type="button"
-                      variant="default"
-                      className="w-fit"
+                      size="icon"
                       onClick={() => remove(idx)}
                     >
                       <Trash2 />
-                      {t("regiser_case.step2witness.remove")}
                     </Button>
                   </div>
                 </div>

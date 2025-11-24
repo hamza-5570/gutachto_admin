@@ -43,9 +43,9 @@
     }
   },
   "navigation": {
-    "accounts": "Alle Accounts",
-    "all case": "Alle Cases",
-    "profile": "Mijn Profiel"
+    "accounts": "Gebruikers",
+    "all case": "Zaken",
+    "profile": "Profiel"
   },
   "language_selector": {
     "en": "Engels",
@@ -299,6 +299,10 @@
         "police_file": "Voer politiedossier in",
         "notes": "Voer notities in"
       }
+    },
+    "success_message": {
+      "case_created": "Zaak succesvol aangemaakt",
+      "updated_case": "Zaak succesvol bijgewerkt"
     }
   },
   "delete_case_model": {
