@@ -52,7 +52,11 @@ export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
   let result = await rawBaseQuery(args, api, extraOptions);
 
   // If unauthorized → try refresh
-  if (result.error?.status === 401) {
+  if (
+    result.error?.status === 401 ||
+    result.error?.status === 403 ||
+    result.error?.status === 500
+  ) {
     console.log("🔐 Token expired → refreshing...");
 
     const newToken = await refreshToken();
