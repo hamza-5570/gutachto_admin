@@ -50,12 +50,13 @@ const rawBaseQuery = fetchBaseQuery({
 // --------------------
 export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
   let result = await rawBaseQuery(args, api, extraOptions);
+  console.log("result", result);
 
   // If unauthorized → try refresh
   if (
     result.error?.status === 401 ||
     result.error?.status === 403 ||
-    result.error?.status === 500
+    result.error?.status == "FETCH_ERROR"
   ) {
     console.log("🔐 Token expired → refreshing...");
 
