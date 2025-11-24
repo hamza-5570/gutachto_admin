@@ -50,7 +50,6 @@ const rawBaseQuery = fetchBaseQuery({
 // --------------------
 export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
   let result = await rawBaseQuery(args, api, extraOptions);
-  console.log("result", result);
 
   // If unauthorized → try refresh
   if (

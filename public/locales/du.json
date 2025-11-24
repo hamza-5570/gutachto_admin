@@ -302,7 +302,8 @@
     },
     "success_message": {
       "case_created": "Zaak succesvol aangemaakt",
-      "updated_case": "Zaak succesvol bijgewerkt"
+      "updated_case": "Zaak succesvol bijgewerkt",
+      "profile_updated": "Profiel succesvol bijgewerkt"
     }
   },
   "delete_case_model": {

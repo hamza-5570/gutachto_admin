@@ -40,7 +40,7 @@ export default function AccountForm() {
         user_id: data?._id,
       }).unwrap();
       if (response) {
-        toast.success(response.message);
+        toast.success(t("regiser_case.success_message.profile_updated"));
         const userData = await GetUserProfile().unwrap();
         localStorage.setItem("user", JSON.stringify(userData));
         refetch();

@@ -306,7 +306,8 @@
     },
     "success_message": {
       "case_created": "Case created successfully",
-      "updated_case": "Case updated successfully"
+      "updated_case": "Case updated successfully",
+      "profile_updated": "Profile updated successfully"
     }
   },
   "delete_case_model": {

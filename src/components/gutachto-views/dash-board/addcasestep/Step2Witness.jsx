@@ -39,7 +39,7 @@ export default function Step2Witness({
       <FieldArray name="witness">
         {({ remove }) => (
           <div>
-            {values.witness.map((w, idx) => (
+            {values?.witness?.map((w, idx) => (
               <>
                 <Label>. {idx}</Label>
                 <div
