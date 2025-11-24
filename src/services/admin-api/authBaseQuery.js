@@ -1,23 +1,9 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { jwtDecode } from "jwt-decode";
 
 const BASE_URL = import.meta.env.VITE_SOME_BASE_URL;
 
 // --------------------
-// Check if token expired
-// --------------------
-const isTokenExpired = (token) => {
-  if (!token) return true;
-  try {
-    const { exp } = jwtDecode(token);
-    return !exp || Date.now() >= exp * 1000;
-  } catch {
-    return true;
-  }
-};
-
-// --------------------
-// Refresh token
+// Refresh token function
 // --------------------
 const refreshToken = async () => {
   const refresh_token = localStorage.getItem("refresh_token");
@@ -33,51 +19,57 @@ const refreshToken = async () => {
     if (!response.ok) return null;
 
     const data = await response.json();
+
     if (!data.token) return null;
 
+    // Save new tokens
     localStorage.setItem("token", data.token);
     if (data.refresh_token)
       localStorage.setItem("refresh_token", data.refresh_token);
 
     return data.token;
-  } catch (error) {
-    console.error("Refresh token failed:", error);
+  } catch {
     return null;
   }
 };
 
 // --------------------
-// Base query with token handling
+// Base Query
 // --------------------
 const rawBaseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
-  prepareHeaders: async (headers) => {
-    let token = localStorage.getItem("token");
-
-    // Refresh token if missing or expired
-    if (!token || isTokenExpired(token)) {
-      token = await refreshToken();
-    }
-
+  prepareHeaders: (headers) => {
+    const token = localStorage.getItem("token");
     if (token) headers.set("Authorization", `Bearer ${token}`);
     return headers;
   },
 });
 
 // --------------------
-// Wrapper: redirect if unauthorized
+// Base Query with Auto Refresh
 // --------------------
 export const baseQueryWithTokenCheck = async (args, api, extraOptions) => {
-  const result = await rawBaseQuery(args, api, extraOptions);
-  console.log("result.error", result.error);
+  let result = await rawBaseQuery(args, api, extraOptions);
 
-  if (result.error && [401, 403].includes(result.error.status)) {
-    // Clear stored tokens
-    localStorage.removeItem("token");
-    localStorage.removeItem("refresh_token");
+  // If unauthorized → try refresh
+  if (result.error?.status === 401) {
+    console.log("🔐 Token expired → refreshing...");
 
-    // Redirect to login
-    window.location.href = "/login";
+    const newToken = await refreshToken();
+
+    if (newToken) {
+      console.log("🔄 Refresh successful → retrying request");
+
+      // Retry original request with new token
+      result = await rawBaseQuery(args, api, extraOptions);
+    } else {
+      console.log("❌ Refresh failed → logging out");
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("refresh_token");
+
+      window.location.href = "/login";
+    }
   }
 
   return result;
