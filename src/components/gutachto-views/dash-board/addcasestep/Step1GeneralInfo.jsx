@@ -61,7 +61,6 @@ export default function Step1GeneralInfo({
   handleBlur,
 }) {
   const { t } = useTranslation();
-  console.log("values", values);
   const { setFieldValue } = useFormikContext();
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

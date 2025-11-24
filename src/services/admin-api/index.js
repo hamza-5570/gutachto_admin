@@ -66,7 +66,6 @@ const accountsApi = createApi({
 
 export const {
   useGetCasesQuery,
-
   useDeleteCaseMutation,
   useGetCaseByIdQuery,
   useUpdateCaseMutation,

@@ -54,6 +54,13 @@ const accountsApi = createApi({
       }),
       invalidatesTags: ["Accounts"],
     }),
+    updateAdmin: builder.mutation({
+      query: ({ body, user_id }) => ({
+        url: `/admin/update-user/${user_id}`,
+        method: "PUT",
+        body: body,
+      }),
+    }),
   }),
 });
 
@@ -65,6 +72,7 @@ export const {
   useBlockUserMutation,
   useUnblockUserMutation,
   useCreateAccountMutation,
+  useUpdateAdminMutation,
   middleware: accountsApiMiddleware,
   reducerPath: accountsApiReducerPath,
   reducer: accountsApiReducer,

@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/button";
 import {
   useGetUserProfileQuery,
   useLazyGetUserProfileQuery,
-  useUpdateUserMutation,
 } from "@/services/auth-api";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { useUpdateAdminMutation } from "@/services/admin-api/accountsApi";
 
 export default function AccountForm() {
-  const [UpdateUser, { isLoading }] = useUpdateUserMutation();
+  const [updateAdmin, { isLoading }] = useUpdateAdminMutation();
   // eslint-disable-next-line no-unused-vars
   const [GetUserProfile, { isLoading: userLoading }] =
     useLazyGetUserProfileQuery();
@@ -22,7 +22,10 @@ export default function AccountForm() {
   const { t } = useTranslation();
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
-      const response = await UpdateUser(values).unwrap();
+      const response = await updateAdmin({
+        body: values,
+        user_id: data?._id,
+      }).unwrap();
       if (response) {
         toast.success(response.message);
         const userData = await GetUserProfile().unwrap();

@@ -44,6 +44,7 @@ const authApi = createApi({
       }),
       transformResponse: (response) => response,
     }),
+
     forgetPassword: builder.mutation({
       query: (data) => ({
         url: `/auth/request-password-reset/`,
