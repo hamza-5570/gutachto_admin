@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PiQuestionBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -42,6 +42,21 @@ export default function SideBar({ open, setOpen }) {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1300) {
+        setIsOpen(false);
+      }
+    };
+
+    if (window.innerWidth >= 1301) {
+      setIsOpen(true);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleDrawer = () => {
     setOpen(!open);
   };
@@ -60,7 +75,7 @@ export default function SideBar({ open, setOpen }) {
         width={30}
         height={30}
         onClick={handleDrawer}
-        className={`absolute top-5 w-12 cursor-pointer lg:hidden block ${
+        className={`absolute top-5 w-12 cursor-pointer xl:hidden block ${
           open ? "-right-0  " : "left-1/2 -translate-x-1/2 rotate-180"
         }`}
       />
