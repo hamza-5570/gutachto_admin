@@ -1,397 +1,421 @@
 {
   "login": {
-    "wellcome": "Welkom",
-    "email_address": "E-mailadres",
-    "password": "Wachtwoord",
-    "login": "Inloggen",
-    "forgot_password": "Wachtwoord vergeten",
-    "forgot_password_text": "Voer het e-mailadres in dat je hebt gebruikt om je account aan te maken, zodat we je instructies kunnen sturen om je wachtwoord te resetten.",
-    "email_placeholder": "Voer e-mailadres in",
-    "password_placeholder": "Voer wachtwoord in",
-    "send": "Verzenden",
-    "back_to_login": "Terug naar inloggen"
+    "wellcome": "Willkommen",
+    "email_address": "E-Mail-Adresse",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "forgot_password": "Passwort vergessen",
+    "forgot_password_text": "Gib die E-Mail-Adresse ein, mit der du dein Konto erstellt hast, damit wir dir Anweisingen zum Zurücksetzen deines Passworts senden können.",
+    "email_placeholder": "E-Mail-Adresse eingeben",
+    "password_placeholder": "Passwort eingeben",
+    "send": "Senden",
+    "back_to_login": "Zurück zum Login"
   },
   "profile": {
-    "settings": "Instellingen",
-    "logout": "Uitloggen",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
     "account_information": {
-      "title": "Accountinformatie",
+      "title": "Kontoinformationen",
       "id": "ID",
-      "firstname": "Voornaam",
-      "lastname": "Achternaam",
-      "address": "Adres",
-      "phone": "Telefoon",
-      "username": "Gebruikersnaam",
-      "save_changes": "Wijzigingen opslaan",
-      "change_password": "Wachtwoord wijzigen",
-      "old_password": "Oud wachtwoord",
-      "new_password": "Nieuw wachtwoord",
-      "danager_zone": "Danager Zone",
-      "danager_text": "Als je account verwijderd, is er geen terugkeer mogelijk. Zeker weten?",
-      "password": "Wachtwoord",
-      "delete_account": "Account verwijderen",
-      "firstname_placeholder": "Voer voornaam in",
-      "lastname_placeholder": "Voer achternaam in",
-      "email_placeholder": "Voer e-mail in",
-      "username_placeolder": "Voer gebruikersnaam in",
-      "address_placeholder": "Voer adres in"
+      "firstname": "Vorname",
+      "lastname": "Nachname",
+      "address": "Adresse",
+      "phone": "Telefon",
+      "username": "Benutzername",
+      "save_changes": "Änderungen speichern",
+      "change_password": "Passwort ändern",
+      "old_password": "Altes Passwort",
+      "new_password": "Neues Passwort",
+      "danager_zone": "Gefahrenzone",
+      "danager_text": "Wenn du dein Konto löschst, gibt es kein Zurück. Bist du sicher?",
+      "password": "Passwort",
+      "delete_account": "Konto löschen",
+      "firstname_placeholder": "Vorname eingeben",
+      "lastname_placeholder": "Nachname eingeben",
+      "email_placeholder": "E-Mail eingeben",
+      "username_placeolder": "Benutzername eingeben",
+      "address_placeholder": "Adresse eingeben"
     },
     "alerts_information": {
-      "title": "Meldingsinformatie",
-      "enable_email_alerts": "E-mailmeldingen inschakelen",
-      "enable_sms_alerts": "Sms-meldingen inschakelen"
+      "title": "Benachrichtigungsinformationen",
+      "enable_email_alerts": "E-Mail-Benachrichtigungen aktivieren",
+      "enable_sms_alerts": "SMS-Benachrichtigungen aktivieren"
     }
   },
   "navigation": {
-    "accounts": "Gebruikers",
-    "all case": "Zaken",
-    "profile": "Profiel"
+    "accounts": "Benutzer",
+    "all case": "Fälle",
+    "profile": "Profil",
+    "home": "Armaturenbrett"
   },
   "language_selector": {
-    "en": "Engels",
-    "du": "Nederlands",
-    "placeholder": "Taal",
-    "label": "Selecteer Taal"
+    "en": "Englisch",
+    "du": "Niederländisch",
+    "placeholder": "Sprache",
+    "label": "Sprache auswählen"
   },
   "seach_input": {
-    "placeholder": "Zoeken naar alles..."
+    "placeholder": "Nach allem suchen..."
   },
-  "register_account": "Account Registreren",
+  "dashboard": {
+    "openCases": "Offene Fälle",
+    "openCasesLabel": "aktuell offen",
+    "newCasesThisMonth": "Neue Fälle in diesem Monat",
+    "newCasesLabel": "neu in diesem Monat",
+    "casesByStatus": "Fälle nach Status",
+    "noStatusData": "Keine Statusdaten verfügbar",
+    "paymentsOverview": "Zahlungsübersicht",
+    "totalPaid": "Bereits bezahlt",
+    "totalUnpaid": "Noch offen"
+  },
+  "statuses": {
+    "case_created": "Fall erstellt",
+    "data_questions": "Datenfragen",
+    "updated": "Aktualisiert",
+    "data_answers": "Datenantworten",
+    "cost_calculation_commisssioned": "Kostenberechnung beauftragt",
+    "cost_calculation_finished": "Kostenberechnung abgeschlossen",
+    "sent_to_lawyer": "An Anwalt gesendet",
+    "lawyer_questions": "Anwaltliche Fragen",
+    "change_invoice": "Rechnung ändern",
+    "payment": "Zahlung"
+  },
+  "register_account": "Konto registrieren",
   "accounts_table": {
-    "name": "Naam",
-    "enable_email_alerts": "E-mail Alerts inschakelen",
-    "enable_sms_alerts": "SMS Alerts inschakelen",
-    "phone": "Telefoon",
+    "name": "Name",
+    "enable_email_alerts": "E-Mail-Benachrichtigungen aktivieren",
+    "enable_sms_alerts": "SMS-Benachrichtigungen aktivieren",
+    "phone": "Telefon",
     "admin": "Admin",
-    "action": "Actie",
-    "block": "Blockeren",
-    "unblock": "Unblockeren",
-    "delete": "Verwijderen",
-    "view_detail": "Detail bekijken"
+    "action": "Aktion",
+    "block": "Blockieren",
+    "unblock": "Entblocken",
+    "delete": "Löschen",
+    "view_detail": "Details ansehen"
   },
   "register_account_form": {
-    "firstname": "Voornaam",
-    "firstname_placeholder": "Voer voornaam in",
-    "lastname": "Achternaam",
-    "lastname_placeholder": "Voer achternaam in",
-    "email": "E-mail",
-    "email_placeholder": "Voer e-mail in",
-    "phone": "Telefoon",
-    "phone_placeholder": "Voer telefoonnummer in",
-    "company_name": "Bedrijfsnaam",
-    "company_name_placeholder": "Voer bedrijfsnaam in",
-    "corporation_contract": "Bedrijfsovereenkomst",
-    "corporation_contract_placeholder": "Voer bedrijfsovereenkomst in",
-    "address": "Adres",
-    "address_placeholder": "Voer adres in",
-    "password": "Wachtwoord",
-    "password_placeholder": "Voer wachtwoord in",
-    "create_account": "Account aanmaken",
-    "loading": "Laden...",
+    "firstname": "Vorname",
+    "firstname_placeholder": "Vorname eingeben",
+    "lastname": "Nachname",
+    "lastname_placeholder": "Nachname eingeben",
+    "email": "E-Mail",
+    "email_placeholder": "E-Mail eingeben",
+    "phone": "Telefon",
+    "phone_placeholder": "Telefonnummer eingeben",
+    "company_name": "Firmenname",
+    "company_name_placeholder": "Firmenname eingeben",
+    "corporation_contract": "Unternehmensvertrag",
+    "corporation_contract_placeholder": "Unternehmensvertrag eingeben",
+    "address": "Adresse",
+    "address_placeholder": "Adresse eingeben",
+    "password": "Passwort",
+    "password_placeholder": "Passwort eingeben",
+    "create_account": "Konto erstellen",
+    "loading": "Wird geladen...",
     "hide": "Verbergen",
-    "show": "Toon",
+    "show": "Anzeigen",
     "errors": {
-      "account_type": "Account type is vereist",
-      "firstname": "Voornaam is vereist",
-      "lastname": "Achternaam is vereist",
-      "invalid_email": "Ongeldig e-mailadres",
-      "email": "E-mail is vereist",
-      "password_length": "Wachtwoord moet minimaal 6 tekens bevatten",
-      "password": "Wachtwoord is vereist",
-      "phone_valid": "Voer een geldig telefoonnummer in",
-      "phone": "Telefoonnummer is vereist",
-      "address": "Adres is vereist",
+      "account_type": "Kontotyp ist erforderlich",
+      "firstname": "Vorname ist erforderlich",
+      "lastname": "Nachname ist erforderlich",
+      "invalid_email": "Ungültige E-Mail-Adresse",
+      "email": "E-Mail ist erforderlich",
+      "password_length": "Passwort muss mindestens 6 Zeichen lang sein",
+      "password": "Passwort ist erforderlich",
+      "phone_valid": "Bitte eine gültige Telefonnummer eingeben",
+      "phone": "Telefonnummer ist erforderlich",
+      "address": "Adresse ist erforderlich",
       "meta_data": {
-        "company_name": "Bedrijfsnaam is vereist",
-        "corporation_contract": "Ongeldige URL"
+        "company_name": "Firmenname ist erforderlich",
+        "corporation_contract": "Ungültige URL"
       }
     },
     "toast": {
-      "success": "Account is aangemaakt",
-      "error": "Er is iets fout gegaan"
+      "success": "Konto wurde erstellt",
+      "error": "Etwas ist schiefgelaufen"
     }
   },
   "delete_model": {
-    "title": "Account Verwijderen",
-    "description": "Weet je zeker dat je dit account wilt verwijderen?",
-    "cancel": "Annuleren",
-    "delete": "Verwijderen"
+    "title": "Konto löschen",
+    "description": "Bist du sicher, dass du dieses Konto löschen möchtest?",
+    "cancel": "Abbrechen",
+    "delete": "Löschen"
   },
   "role_status_information": {
-    "title": "Rol & Status Informatie",
+    "title": "Rollen- & Statusinformationen",
     "admin": "Admin",
-    "active": "Actief",
-    "login_attempt": "Login Attempt"
+    "active": "Aktiv",
+    "login_attempt": "Login-Versuch"
   },
 
   "account_detail": {
     "breadcrumbs": {
-      "accounts": "Accounts",
-      "account": "Account"
+      "accounts": "Konten",
+      "account": "Konto"
     },
     "account_information": {
-      "title": "Accountinformatie",
+      "title": "Kontoinformationen",
       "id": "ID",
-      "firstname": "Voornaam",
-      "lastname": "Achternaam",
-      "address": "Adres",
-      "phone": "Telefoon",
-      "username": "Gebruikersnaam"
+      "firstname": "Vorname",
+      "lastname": "Nachname",
+      "address": "Adresse",
+      "phone": "Telefon",
+      "username": "Benutzername"
     },
     "alerts_information": {
-      "title": "Alertinformatie",
-      "enable_email_alerts": "E-mailmeldingen inschakelen",
-      "enable_sms_alerts": "Sms-meldingen inschakelen"
+      "title": "Benachrichtigungsinformationen",
+      "enable_email_alerts": "E-Mail-Benachrichtigungen aktivieren",
+      "enable_sms_alerts": "SMS-Benachrichtigungen aktivieren"
     },
     "role_status_information": {
-      "title": "Rol & Statusinformatie",
-      "admin": "Beheerder",
-      "active": "Actief",
-      "login_attempt": "Inlogpoging"
+      "title": "Rollen- & Statusinformationen",
+      "admin": "Administrator",
+      "active": "Aktiv",
+      "login_attempt": "Login-Versuch"
     }
   },
   "case_table": {
-    "id": "Account Id",
-    "accident_location": "Accident Locatie",
-    "police_file": "Politiebestand",
+    "id": "Konto-ID",
+    "accident_location": "Unfallort",
+    "police_file": "Polizeibericht",
     "status": "Status",
-    "internal_inspector": "Interne Inspecteur",
-    "action": "Actie",
-    "no_accounts": "Geen accounts gevonden",
-    "register_case": "Case Registreren",
-    "edit": "Bewerken",
-    "delete": "Verwijderen",
-    "view_detail": "Details bekijken"
+    "internal_inspector": "Interner Inspektor",
+    "action": "Aktion",
+    "no_accounts": "Keine Konten gefunden",
+    "register_case": "Fall registrieren",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "view_detail": "Details ansehen"
   },
   "regiser_case": {
     "steps": {
-      "genral_info": "Algemene informatie",
-      "witness": "Getuige",
-      "accident": "Ongeluk",
-      "damage": "Schade",
-      "report_invoice": "Rapport & Factuur",
-      "other": "Overig"
+      "genral_info": "Allgemeine Informationen",
+      "witness": "Zeuge",
+      "accident": "Unfall",
+      "damage": "Schaden",
+      "report_invoice": "Bericht & Rechnung",
+      "other": "Sonstiges"
     },
     "step1generalinfo": {
-      "id": "Account Id",
-      "person_in_charge": "Verantwoordelijke",
-      "internal_inspector": "Interne inspecteur",
-      "car_repair_shop": "Autogarage",
+      "id": "Konto-ID",
+      "person_in_charge": "Verantwortlicher",
+      "internal_inspector": "Interner Inspektor",
+      "car_repair_shop": "Autowerkstatt",
       "status": "Status",
-      "loading": "Laden...",
-      "next": "Volgende",
+      "loading": "Wird geladen...",
+      "next": "Weiter",
       "errors": {
-        "account_id": "Account id is vereist",
-        "start_date": "Startdatum is vereist",
-        "date_of_last_change": "Datum laatste wijziging is vereist",
-        "person_in_charge": "Verantwoordelijke is vereist",
-        "internal_inspector": "Interne inspecteur is vereist",
-        "car_repair_shop": "Autogarage is vereist",
-        "status": "Status is vereist"
+        "account_id": "Konto-ID ist erforderlich",
+        "start_date": "Startdatum ist erforderlich",
+        "date_of_last_change": "Datum der letzten Änderung ist erforderlich",
+        "person_in_charge": "Verantwortlicher ist erforderlich",
+        "internal_inspector": "Interner Inspektor ist erforderlich",
+        "car_repair_shop": "Autowerkstatt ist erforderlich",
+        "status": "Status ist erforderlich"
       },
       "placeholders": {
-        "person_in_charge": "Enter verantwoordelijke",
-        "internal_inspector": "Enter interne inspecteur",
-        "car_repair_shop": "Enter autogarage",
-        "status": "Enter status"
+        "person_in_charge": "Verantwortlichen eingeben",
+        "internal_inspector": "Internen Inspektor eingeben",
+        "car_repair_shop": "Autowerkstatt eingeben",
+        "status": "Status eingeben"
       }
     },
     "step2witness": {
-      "witness": "Getuigen",
-      "add_witness": "Getuige toevoegen",
-      "loading": "Laden...",
-      "remove": "Verwijderen",
-      "next": "Volgende",
-      "previous": "Vorige",
+      "witness": "Zeugen",
+      "add_witness": "Zeuge hinzufügen",
+      "loading": "Wird geladen...",
+      "remove": "Entfernen",
+      "next": "Weiter",
+      "previous": "Zurück",
       "errors": {
-        "witness": "Getuige is vereist"
+        "witness": "Zeuge ist erforderlich"
       },
       "placeholders": {
-        "address": "Enter getuige"
+        "address": "Zeugen eingeben"
       }
     },
     "step3Accident": {
-      "accident": "Ongeval",
+      "accident": "Unfall",
       "date": "Datum",
-      "location": "Locatie",
-      "vehicle_id": "Voertuig ID",
-      "vehicle_opponent_license_plate": "Kenteken van tegenpartij",
-      "accident_description": "Beschrijving van het ongeval",
-      "vehicle_images": "Voertuigafbeeldingen",
-      "add_image": "Afbeelding toevoegen",
-      "remove": "Verwijderen",
-      "loading": "Laden...",
-      "next": "Volgende",
-      "previous": "Vorige",
+      "location": "Ort",
+      "vehicle_id": "Fahrzeug-ID",
+      "vehicle_opponent_license_plate": "Kennzeichen der Gegenpartei",
+      "accident_description": "Unfallbeschreibung",
+      "vehicle_images": "Fahrzeugbilder",
+      "add_image": "Bild hinzufügen",
+      "remove": "Entfernen",
+      "loading": "Wird geladen...",
+      "next": "Weiter",
+      "previous": "Zurück",
       "errors": {
-        "date": "Datum is vereist",
-        "location": "Locatie is vereist",
-        "vehicle_images": "Minstens één afbeelding is vereist"
+        "date": "Datum ist erforderlich",
+        "location": "Ort ist erforderlich",
+        "vehicle_images": "Mindestens ein Bild ist erforderlich"
       },
       "placeholders": {
-        "date": "Voer datum in",
-        "location": "Voer locatie in",
-        "vehicle_opponent_license_plate": "Voer kenteken van tegenpartij in",
-        "accident_description": "Voer beschrijving van het ongeval in",
-        "vehicle_id": "Voer voertuig-ID in"
+        "date": "Datum eingeben",
+        "location": "Ort eingeben",
+        "vehicle_opponent_license_plate": "Kennzeichen der Gegenpartei eingeben",
+        "accident_description": "Unfallbeschreibung eingeben",
+        "vehicle_id": "Fahrzeug-ID eingeben"
       }
     },
     "step4Damage": {
-      "damage": "Schade",
-      "description": "Beschrijving",
-      "other": "Overig",
+      "damage": "Schaden",
+      "description": "Beschreibung",
+      "other": "Sonstiges",
       "status": "Status",
-      "rear_impact": "Achteraanrijding",
-      "lane_change": "Rijstrookwisseling",
-      "right_of_way": "Voorrangsverlies",
-      "parking_lot": "Parkeerplaats",
+      "rear_impact": "Auffahrunfall",
+      "lane_change": "Spurwechsel",
+      "right_of_way": "Vorfahrtmissachtung",
+      "parking_lot": "Parkplatz",
       "errors": {},
       "placeholders": {
-        "damage": "Voer schade in",
-        "description": "Voer beschrijving in",
-        "other": "Voer anders in",
-        "status": "Voer status in"
+        "damage": "Schaden eingeben",
+        "description": "Beschreibung eingeben",
+        "other": "Sonstiges eingeben",
+        "status": "Status eingeben"
       }
     },
     "step5Report": {
-      "report": "Rapport",
-      "dismantling_fee": "Demontagekosten",
-      "total_car_damage_sum": "Totale autoschade",
-      "inspector_fee": "Inspectorkosten",
-      "lawyer_fee": "Advocaatkosten",
-      "invoice": "Factuur",
-      "total_invoiced_amount": "Totaal gefactureerd bedrag",
-      "open_sum": "Openstaand bedrag",
-      "paid_sum": "Betaald bedrag",
+      "report": "Bericht",
+      "dismantling_fee": "Demontagegebühr",
+      "total_car_damage_sum": "Gesamter Autoschaden",
+      "inspector_fee": "Inspektionsgebühr",
+      "lawyer_fee": "Anwaltsgebühr",
+      "invoice": "Rechnung",
+      "total_invoiced_amount": "Gesamtbetrag der Rechnung",
+      "open_sum": "Offener Betrag",
+      "paid_sum": "Bezahlter Betrag",
       "errors": {
-        "dismantling_fee": "Demontagekosten zijn vereist",
-        "total_car_damage_sum": "Totale autoschade is vereist",
-        "lawyer_fee": "Advocaatkosten zijn vereist",
-        "inspector_fee": "Inspecteurskosten zijn vereist",
-        "invoice": "Factuur is vereist",
-        "total_invoiced_amount": "Totaal gefactureerd bedrag is vereist",
-        "open_sum": "Openstaand bedrag is vereist",
-        "paid_sum": "Betaald bedrag is vereist"
+        "dismantling_fee": "Demontagegebühr ist erforderlich",
+        "total_car_damage_sum": "Gesamter Autoschaden ist erforderlich",
+        "lawyer_fee": "Anwaltsgebühr ist erforderlich",
+        "inspector_fee": "Inspektionsgebühr ist erforderlich",
+        "invoice": "Rechnung ist erforderlich",
+        "total_invoiced_amount": "Gesamtbetrag ist erforderlich",
+        "open_sum": "Offener Betrag ist erforderlich",
+        "paid_sum": "Bezahlter Betrag ist erforderlich"
       },
       "placeholders": {
-        "report": "Voer rapport in",
-        "dismantling_fee": "Voer demontagekosten in",
-        "total_car_damage_sum": "Voer totale autoschade in",
-        "lawyer_fee": "Voer advocaatkosten in",
-        "inspector_fee": "Voer inspecteurskosten in",
-        "invoice": "Voer factuur in",
-        "total_invoiced_amount": "Voer totaal gefactureerd bedrag in",
-        "open_sum": "Voer openstaand bedrag in",
-        "paid_sum": "Voer betaald bedrag in"
+        "report": "Bericht eingeben",
+        "dismantling_fee": "Demontagegebühr eingeben",
+        "total_car_damage_sum": "Gesamten Autoschaden eingeben",
+        "lawyer_fee": "Anwaltsgebühr eingeben",
+        "inspector_fee": "Inspektionsgebühr eingeben",
+        "invoice": "Rechnung eingeben",
+        "total_invoiced_amount": "Gesamtbetrag eingeben",
+        "open_sum": "Offenen Betrag eingeben",
+        "paid_sum": "Bezahlten Betrag eingeben"
       }
     },
     "step6Other": {
-      "other": "Overig",
-      "police_file": "Politiedossier",
-      "notes": "Notitie",
-      "add_mail": "Mail toevoegen",
-      "remove": "Verwijderen",
-      "mail_correspondence": "Postcorrespondentie",
-      "save": "Opslaan",
+      "other": "Sonstiges",
+      "police_file": "Polizeiakten",
+      "notes": "Notizen",
+      "add_mail": "Mail hinzufügen",
+      "remove": "Entfernen",
+      "mail_correspondence": "Mail-Korrespondenz",
+      "save": "Speichern",
       "errors": {},
       "placeholders": {
-        "mail": "Voer correspondentiemail in",
-        "police_file": "Voer politiedossier in",
-        "notes": "Voer notities in"
+        "mail": "Korrespondenz-Mail eingeben",
+        "police_file": "Polizeiakten eingeben",
+        "notes": "Notizen eingeben"
       }
     },
     "success_message": {
-      "case_created": "Zaak succesvol aangemaakt",
-      "updated_case": "Zaak succesvol bijgewerkt",
-      "profile_updated": "Profiel succesvol bijgewerkt"
+      "case_created": "Fall erfolgreich erstellt",
+      "updated_case": "Fall erfolgreich aktualisiert",
+      "profile_updated": "Profil erfolgreich aktualisiert"
     }
   },
   "delete_case_model": {
-    "title": "Zaak verwijderen",
-    "description": "Deze zaak wordt verwijderd.",
-    "cancel": "Annuleren",
-    "delete": "Verwijderen",
-    "deleting": "Bezig met verwijderen..."
+    "title": "Fall löschen",
+    "description": "Dieser Fall wird gelöscht.",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "deleting": "Wird gelöscht..."
   },
   "case_detail": {
-    "cases": "Zaken",
-    "case": "Zaak",
+    "cases": "Fälle",
+    "case": "Fall",
     "accident_information": {
-      "title": "Ongevalsinformatie",
+      "title": "Unfallinformationen",
       "id": "ID",
-      "car_repair_shop": "Autogarage",
-      "account_id": "Account ID",
+      "car_repair_shop": "Autowerkstatt",
+      "account_id": "Konto-ID",
       "date": "Datum",
-      "location": "Locatie",
-      "vehicle_images": "Voertuigafbeeldingen",
-      "vehicle_id": "Voertuig ID",
-      "vehicle_opponent_license_plate": "Kenteken tegenpartij",
-      "accident_description": "Beschrijving van het ongeval"
+      "location": "Ort",
+      "vehicle_images": "Fahrzeugbilder",
+      "vehicle_id": "Fahrzeug-ID",
+      "vehicle_opponent_license_plate": "Kennzeichen der Gegenpartei",
+      "accident_description": "Unfallbeschreibung"
     },
     "status_information": {
-      "title": "Statusinformatie",
+      "title": "Statusinformationen",
       "status": "Status"
     },
     "damage_information": {
-      "title": "Schade-informatie",
-      "rear_impact": "Achteraanrijding",
-      "lane_change": "Wisselen van rijstrook",
-      "right_of_way": "Voorrangsfout",
-      "parking_lot": "Parkeerplaats",
-      "other": "Overig",
-      "description": "Beschrijving",
-      "diagonal_view": "Diagonale weergave",
-      "view_of_damage": "Schadeweergave",
-      "prior_damage": "Eerdere schade",
-      "tires": "Banden",
+      "title": "Schadeninformationen",
+      "rear_impact": "Auffahrunfall",
+      "lane_change": "Spurwechsel",
+      "right_of_way": "Vorfahrtmissachtung",
+      "parking_lot": "Parkplatz",
+      "other": "Sonstiges",
+      "description": "Beschreibung",
+      "diagonal_view": "Diagonale Ansicht",
+      "view_of_damage": "Schadensansicht",
+      "prior_damage": "Vorheriger Schaden",
+      "tires": "Reifen",
       "status": "Status"
     },
     "report_information": {
-      "title": "Rapportinformatie",
-      "dismantling_fee": "Demontagekosten",
-      "person_in_charge": "Verantwoordelijke",
-      "internal_inspector": "Interne inspecteur",
-      "total_car_damage": "Totale autoschade",
-      "inspector_fee": "Inspectiekosten",
-      "lawyer_fee": "Advocaatkosten",
-      "police_file": "Politiedossier"
+      "title": "Berichtsinformationen",
+      "dismantling_fee": "Demontagegebühr",
+      "person_in_charge": "Verantwortlicher",
+      "internal_inspector": "Interner Inspektor",
+      "total_car_damage": "Gesamter Autoschaden",
+      "inspector_fee": "Inspektionsgebühr",
+      "lawyer_fee": "Anwaltsgebühr",
+      "police_file": "Polizeiakten"
     },
     "invoice_information": {
-      "title": "Factuurinformatie",
-      "total_invoiced_amount": "Totaal gefactureerd bedrag",
-      "open_amount": "Openstaand bedrag",
-      "paid_amoount": "Betaald bedrag"
+      "title": "Rechnungsinformationen",
+      "total_invoiced_amount": "Gesamtbetrag der Rechnung",
+      "open_amount": "Offener Betrag",
+      "paid_amoount": "Bezahlter Betrag"
     },
     "witness_information": {
-      "title": "Getuigeninformatie",
+      "title": "Zeugeninformationen",
       "id": "ID",
-      "address": "Adres"
+      "address": "Adresse"
     },
     "mailCorrespondence": {
-      "title": "Postcorrespondentie",
+      "title": "Mail-Korrespondenz",
       "mail": "Mail"
     },
     "note": {
-      "title": "Notitie",
-      "total_invoiced_amount": "Totaal gefactureerd bedrag"
+      "title": "Notiz",
+      "total_invoiced_amount": "Gesamtbetrag der Rechnung"
     }
   },
 
   "upload_img": {
-    "drag_drop": "Sleep je bestand hierheen",
-    "browse_file": "of klik om een bestand te selecteren",
-    "choose_file": "Kies Bestand",
-    "upload": "Uploaden",
-    "images": "Afbeeldingen",
-    "max": "Maximaal"
+    "drag_drop": "Ziehe deine Datei hierher",
+    "browse_file": "oder klicke, um eine Datei auszuwählen",
+    "choose_file": "Datei auswählen",
+    "upload": "Hochladen",
+    "images": "Bilder",
+    "max": "Maximal"
   },
   "crop_model": {
-    "crop_save": "Bijsnijden & Opslaan",
-    "cancel": "Annuleren"
+    "crop_save": "Zuschneiden & Speichern",
+    "cancel": "Abbrechen"
   },
 
   "common": {
     "yes": "Ja",
-    "no": "Nee"
+    "no": "Nein"
   }
 }

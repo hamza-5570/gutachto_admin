@@ -45,7 +45,8 @@
   "navigation": {
     "accounts": "Users",
     "all case": "Cases",
-    "profile": "Profile"
+    "profile": "Profile",
+    "home": "Dashboard"
   },
   "language_selector": {
     "en": "English",
@@ -55,6 +56,29 @@
   },
   "seach_input": {
     "placeholder": "Search for anything..."
+  },
+  "dashboard": {
+    "openCases": "Open Cases",
+    "openCasesLabel": "currently open",
+    "newCasesThisMonth": "New Cases This Month",
+    "newCasesLabel": "new this month",
+    "casesByStatus": "Cases by Status",
+    "noStatusData": "No status data available",
+    "paymentsOverview": "Payments Overview",
+    "totalPaid": "Total Paid",
+    "totalUnpaid": "Total Unpaid"
+  },
+  "statuses": {
+    "case_created": "Case Created",
+    "data_questions": "Data Questions",
+    "updated": "Updated",
+    "data_answers": "Data Answers",
+    "cost_calculation_commisssioned": "Cost Calculation Commissioned",
+    "cost_calculation_finished": "Cost Calculation Finished",
+    "sent_to_lawyer": "Sent to Lawyer",
+    "lawyer_questions": "Lawyer Questions",
+    "change_invoice": "Change Invoice",
+    "payment": "Payment"
   },
   "register_account": "Register Account",
   "accounts_table": {

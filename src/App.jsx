@@ -19,6 +19,7 @@ import {
   ProtectedRouteMiddleware,
   PublicRouteMiddleware,
 } from "./components/auth-gaurd";
+import DashboardWidgets from "./pages/dashboard";
 export default function App() {
   return (
     <Router>
@@ -54,7 +55,9 @@ export default function App() {
           </Route>
           <Route element={<ProtectedRouteMiddleware />}>
             <Route element={<DashboardLayout />}>
+              <Route path="/dashboard/home" element={<DashboardWidgets />} />
               <Route path="/dashboard/accounts" element={<Accounts />} />
+
               <Route
                 path="/dashboard/accounts/:id"
                 element={<AccountDetail />}

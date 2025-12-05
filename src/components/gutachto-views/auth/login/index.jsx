@@ -37,7 +37,7 @@ export default function Login() {
         toast.success("Login successful");
         resetForm();
         setIsLoading(false);
-        navigate("/dashboard/accounts");
+        navigate("/dashboard/home/");
       })
       .catch((err) => {
         toast.error("Something went wrong");

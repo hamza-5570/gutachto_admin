@@ -3,13 +3,18 @@ import { PiQuestionBold } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "@/components/logo";
-import { MdAccountCircle, MdSettings } from "react-icons/md";
+import { MdAccountCircle, MdDashboard, MdSettings } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useGetUserProfileQuery } from "@/services/auth-api";
 
 export default function SideBar({ open, setOpen }) {
   const { t } = useTranslation();
   const menuItems = [
+    {
+      title: t("navigation.home"),
+      icon: <MdDashboard size={22} />,
+      link: "/dashboard/home",
+    },
     {
       title: t("navigation.accounts"),
       icon: <MdAccountCircle size={22} />,
@@ -80,7 +85,10 @@ export default function SideBar({ open, setOpen }) {
         }`}
       />
       <div>
-        <Link to={"/dashboard"} className="flex items-center justify-center">
+        <Link
+          to={"/dashboard/home"}
+          className="flex items-center justify-center"
+        >
           <div className={`justify-center ${open ? "lg:flex" : "lg:hidden"}`}>
             <Logo />
           </div>
