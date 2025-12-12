@@ -126,21 +126,14 @@ export default function Navbar({ handleDrawer, open, data }) {
 }
 
 function LanguageDropdown({ onChange }) {
-  const [selected, setSelected] = useState("en");
-
-  // Optional: load saved language from localStorage
-  useEffect(() => {
-    const savedLang = localStorage.getItem("language") || "en";
-    setSelected(savedLang);
-  }, []);
+  const [selected, setSelected] = useState("du");
 
   const handleChange = (lang) => {
     setSelected(lang);
-    localStorage.setItem("language", lang);
     onChange(lang);
   };
 
-  const languageLabel = selected === "en" ? "🇬🇧 English" : "🇳🇱 Dutch";
+  const languageLabel = selected === "en" ? "English" : "German";
 
   return (
     <DropdownMenu>
@@ -150,10 +143,10 @@ function LanguageDropdown({ onChange }) {
 
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => handleChange("en")}>
-          🇬🇧 English
+          English
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleChange("nl")}>
-          🇳🇱 Dutch
+        <DropdownMenuItem onClick={() => handleChange("du")}>
+          German
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
