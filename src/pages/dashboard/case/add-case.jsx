@@ -73,7 +73,7 @@ export function Stepper({ currentStep }) {
                     transition-all duration-200
                     ${
                       isCompleted
-                        ? "bg-green-500 text-white border-green-500"
+                        ? "bg-black text-white border-black"
                         : isActive
                         ? "bg-black text-white border-black"
                         : "bg-white text-gray-500 border-gray-300"
@@ -96,7 +96,7 @@ export function Stepper({ currentStep }) {
                 <div className="flex-1 h-0.5 mx-1 sm:mx-2 hidden sm:block">
                   <div
                     className={`h-0.5 w-full rounded ${
-                      index + 1 < currentStep ? "bg-green-500" : "bg-gray-300"
+                      index + 1 < currentStep ? "bg-black" : "bg-gray-300"
                     }`}
                   />
                 </div>

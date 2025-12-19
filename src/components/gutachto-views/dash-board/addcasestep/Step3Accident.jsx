@@ -14,10 +14,7 @@ export default function Step3Accident({
 }) {
   const { t } = useTranslation();
   return (
-    <div className="p-4 border rounded">
-      <h3 className="text-lg font-medium mb-2">
-        {t("regiser_case.step3Accident.accident")}
-      </h3>
+    <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <Label>{t("regiser_case.step3Accident.date")}</Label>

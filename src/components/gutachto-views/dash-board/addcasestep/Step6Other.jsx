@@ -10,34 +10,43 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
   const { t } = useTranslation();
   return (
     <div>
-      <div className="bg-gray-100 p-3 rounded">
+      <div>
         <FieldArray name="mail_correspondence">
           {({ push, remove }) => (
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-medium">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-medium">
                   {t("regiser_case.step6Other.mail_correspondence")}
                 </h3>
-                <Button type="button" onClick={() => push("")}>
+              </div>
+              <div>
+                {values.mail_correspondence.map((m, i) => (
+                  <div key={i} className="flex items-center gap-2 mt-2">
+                    <Input
+                      name={`mail_correspondence[${i}]`}
+                      value={m}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder={t(
+                        "regiser_case.step6Other.placeholders.mail"
+                      )}
+                    />
+                    <Button type="button" onClick={() => remove(i)}>
+                      <Trash2 size="icon" variant="outline" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-end mt-4">
+                <Button
+                  type="button"
+                  className="w-fit "
+                  onClick={() => push("")}
+                >
                   <CirclePlus size="icon" variant="outline" />
+                  <span className="text-sm"> Add New</span>
                 </Button>
               </div>
-
-              {values.mail_correspondence.map((m, i) => (
-                <div key={i} className="flex items-center gap-2 mt-2">
-                  <Input
-                    name={`mail_correspondence[${i}]`}
-                    value={m}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="mt-2"
-                    placeholder={t("regiser_case.step6Other.placeholders.mail")}
-                  />
-                  <Button type="button" onClick={() => remove(i)}>
-                    <Trash2 size="icon" variant="outline" />
-                  </Button>
-                </div>
-              ))}
             </div>
           )}
         </FieldArray>

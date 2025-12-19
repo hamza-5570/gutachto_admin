@@ -20,11 +20,7 @@ export default function Step4Damage() {
   const { t } = useTranslation();
 
   return (
-    <div className="p-4 border rounded">
-      <h3 className="text-lg font-medium mb-4">
-        {t("regiser_case.step4Damage.damage")}
-      </h3>
-
+    <div>
       {/* 2 Columns: Left = Switches, Right = Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* RIGHT SIDE - ALL INPUTS */}
@@ -75,13 +71,14 @@ export default function Step4Damage() {
             onKeyDown={(e) => handleArrowKeys(e, "damage.rear_impact_crash")}
             className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
+            <Label>{t("regiser_case.step4Damage.rear_impact")}</Label>
+
             <Switch
               checked={values.damage.rear_impact_crash}
               onCheckedChange={(checked) =>
                 setFieldValue("damage.rear_impact_crash", checked)
               }
             />
-            <Label>{t("regiser_case.step4Damage.rear_impact")}</Label>
           </div>
 
           {/* Lane Change */}
@@ -90,13 +87,14 @@ export default function Step4Damage() {
             onKeyDown={(e) => handleArrowKeys(e, "damage.lane_change")}
             className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
+            <Label>{t("regiser_case.step4Damage.lane_change")}</Label>
+
             <Switch
               checked={values.damage.lane_change}
               onCheckedChange={(checked) =>
                 setFieldValue("damage.lane_change", checked)
               }
             />
-            <Label>{t("regiser_case.step4Damage.lane_change")}</Label>
           </div>
 
           {/* Right of Way Violation */}
@@ -107,13 +105,14 @@ export default function Step4Damage() {
             }
             className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
+            <Label>{t("regiser_case.step4Damage.right_of_way")}</Label>
+
             <Switch
               checked={values.damage.right_of_way_violation}
               onCheckedChange={(checked) =>
                 setFieldValue("damage.right_of_way_violation", checked)
               }
             />
-            <Label>{t("regiser_case.step4Damage.right_of_way")}</Label>
           </div>
 
           {/* Parking Lot */}
@@ -122,13 +121,14 @@ export default function Step4Damage() {
             onKeyDown={(e) => handleArrowKeys(e, "damage.parking_lot")}
             className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
+            <Label>{t("regiser_case.step4Damage.parking_lot")}</Label>
+
             <Switch
               checked={values.damage.parking_lot}
               onCheckedChange={(checked) =>
                 setFieldValue("damage.parking_lot", checked)
               }
             />
-            <Label>{t("regiser_case.step4Damage.parking_lot")}</Label>
           </div>
         </div>
       </div>

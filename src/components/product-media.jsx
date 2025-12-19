@@ -128,8 +128,8 @@ export default function ProductMedia({
 
   return (
     <>
-      <div className="bg-white dark:bg-[#1a1c1e] border border-[#E5E7EB] shadow rounded-xl p-4 mt-5">
-        <p className="text-lg text-[#111827] dark:text-white font-semibold">
+      <div className="bg-white dark:bg-[#1a1c1e] mt-5">
+        <p className="text-sm  text-[#111827] dark:text-white font-semibold">
           {title}
         </p>
 
@@ -158,7 +158,7 @@ export default function ProductMedia({
             />
           </div>
 
-          <p className="text-base text-[#111827] dark:text-white font-medium text-center mt-3">
+          <p className="text-sm text-[#111827] dark:text-white font-medium text-center mt-3">
             {t("upload_img.drag_drop")}
           </p>
           <p className="text-sm text-[#6B7280] dark:text-white text-center mt-2">
