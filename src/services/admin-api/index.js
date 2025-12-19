@@ -45,6 +45,13 @@ const accountsApi = createApi({
       }),
       invalidatesTags: ["Cases"],
     }),
+    updateCaseStatus: builder.mutation({
+      query: ({ case_id, new_status }) => ({
+        url: `/admin/update-status/${case_id}/${new_status}`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["Cases"],
+    }),
     updateCaseDetails: builder.mutation({
       query: ({ case_id, data }) => ({
         url: `/admin/update-details/${case_id}`,
@@ -71,6 +78,7 @@ export const {
   useUpdateCaseMutation,
   useCreateCaseMutation,
   useUploadImageMutation,
+  useUpdateCaseStatusMutation,
   useUpdateCaseDetailsMutation,
   middleware: adminApiMiddleware,
   reducerPath: adminApiReducerPath,

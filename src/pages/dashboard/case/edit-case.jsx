@@ -15,6 +15,7 @@ import Step6Other from "@/components/gutachto-views/dash-board/addcasestep/Step6
 import {
   useGetCaseByIdQuery,
   useUpdateCaseDetailsMutation,
+  useUpdateCaseStatusMutation,
 } from "@/services/admin-api";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -96,6 +97,7 @@ export default function EidtCase() {
   const queryParams = new URLSearchParams(search);
   const id = queryParams.get("id"); // e.g. /users?page=2
   const { data: caseData } = useGetCaseByIdQuery(id);
+  const [updateCaseStatus, { isLoading }] = useUpdateCaseStatusMutation();
   const { t } = useTranslation();
   const totalSteps = 6;
   const navigate = useNavigate();
@@ -111,6 +113,9 @@ export default function EidtCase() {
         enableReinitialize
         onSubmit={async (values, { setSubmitting }) => {
           // handle submit (API call etc.)
+          console.log("values", values);
+          updateCaseStatus({ case_id: id, new_status: values.status }).unwrap();
+
           updateCaseDetails({
             case_id: id,
             data: values,
