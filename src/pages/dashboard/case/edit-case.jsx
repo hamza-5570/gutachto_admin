@@ -109,7 +109,20 @@ export default function EidtCase() {
 
       {/* Formik */}
       <Formik
-        initialValues={{ ...caseData }}
+        initialValues={{
+          ...caseData,
+          damage: {
+            ...caseData?.damage,
+            rear_impact_crash: caseData?.damage?.rear_impact_crash
+              ? "yes"
+              : "no",
+            lane_change: caseData?.damage?.lane_change ? "yes" : "no",
+            right_of_way_violation: caseData?.damage?.right_of_way_violation
+              ? "yes"
+              : "no",
+            parking_lot: caseData?.damage?.parking_lot ? "yes" : "no",
+          },
+        }}
         enableReinitialize
         onSubmit={async (values, { setSubmitting }) => {
           // handle submit (API call etc.)
@@ -118,7 +131,18 @@ export default function EidtCase() {
 
           updateCaseDetails({
             case_id: id,
-            data: values,
+            data: {
+              ...values,
+              damage: {
+                ...values.damage,
+                rear_impact_crash:
+                  values.damage?.rear_impact_crash == "yes" ? true : false,
+                lane_change: values.damage?.lane_change == "yes" ? true : false,
+                right_of_way_violation:
+                  values.damage?.right_of_way_violation == "yes" ? true : false,
+                parking_lot: values?.damage.parking_lot == "yes" ? true : false,
+              },
+            },
           })
             .unwrap()
             .then((result) => {

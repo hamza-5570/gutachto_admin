@@ -9,7 +9,32 @@ import { useTranslation } from "react-i18next";
 export default function Step6Other({ values, handleChange, handleBlur }) {
   const { t } = useTranslation();
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-10">
+      <div>
+        <div>
+          <Label> {t("regiser_case.step6Other.police_file")}</Label>
+          <Input
+            name="police_file"
+            value={values.police_file}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className="mt-2"
+            placeholder={t("regiser_case.step6Other.placeholders.police_file")}
+          />
+        </div>
+
+        <div>
+          <Label>{t("regiser_case.step6Other.notes")}</Label>
+          <Textarea
+            name="notes"
+            value={values.notes}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className="mt-2"
+            placeholder={t("regiser_case.step6Other.placeholders.notes")}
+          />
+        </div>
+      </div>
       <div>
         <FieldArray name="mail_correspondence">
           {({ push, remove }) => (
@@ -20,7 +45,7 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                 </h3>
               </div>
               <div>
-                {values.mail_correspondence.map((m, i) => (
+                {values.mail_correspondence.map((m, i, arr) => (
                   <div key={i} className="flex items-center gap-2 mt-2">
                     <Input
                       name={`mail_correspondence[${i}]`}
@@ -31,48 +56,29 @@ export default function Step6Other({ values, handleChange, handleBlur }) {
                         "regiser_case.step6Other.placeholders.mail"
                       )}
                     />
-                    <Button type="button" onClick={() => remove(i)}>
-                      <Trash2 size="icon" variant="outline" />
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Button type="button" onClick={() => remove(i)}>
+                        <Trash2 size="icon" variant="outline" />
+                      </Button>
+                      {/* SHOW ON LAST INDEX ONLY */}
+                      {arr.length - 1 === i && (
+                        <div className="flex justify-end ">
+                          <Button
+                            type="button"
+                            className="w-fit "
+                            onClick={() => push("")}
+                          >
+                            <CirclePlus size="icon" variant="outline" />
+                          </Button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
-              </div>
-              <div className="flex justify-end mt-4">
-                <Button
-                  type="button"
-                  className="w-fit "
-                  onClick={() => push("")}
-                >
-                  <CirclePlus size="icon" variant="outline" />
-                  <span className="text-sm"> Add New</span>
-                </Button>
               </div>
             </div>
           )}
         </FieldArray>
-      </div>
-      <div className="mt-4">
-        <Label> {t("regiser_case.step6Other.police_file")}</Label>
-        <Input
-          name="police_file"
-          value={values.police_file}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className="mt-2"
-          placeholder={t("regiser_case.step6Other.placeholders.police_file")}
-        />
-      </div>
-
-      <div className="mt-4">
-        <Label>{t("regiser_case.step6Other.notes")}</Label>
-        <Textarea
-          name="notes"
-          value={values.notes}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className="mt-2"
-          placeholder={t("regiser_case.step6Other.placeholders.notes")}
-        />
       </div>
     </div>
   );

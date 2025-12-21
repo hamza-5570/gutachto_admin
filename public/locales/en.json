@@ -278,7 +278,11 @@
         "damage": "Enter damage",
         "description": "Enter description",
         "other": "Enter other",
-        "status": "Enter status"
+        "status": "Enter status",
+        "rear_impact": "Enter rear impact crash",
+        "lane_change": "Enter lane change",
+        "right_of_way": "Enter right of way violation",
+        "parking_lot": "Enter parking lot"
       }
     },
     "step5Report": {

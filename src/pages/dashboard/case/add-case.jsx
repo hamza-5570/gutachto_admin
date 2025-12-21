@@ -211,10 +211,10 @@ export default function AddCase() {
   });
 
   const damageSchema = Yup.object().shape({
-    rear_impact_crash: Yup.boolean(),
-    lane_change: Yup.boolean(),
-    right_of_way_violation: Yup.boolean(),
-    parking_lot: Yup.boolean(),
+    rear_impact_crash: Yup.string(),
+    lane_change: Yup.string(),
+    right_of_way_violation: Yup.string(),
+    parking_lot: Yup.string(),
     other: Yup.string().nullable(),
     description: Yup.string().nullable(),
     diagonal_view: Yup.boolean(),
@@ -350,7 +350,21 @@ export default function AddCase() {
         validationSchema={CaseSchema}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const result = await createCase(values).unwrap();
+            const result = await createCase({
+              ...values,
+              damage: {
+                ...values.damage,
+                rear_impact_crash:
+                  values.damage?.rear_impact_crash == "yes" ? true : false,
+                lane_change:
+                  values.damage?.lane_changeh == "yes" ? true : false,
+                right_of_way_violation:
+                  values.damage?.right_of_way_violationh == "yes"
+                    ? true
+                    : false,
+                parking_lot: values?.damage.parking_lot == "yes" ? true : false,
+              },
+            }).unwrap();
             toast.success(t("regiser_case.success_message.case_created"));
             navigate("/dashboard/all-case");
           } catch (error) {

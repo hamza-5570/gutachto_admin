@@ -274,7 +274,11 @@
         "damage": "Schaden eingeben",
         "description": "Beschreibung eingeben",
         "other": "Sonstiges eingeben",
-        "status": "Status eingeben"
+        "status": "Status eingeben",
+        "rear_impact": "Auffahrunfall eingeben",
+        "lane_change": "Spurwechsel eingeben",
+        "right_of_way": "Vorfahrtmissachtung eingeben",
+        "parking_lot": "Parkplatz eingeben"
       }
     },
     "step5Report": {

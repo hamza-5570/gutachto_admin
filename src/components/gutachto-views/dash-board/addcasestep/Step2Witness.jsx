@@ -28,7 +28,7 @@ export default function Step2Witness({
           <FieldArray name="witness">
             {({ remove }) => (
               <div className="flex flex-col gap-2">
-                {values?.witness?.map((w, idx) => (
+                {values?.witness?.map((w, idx, arr) => (
                   <div>
                     <Label>{idx + 1}.</Label>
                     <div key={idx} className="flex gap-2 items-end">
@@ -51,7 +51,7 @@ export default function Step2Witness({
                         ) : null}
                       </div>
 
-                      <div className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2">
                         <Button
                           type="button"
                           size="icon"
@@ -59,6 +59,25 @@ export default function Step2Witness({
                         >
                           <Trash2 />
                         </Button>
+                        {/* SHOW ON LAST INDEX ONLY */}
+                        {arr.length - 1 === idx && (
+                          <div className="flex justify-end ">
+                            <FieldArray name="witness">
+                              {(arrayHelpers) => (
+                                <div>
+                                  <Button
+                                    type="button"
+                                    onClick={() =>
+                                      arrayHelpers.push(emptyWitness())
+                                    }
+                                  >
+                                    <CirclePlus size={20} />{" "}
+                                  </Button>
+                                </div>
+                              )}
+                            </FieldArray>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -66,21 +85,6 @@ export default function Step2Witness({
               </div>
             )}
           </FieldArray>
-          <div className="flex justify-end mt-5">
-            <FieldArray name="witness">
-              {(arrayHelpers) => (
-                <div>
-                  <Button
-                    type="button"
-                    onClick={() => arrayHelpers.push(emptyWitness())}
-                  >
-                    <CirclePlus size={20} />{" "}
-                    <span className="text-xs">Add New</span>
-                  </Button>
-                </div>
-              )}
-            </FieldArray>
-          </div>
         </div>
       </div>
     </div>

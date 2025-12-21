@@ -14,7 +14,7 @@ export default function Step5ReportInvoice({
   return (
     <div className="grid grid-cols-1  gap-4">
       <div>
-        <div className="grid xl:grid-cols-3 grid-cols-1 gap-2">
+        <div className="grid xl:grid-cols-2 grid-cols-1 gap-2">
           <div>
             <Label>{t("regiser_case.step5Report.report")}</Label>
             <Input
@@ -76,26 +76,27 @@ export default function Step5ReportInvoice({
               </div>
             ) : null}
           </div>
-        </div>
-
-        <div className="mt-2">
-          <Label>{t("regiser_case.step5Report.lawyer_fee")}</Label>
-          <Input
-            type="number"
-            name="report.lawyer_fee"
-            value={values.report.lawyer_fee}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            min={0}
-            className="mt-2"
-            placeholder={t("regiser_case.step5Report.placeholders.lawyer_fee")}
-          />
-          {getIn(touched, "report.lawyer_fee") &&
-          getIn(errors, "report.lawyer_fee") ? (
-            <div className="text-red-600 text-sm">
-              {getIn(errors, "report.lawyer_fee")}
-            </div>
-          ) : null}
+          <div className="mt-2">
+            <Label>{t("regiser_case.step5Report.lawyer_fee")}</Label>
+            <Input
+              type="number"
+              name="report.lawyer_fee"
+              value={values.report.lawyer_fee}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              min={0}
+              className="mt-2"
+              placeholder={t(
+                "regiser_case.step5Report.placeholders.lawyer_fee"
+              )}
+            />
+            {getIn(touched, "report.lawyer_fee") &&
+            getIn(errors, "report.lawyer_fee") ? (
+              <div className="text-red-600 text-sm">
+                {getIn(errors, "report.lawyer_fee")}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
 
@@ -104,7 +105,7 @@ export default function Step5ReportInvoice({
           {t("regiser_case.step5Report.invoice")}
         </h3>
 
-        <div className="grid xl:grid-cols-3 grid-cols-1 gap-2 mt-2">
+        <div className="grid xl:grid-cols-2 grid-cols-1 gap-2 mt-2">
           <div>
             <Label>{t("regiser_case.step5Report.total_invoiced_amount")}</Label>
             <Input

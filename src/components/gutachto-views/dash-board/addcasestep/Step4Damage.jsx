@@ -2,8 +2,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { useFormikContext } from "formik";
+import { getIn, useFormikContext } from "formik";
 import { useTranslation } from "react-i18next";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Step4Damage() {
   const { values, handleChange, handleBlur, setFieldValue } =
@@ -69,32 +76,75 @@ export default function Step4Damage() {
           <div
             tabIndex={0}
             onKeyDown={(e) => handleArrowKeys(e, "damage.rear_impact_crash")}
-            className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
+            className="flex flex-col gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
             <Label>{t("regiser_case.step4Damage.rear_impact")}</Label>
+            <div className="mt-1 w-full">
+              <Select
+                value={values.damage.rear_impact_crash}
+                onValueChange={(value) =>
+                  setFieldValue("damage.rear_impact_crash", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue
+                    placeholder={t(
+                      "regiser_case.step4Damage.placeholders.rear_impact"
+                    )}
+                  />
+                </SelectTrigger>
 
-            <Switch
-              checked={values.damage.rear_impact_crash}
-              onCheckedChange={(checked) =>
-                setFieldValue("damage.rear_impact_crash", checked)
-              }
-            />
+                <SelectContent className="min-w-full">
+                  {[
+                    { label: t("common.yes"), value: "yes" },
+                    { label: t("common.no"), value: "no" },
+                  ].map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {/* Lane Change */}
           <div
             tabIndex={0}
             onKeyDown={(e) => handleArrowKeys(e, "damage.lane_change")}
-            className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
+            className="flex flex-col gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
-            <Label>{t("regiser_case.step4Damage.lane_change")}</Label>
+            <div>
+              <Label>{t("regiser_case.step4Damage.lane_change")}</Label>
 
-            <Switch
-              checked={values.damage.lane_change}
-              onCheckedChange={(checked) =>
-                setFieldValue("damage.lane_change", checked)
-              }
-            />
+              <div className="mt-1 w-full">
+                <Select
+                  value={values.damage.lane_change}
+                  onValueChange={(value) =>
+                    setFieldValue("damage.lane_change", value)
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue
+                      placeholder={t(
+                        "regiser_case.step4Damage.placeholders.lane_change"
+                      )}
+                    />
+                  </SelectTrigger>
+
+                  <SelectContent className="min-w-full">
+                    {[
+                      { label: t("common.yes"), value: "yes" },
+                      { label: t("common.no"), value: "no" },
+                    ].map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
           </div>
 
           {/* Right of Way Violation */}
@@ -103,32 +153,74 @@ export default function Step4Damage() {
             onKeyDown={(e) =>
               handleArrowKeys(e, "damage.right_of_way_violation")
             }
-            className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
+            className="flex flex-col gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
             <Label>{t("regiser_case.step4Damage.right_of_way")}</Label>
 
-            <Switch
-              checked={values.damage.right_of_way_violation}
-              onCheckedChange={(checked) =>
-                setFieldValue("damage.right_of_way_violation", checked)
-              }
-            />
+            <div className="mt-1 w-full">
+              <Select
+                value={values.damage.right_of_way_violation}
+                onValueChange={(value) =>
+                  setFieldValue("damage.right_of_way_violation", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue
+                    placeholder={t(
+                      "regiser_case.step4Damage.placeholders.right_of_way"
+                    )}
+                  />
+                </SelectTrigger>
+
+                <SelectContent className="min-w-full">
+                  {[
+                    { label: t("common.yes"), value: "yes" },
+                    { label: t("common.no"), value: "no" },
+                  ].map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {/* Parking Lot */}
           <div
             tabIndex={0}
             onKeyDown={(e) => handleArrowKeys(e, "damage.parking_lot")}
-            className="flex items-center gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
+            className="flex flex-col gap-2 outline-none focus:ring-2 focus:ring-primary rounded p-2"
           >
             <Label>{t("regiser_case.step4Damage.parking_lot")}</Label>
 
-            <Switch
-              checked={values.damage.parking_lot}
-              onCheckedChange={(checked) =>
-                setFieldValue("damage.parking_lot", checked)
-              }
-            />
+            <div className="mt-1 w-full">
+              <Select
+                value={values.damage.parking_lot}
+                onValueChange={(value) =>
+                  setFieldValue("damage.parking_lot", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue
+                    placeholder={t(
+                      "regiser_case.step4Damage.placeholders.parking_lot"
+                    )}
+                  />
+                </SelectTrigger>
+
+                <SelectContent className="min-w-full">
+                  {[
+                    { label: t("common.yes"), value: "yes" },
+                    { label: t("common.no"), value: "no" },
+                  ].map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
